@@ -29,10 +29,14 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.SuspendLayout();
+            // 
+            // MainForm
+            // 
+            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.Name = "MainForm";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
