@@ -104,7 +104,18 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             public int DisabilityDuration { get; set; }
             public bool DispensaryRecord { get; set; }
             public string Note { get; set; }
-        } 
+        }
+
+
+
+
+
+
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
