@@ -30,18 +30,18 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAbout));
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelAbout_SVV = new System.Windows.Forms.Label();
             this.buttonOk_SVV = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // labelAbout_SVV
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(367, 170);
-            this.label1.TabIndex = 0;
-            this.label1.Text = resources.GetString("label1.Text");
+            this.labelAbout_SVV.AutoSize = true;
+            this.labelAbout_SVV.Location = new System.Drawing.Point(12, 9);
+            this.labelAbout_SVV.Name = "labelAbout_SVV";
+            this.labelAbout_SVV.Size = new System.Drawing.Size(367, 170);
+            this.labelAbout_SVV.TabIndex = 0;
+            this.labelAbout_SVV.Text = resources.GetString("labelAbout_SVV.Text");
             // 
             // buttonOk_SVV
             // 
@@ -59,7 +59,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 214);
             this.Controls.Add(this.buttonOk_SVV);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelAbout_SVV);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -73,7 +73,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelAbout_SVV;
         private System.Windows.Forms.Button buttonOk_SVV;
     }
 }
