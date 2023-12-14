@@ -110,6 +110,12 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         {
 
         }
+
+        private void buttonHelp_SVV_Click(object sender, EventArgs e)
+        {
+            FormAbout formAbout = new FormAbout();
+            formAbout.ShowDialog();
+        }
     }
 }
 
