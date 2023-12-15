@@ -42,14 +42,14 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                             FirstName = values[2],
                             MiddleName = values[3],
                             BirthDate = DateTime.Parse(values[4]),
-                            DoctorFullName = values[5],
-                            DoctorPosition = values[6],
-                            DoctorSpecialization = values[7],
-                            Diagnosis = values[8],
-                            AmbulatoryTreatment = bool.Parse(values[9]),
-                            DisabilityDuration = int.Parse(values[10]),
-                            DispensaryRecord = bool.Parse(values[11]),
-                            Note = values[12]
+                            //DoctorFullName = values[5],
+                            //DoctorPosition = values[6],
+                            //DoctorSpecialization = values[7],
+                            //Diagnosis = values[8],
+                            //AmbulatoryTreatment = bool.Parse(values[9]),
+                            //DisabilityDuration = int.Parse(values[10]),
+                            //DispensaryRecord = bool.Parse(values[11]),
+                            //Note = values[12]
                         };
 
                         patients.Add(patient);
@@ -64,24 +64,24 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void PopulateDataGridView()
         {
-            dataGridViewPatients.Rows.Clear();
+            dataGridViewPatients_SVV.Rows.Clear();
 
             foreach (var patient in patients)
             {
-                dataGridViewPatients.Rows.Add(
+                dataGridViewPatients_SVV.Rows.Add(
                     patient.Number,
                     patient.LastName,
                     patient.FirstName,
                     patient.MiddleName,
-                    patient.BirthDate.ToShortDateString(),
-                    patient.DoctorFullName,
-                    patient.DoctorPosition,
-                    patient.DoctorSpecialization,
-                    patient.Diagnosis,
-                    patient.AmbulatoryTreatment ? "Yes" : "No",
-                    patient.DisabilityDuration.ToString(),
-                    patient.DispensaryRecord ? "Yes" : "No",
-                    patient.Note
+                    patient.BirthDate.ToShortDateString()
+                //patient.DoctorFullName,
+                //patient.DoctorPosition,
+                //patient.DoctorSpecialization,
+                //patient.Diagnosis,
+                //patient.AmbulatoryTreatment ? "Yes" : "No",
+                //patient.DisabilityDuration.ToString(),
+                //patient.DispensaryRecord ? "Yes" : "No",
+                //patient.Note
                 );
             }
         }
@@ -96,14 +96,14 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             public string FirstName { get; set; }
             public string MiddleName { get; set; }
             public DateTime BirthDate { get; set; }
-            public string DoctorFullName { get; set; }
-            public string DoctorPosition { get; set; }
-            public string DoctorSpecialization { get; set; }
-            public string Diagnosis { get; set; }
-            public bool AmbulatoryTreatment { get; set; }
-            public int DisabilityDuration { get; set; }
-            public bool DispensaryRecord { get; set; }
-            public string Note { get; set; }
+            //public string DoctorFullName { get; set; }
+            //public string DoctorPosition { get; set; }
+            //public string DoctorSpecialization { get; set; }
+            //public string Diagnosis { get; set; }
+            //public bool AmbulatoryTreatment { get; set; }
+            //public int DisabilityDuration { get; set; }
+            //public bool DispensaryRecord { get; set; }
+            //public string Note { get; set; }
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -115,6 +115,11 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         {
             FormAbout formAbout = new FormAbout();
             formAbout.ShowDialog();
+        }
+
+        private void dataGridViewPatients_SVV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
