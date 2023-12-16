@@ -21,6 +21,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             base.Dispose(disposing);
         }
 
+
         #region Windows Form Designer generated code
 
         /// <summary>
