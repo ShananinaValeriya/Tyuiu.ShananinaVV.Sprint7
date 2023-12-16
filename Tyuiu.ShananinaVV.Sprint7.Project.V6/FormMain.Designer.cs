@@ -82,7 +82,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // FormMain
             // 
-            this.ClientSize = new System.Drawing.Size(513, 398);
+            this.ClientSize = new System.Drawing.Size(785, 442);
             this.Controls.Add(this.buttonOpen_SVV);
             this.Controls.Add(this.buttonDone_SVV);
             this.Controls.Add(this.dataGridViewPatients_SVV);
