@@ -34,11 +34,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             formAbout.ShowDialog();
         }
 
-        //private void dataGridViewPatients_SVV_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //{
-
-        //}
-
         private void buttonPatients_SVV_Click(object sender, EventArgs e)
         {
             FormPatients formAbout = new FormPatients();
