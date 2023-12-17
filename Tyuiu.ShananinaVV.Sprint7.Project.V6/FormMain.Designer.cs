@@ -30,66 +30,54 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void InitializeComponent()
         {
             this.buttonHelp_SVV = new System.Windows.Forms.Button();
-            this.dataGridViewPatients_SVV = new System.Windows.Forms.DataGridView();
-            this.buttonDone_SVV = new System.Windows.Forms.Button();
             this.openFileDialog_SVV = new System.Windows.Forms.OpenFileDialog();
-            this.buttonOpen_SVV = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatients_SVV)).BeginInit();
+            this.buttonPatients_SVV = new System.Windows.Forms.Button();
+            this.buttonDoctors_SVV = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonHelp_SVV
             // 
-            this.buttonHelp_SVV.Location = new System.Drawing.Point(319, 54);
+            this.buttonHelp_SVV.Location = new System.Drawing.Point(666, 12);
             this.buttonHelp_SVV.Name = "buttonHelp_SVV";
-            this.buttonHelp_SVV.Size = new System.Drawing.Size(79, 46);
+            this.buttonHelp_SVV.Size = new System.Drawing.Size(95, 46);
             this.buttonHelp_SVV.TabIndex = 0;
             this.buttonHelp_SVV.Text = "Help";
             this.buttonHelp_SVV.UseVisualStyleBackColor = true;
             this.buttonHelp_SVV.Click += new System.EventHandler(this.buttonHelp_SVV_Click);
             // 
-            // dataGridViewPatients_SVV
-            // 
-            this.dataGridViewPatients_SVV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPatients_SVV.Location = new System.Drawing.Point(12, 177);
-            this.dataGridViewPatients_SVV.Name = "dataGridViewPatients_SVV";
-            this.dataGridViewPatients_SVV.RowHeadersWidth = 51;
-            this.dataGridViewPatients_SVV.RowTemplate.Height = 24;
-            this.dataGridViewPatients_SVV.Size = new System.Drawing.Size(489, 195);
-            this.dataGridViewPatients_SVV.TabIndex = 1;
-            this.dataGridViewPatients_SVV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPatients_SVV_CellContentClick);
-            // 
-            // buttonDone_SVV
-            // 
-            this.buttonDone_SVV.Location = new System.Drawing.Point(171, 51);
-            this.buttonDone_SVV.Name = "buttonDone_SVV";
-            this.buttonDone_SVV.Size = new System.Drawing.Size(117, 49);
-            this.buttonDone_SVV.TabIndex = 2;
-            this.buttonDone_SVV.Text = "Выполнить ";
-            this.buttonDone_SVV.UseVisualStyleBackColor = true;
-            // 
             // openFileDialog_SVV
             // 
             this.openFileDialog_SVV.FileName = "openFileDialog1";
             // 
-            // buttonOpen_SVV
+            // buttonPatients_SVV
             // 
-            this.buttonOpen_SVV.Location = new System.Drawing.Point(13, 48);
-            this.buttonOpen_SVV.Name = "buttonOpen_SVV";
-            this.buttonOpen_SVV.Size = new System.Drawing.Size(116, 52);
-            this.buttonOpen_SVV.TabIndex = 3;
-            this.buttonOpen_SVV.Text = "button1";
-            this.buttonOpen_SVV.UseVisualStyleBackColor = true;
+            this.buttonPatients_SVV.Location = new System.Drawing.Point(306, 180);
+            this.buttonPatients_SVV.Name = "buttonPatients_SVV";
+            this.buttonPatients_SVV.Size = new System.Drawing.Size(147, 54);
+            this.buttonPatients_SVV.TabIndex = 4;
+            this.buttonPatients_SVV.Text = "База пациентов";
+            this.buttonPatients_SVV.UseVisualStyleBackColor = true;
+            this.buttonPatients_SVV.Click += new System.EventHandler(this.buttonPatients_SVV_Click);
+            // 
+            // buttonDoctors_SVV
+            // 
+            this.buttonDoctors_SVV.Location = new System.Drawing.Point(306, 240);
+            this.buttonDoctors_SVV.Name = "buttonDoctors_SVV";
+            this.buttonDoctors_SVV.Size = new System.Drawing.Size(147, 53);
+            this.buttonDoctors_SVV.TabIndex = 5;
+            this.buttonDoctors_SVV.Text = "База врачей";
+            this.buttonDoctors_SVV.UseVisualStyleBackColor = true;
+            this.buttonDoctors_SVV.Click += new System.EventHandler(this.buttonDoctors_SVV_Click);
             // 
             // FormMain
             // 
-            this.ClientSize = new System.Drawing.Size(785, 442);
-            this.Controls.Add(this.buttonOpen_SVV);
-            this.Controls.Add(this.buttonDone_SVV);
-            this.Controls.Add(this.dataGridViewPatients_SVV);
+            this.ClientSize = new System.Drawing.Size(782, 445);
+            this.Controls.Add(this.buttonDoctors_SVV);
+            this.Controls.Add(this.buttonPatients_SVV);
             this.Controls.Add(this.buttonHelp_SVV);
             this.Name = "FormMain";
-            this.Load += new System.EventHandler(this.FormMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatients_SVV)).EndInit();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Поликлиника";
             this.ResumeLayout(false);
 
         }
@@ -97,10 +85,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         #endregion
 
         private System.Windows.Forms.Button buttonHelp_SVV;
-        private System.Windows.Forms.DataGridView dataGridViewPatients_SVV;
-        private System.Windows.Forms.Button buttonDone_SVV;
         private System.Windows.Forms.OpenFileDialog openFileDialog_SVV;
-        private System.Windows.Forms.Button buttonOpen_SVV;
+        private System.Windows.Forms.Button buttonPatients_SVV;
+        private System.Windows.Forms.Button buttonDoctors_SVV;
     }
 }
 
