@@ -52,7 +52,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // openFileDialog_SVV
             // 
             this.openFileDialog_SVV.FileName = "openFileDialog1";
-            
             // 
             // buttonPatients_SVV
             // 
@@ -82,6 +81,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonAll_SVV.TabIndex = 6;
             this.buttonAll_SVV.Text = "Общая база";
             this.buttonAll_SVV.UseVisualStyleBackColor = true;
+            this.buttonAll_SVV.Click += new System.EventHandler(this.buttonAll_SVV_Click);
             // 
             // FormMain
             // 

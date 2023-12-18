@@ -46,7 +46,13 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             formAbout.ShowDialog();
         }
 
-        
+        private void buttonAll_SVV_Click(object sender, EventArgs e)
+        {
+            FormAll formAbout = new FormAll();
+            formAbout.ShowDialog();
+        }
+
+
 
 
         //private void LoadDataFromCSV(string filePath)
