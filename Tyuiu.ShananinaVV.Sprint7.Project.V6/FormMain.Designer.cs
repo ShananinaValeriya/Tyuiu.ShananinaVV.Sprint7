@@ -29,15 +29,17 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.buttonHelp_SVV = new System.Windows.Forms.Button();
             this.openFileDialog_SVV = new System.Windows.Forms.OpenFileDialog();
             this.buttonPatients_SVV = new System.Windows.Forms.Button();
             this.buttonDoctors_SVV = new System.Windows.Forms.Button();
+            this.saveFileDialog_SVV = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // buttonHelp_SVV
             // 
-            this.buttonHelp_SVV.Location = new System.Drawing.Point(666, 12);
+            this.buttonHelp_SVV.Location = new System.Drawing.Point(675, 12);
             this.buttonHelp_SVV.Name = "buttonHelp_SVV";
             this.buttonHelp_SVV.Size = new System.Drawing.Size(95, 46);
             this.buttonHelp_SVV.TabIndex = 0;
@@ -48,10 +50,11 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // openFileDialog_SVV
             // 
             this.openFileDialog_SVV.FileName = "openFileDialog1";
+            this.openFileDialog_SVV.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog_SVV_FileOk);
             // 
             // buttonPatients_SVV
             // 
-            this.buttonPatients_SVV.Location = new System.Drawing.Point(306, 180);
+            this.buttonPatients_SVV.Location = new System.Drawing.Point(306, 205);
             this.buttonPatients_SVV.Name = "buttonPatients_SVV";
             this.buttonPatients_SVV.Size = new System.Drawing.Size(147, 54);
             this.buttonPatients_SVV.TabIndex = 4;
@@ -61,7 +64,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // buttonDoctors_SVV
             // 
-            this.buttonDoctors_SVV.Location = new System.Drawing.Point(306, 240);
+            this.buttonDoctors_SVV.Location = new System.Drawing.Point(306, 265);
             this.buttonDoctors_SVV.Name = "buttonDoctors_SVV";
             this.buttonDoctors_SVV.Size = new System.Drawing.Size(147, 53);
             this.buttonDoctors_SVV.TabIndex = 5;
@@ -71,6 +74,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // FormMain
             // 
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(782, 445);
             this.Controls.Add(this.buttonDoctors_SVV);
             this.Controls.Add(this.buttonPatients_SVV);
@@ -88,6 +93,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.OpenFileDialog openFileDialog_SVV;
         private System.Windows.Forms.Button buttonPatients_SVV;
         private System.Windows.Forms.Button buttonDoctors_SVV;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog_SVV;
     }
 }
 

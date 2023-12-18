@@ -24,7 +24,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             //PopulateDataGridView();
             //LoadCSVData();
             
-            openFileDialog_SVV.Filter = "Значения, разделенные запятыми(*.csv)|*.csv|Все файлы(*.*)|*.*";
+            //openFileDialog_SVV.Filter = "Значения, разделенные запятыми(*.csv)|*.csv|Все файлы(*.*)|*.*";
             //saveFileDialog_SVV.Filter = "Значения, разделенные запятыми(*.csv)|*.csv|Все файлы(*.*)|*.*";
         }
 
@@ -44,6 +44,11 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         {
             FormDoctors formAbout = new FormDoctors();
             formAbout.ShowDialog();
+        }
+
+        private void openFileDialog_SVV_FileOk(object sender, CancelEventArgs e)
+        {
+
         }
 
 
