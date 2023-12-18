@@ -18,10 +18,13 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         int index;
         //List<string[]> data = new List<string[]>();
         DataTable table = new DataTable("table");
-        
+
+       // private DataTable originalData;
+
 
         public FormDoctors()
         {
+            this.ControlBox = false; //убираем кнопки сворачивания, разворачивания и закрытия окна..
             InitializeComponent();  
         }
 
@@ -60,11 +63,12 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             buttonDoctors_SVV.Enabled = false;
             buttonBackDoc_SVV.Enabled = false;
             buttonClose_SVV.Enabled = true;
+            buttonCbros_SVV.Enabled = true;
         }
         
         private void buttonSear_SVV_Click(object sender, EventArgs e)
         {
-
+           
             string searchText = textBoxSear_SVV.Text.ToLower();
             foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
             {
@@ -83,7 +87,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                 else
                     row.Visible = false;
             }
-
+            
         }
         
 
@@ -168,25 +172,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             }
         }
 
-        private void groupBoxOneDoc_SVV_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelThree_SVV_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelFour_SVV_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxSear_SVV_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void buttonClose_SVV_Click(object sender, EventArgs e)
         {
@@ -203,9 +189,41 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void buttonCbros_SVV_Click(object sender, EventArgs e)
         {
-
-
             textBoxSear_SVV.Clear();
+
+            string searchText = textBoxSear_SVV.Text.ToLower();
+            foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
+            {
+                if (row.IsNewRow) continue;
+                bool found = false;
+                for (int i = 0; i < dataGridViewDoctors_SVV.Columns.Count; i++)
+                {
+                    if (row.Cells[i].Value.ToString().ToLower().Contains(searchText))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found)
+                    row.Visible = true;
+                else
+                    row.Visible = false;
+            }
+            textBoxSear_SVV.Clear();
+        }
+
+        private void groupBoxOneDoc_SVV_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelOneDoc_SVV_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

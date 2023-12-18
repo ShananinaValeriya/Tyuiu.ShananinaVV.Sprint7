@@ -13,8 +13,12 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 {
     public partial class FormPatients : Form
     {
+        int index;
+        
+        DataTable table = new DataTable("table");
         public FormPatients()
         {
+            this.ControlBox = false; //убираем кнопки сворачивания, разворачивания и закрытия окна..
             InitializeComponent();
         }
 
@@ -36,21 +40,190 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                     var line = reader.ReadLine();
                     var values = line.Split(';'); // предположим, что разделитель - точка с запятой
 
-                    dataGridViewPatients_SVV.Rows.Add(values);
-
-                    dataGridViewPatients_SVV.Columns["Номер"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dataGridViewPatients_SVV.Columns["Фамилия"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dataGridViewPatients_SVV.Columns["Имя"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dataGridViewPatients_SVV.Columns["Отчество"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dataGridViewPatients_SVV.Columns["Дата рождения"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    
+                    dataGridViewPatients_SVV.Rows.Add(values); 
                 }
             }
+
+            buttonSear_SVV.Enabled = true;
+            buttonAdd_SVV.Enabled = true;
+            buttonDel_SVV.Enabled = true;
+            buttonChange_SVV.Enabled = true;
+            buttonNew_SVV.Enabled = true;
+            buttonSave_SVV.Enabled = true;
+
+            textBoxNumber_SVV.Enabled = true;
+            textBoxDR_SVV.Enabled = true;
+            textBoxName_SVV.Enabled = true;
+            textBoxFam_SVV.Enabled = true;
+            textBoxOth_SVV.Enabled = true;
+            textBoxSear_SVV.Enabled = true;
+
+            buttonDonePat_SVV.Enabled = false;
+            buttonBackPat_SVV.Enabled = false;
+            buttonClose_SVV.Enabled = true;
+            buttonCbros_SVV.Enabled = true;
         }
 
         private void buttonBackPat_SVV_Click(object sender, EventArgs e)
         {
             this.Hide(); //скрываем окно 
+        }
+
+        private void FormPatients_Load(object sender, EventArgs e)
+        {
+            table.Columns.Add("", Type.GetType("System.Int32"));
+        }
+
+        private void buttonClose_SVV_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Вы сохранили изменения?", "Вопрос", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Вернитесь для сохранения");
+            }
+        }
+
+        private void buttonSear_SVV_Click(object sender, EventArgs e)
+        {
+            string searchText = textBoxSear_SVV.Text.ToLower();
+            foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
+            {
+                if (row.IsNewRow) continue;
+                bool found = false;
+                for (int i = 0; i < dataGridViewPatients_SVV.Columns.Count; i++)
+                {
+                    if (row.Cells[i].Value.ToString().ToLower().Contains(searchText))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found)
+                    row.Visible = true;
+                else
+                    row.Visible = false;
+            }
+        }
+
+        private void buttonAdd_SVV_Click(object sender, EventArgs e)
+        {
+            string number = textBoxNumber_SVV.Text;
+            string surname = textBoxFam_SVV.Text;
+            string name = textBoxName_SVV.Text;
+            string fathname = textBoxOth_SVV.Text;
+            string dr = textBoxDR_SVV.Text;
+
+            dataGridViewPatients_SVV.Rows.Add(number, surname, name, fathname, dr);
+            textBoxNumber_SVV.Text = "";
+            textBoxFam_SVV.Text = "";
+            textBoxName_SVV.Text = "";
+            textBoxOth_SVV.Text = "";
+            textBoxDR_SVV.Text = "";
+
+            
+            // Переход к добавленной строке
+            dataGridViewPatients_SVV.CurrentCell = dataGridViewPatients_SVV.Rows[dataGridViewPatients_SVV.Rows.Count - 1].Cells[0];
+        }
+
+        private void buttonChange_SVV_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow newdata = dataGridViewPatients_SVV.Rows[index];
+            newdata.Cells[0].Value = textBoxNumber_SVV.Text;
+            newdata.Cells[1].Value = textBoxFam_SVV.Text;
+            newdata.Cells[2].Value = textBoxName_SVV.Text;
+            newdata.Cells[3].Value = textBoxOth_SVV.Text;
+            newdata.Cells[4].Value = textBoxDR_SVV.Text;
+        }
+
+        private void buttonNew_SVV_Click(object sender, EventArgs e)
+        {
+            textBoxNumber_SVV.Text = String.Empty;
+            textBoxFam_SVV.Text = String.Empty;
+            textBoxName_SVV.Text = String.Empty;
+            textBoxOth_SVV.Text = String.Empty;
+            textBoxDR_SVV.Text = String.Empty;
+        }
+
+        private void dataGridViewPatients_SVV_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            index = e.RowIndex;
+            DataGridViewRow row = dataGridViewPatients_SVV.Rows[index];
+            textBoxNumber_SVV.Text = row.Cells[0].Value.ToString();
+            textBoxFam_SVV.Text = row.Cells[1].Value.ToString();
+            textBoxName_SVV.Text = row.Cells[2].Value.ToString();
+            textBoxOth_SVV.Text = row.Cells[3].Value.ToString();
+            textBoxDR_SVV.Text = row.Cells[4].Value.ToString();
+        }
+
+        private void buttonSave_SVV_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Сохраняем изменения обратно в CSV файл
+                using (var writer = new StreamWriter("pat.csv"))
+                {
+                    foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
+                    {
+                        writer.WriteLine(string.Join(";", Array.ConvertAll(row.Cells.Cast<DataGridViewCell>().ToArray(), cell => cell.Value.ToString())));
+                    }
+                }
+                MessageBox.Show("Данные успешно сохранены!");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при сохранении данных: {ex.Message}");
+            }
+        }
+
+        private void buttonCbros_SVV_Click(object sender, EventArgs e)
+        {
+            textBoxSear_SVV.Clear();
+
+            string searchText = textBoxSear_SVV.Text.ToLower();
+            foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
+            {
+                if (row.IsNewRow) continue;
+                bool found = false;
+                for (int i = 0; i < dataGridViewPatients_SVV.Columns.Count; i++)
+                {
+                    if (row.Cells[i].Value.ToString().ToLower().Contains(searchText))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found)
+                    row.Visible = true;
+                else
+                    row.Visible = false;
+            }
+            textBoxSear_SVV.Clear();
+        }
+
+        private void buttonDel_SVV_Click(object sender, EventArgs e)
+        {
+            index = dataGridViewPatients_SVV.CurrentCell.RowIndex;
+            dataGridViewPatients_SVV.Rows.RemoveAt(index);
+        }
+
+        private void groupBoxPat_SVV_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewPatients_SVV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textBoxName_SVV_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

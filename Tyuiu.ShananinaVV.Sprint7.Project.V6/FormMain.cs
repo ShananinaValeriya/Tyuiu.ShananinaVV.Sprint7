@@ -46,10 +46,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             formAbout.ShowDialog();
         }
 
-        private void openFileDialog_SVV_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
+        
 
 
         //private void LoadDataFromCSV(string filePath)
