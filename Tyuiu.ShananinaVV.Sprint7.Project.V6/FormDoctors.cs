@@ -16,16 +16,22 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
     public partial class FormDoctors : Form
     {
         int index;
+
+        //int index; // индекс столбца для сортировки
+        //ListSortDirection direction; // направление сортировки (Ascending или Descending)
+
+        // Сортировка DataGridView по указанному столбцу
+
         //List<string[]> data = new List<string[]>();
         DataTable table = new DataTable("table");
 
-       // private DataTable originalData;
+        // private DataTable originalData;
 
 
         public FormDoctors()
         {
             this.ControlBox = false; //убираем кнопки сворачивания, разворачивания и закрытия окна..
-            InitializeComponent();  
+            InitializeComponent();
         }
 
 
@@ -65,10 +71,40 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             buttonClose_SVV.Enabled = true;
             buttonCbros_SVV.Enabled = true;
         }
-        
-        private void buttonSear_SVV_Click(object sender, EventArgs e)
+
+        //private void SortDataGridViewByColumn(DataGridView dataGridView, int columnIndex)
+        // {
+        //if (dataGridView.Columns[columnIndex] is DataGridViewColumn column)
+        //{
+        //dataGridView.Sort(column, ListSortDirection.Ascending);
+        // }
+        //}
+
+        private void SortByAlphabet(int columnIndex)
         {
-           
+            // Получаем столбец DataGridView, который нужно отсортировать
+            DataGridViewColumn column = dataGridViewDoctors_SVV.Columns[columnIndex];
+
+            // Осуществляем сортировку по алфавиту
+            dataGridViewDoctors_SVV.Sort(column, ListSortDirection.Ascending);
+        }
+
+        private void buttonSort_SVV_Click(object sender, EventArgs e)
+        {
+            ///SortDataGridViewByColumn(dataGridViewDoctors_SVV, index); 
+            int columnIndex = 0; // Укажите здесь нужный индекс столбца
+            //int columnIndex = 1;
+            //int columnIndex = 2;
+
+            SortByAlphabet(columnIndex);
+
+        }
+
+
+        private void buttonSear_SVV_Click(object sender, EventArgs e)
+
+        {
+
             string searchText = textBoxSear_SVV.Text.ToLower();
             foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
             {
@@ -87,10 +123,10 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                 else
                     row.Visible = false;
             }
-            
-        }
-        
 
+        }
+
+    
         
         private void buttonBackDoc_SVV_Click(object sender, EventArgs e)
         {
@@ -145,10 +181,17 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void dataGridViewDoctors_SVV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             index = e.RowIndex;
+            //index1 = e.ColumnIndex;
             DataGridViewRow row = dataGridViewDoctors_SVV.Rows[index];
+            //DataGridViewColumn column = dataGridViewDoctors_SVV.Columns[index];
             textBoxName_SVV.Text = row.Cells[0].Value.ToString();
             textBoxPosit_SVV.Text = row.Cells[1].Value.ToString();
             textBoxSpec_SVV.Text = row.Cells[2].Value.ToString();
+
+            //ListSortDirection direction; // направление сортировки (Ascending или Descending)
+
+            // Сортировка DataGridView по указанному столбцу
+            //dataGridViewDoctors_SVV.Sort(dataGridViewDoctors_SVV.Columns[index], direction);
         }
 
         private void buttonSave_SVV_Click(object sender, EventArgs e)
@@ -226,5 +269,19 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         {
 
         }
+
+        private void dataGridViewDoctors_SVV_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            // Определение выбранного столбца
+           // DataGridViewColumn selectedColumn = dataGridViewDoctors_SVV.Columns[e.ColumnIndex];
+            DataGridViewColumn column = dataGridViewDoctors_SVV.Columns[index];
+
+            // Сортировка данных по выбранному столбцу в порядке возрастания
+            dataGridViewDoctors_SVV.Sort(column, ListSortDirection.Ascending);
+
+            
+        }
+
+        
     }
 }

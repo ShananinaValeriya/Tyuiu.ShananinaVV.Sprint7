@@ -42,9 +42,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             this.buttonHelp_SVV.BackColor = System.Drawing.SystemColors.Menu;
             this.buttonHelp_SVV.Image = ((System.Drawing.Image)(resources.GetObject("buttonHelp_SVV.Image")));
-            this.buttonHelp_SVV.Location = new System.Drawing.Point(724, 12);
+            this.buttonHelp_SVV.Location = new System.Drawing.Point(726, 10);
             this.buttonHelp_SVV.Name = "buttonHelp_SVV";
-            this.buttonHelp_SVV.Size = new System.Drawing.Size(46, 41);
+            this.buttonHelp_SVV.Size = new System.Drawing.Size(44, 44);
             this.buttonHelp_SVV.TabIndex = 0;
             this.buttonHelp_SVV.UseVisualStyleBackColor = false;
             this.buttonHelp_SVV.Click += new System.EventHandler(this.buttonHelp_SVV_Click);
@@ -92,9 +92,13 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.Controls.Add(this.buttonDoctors_SVV);
             this.Controls.Add(this.buttonPatients_SVV);
             this.Controls.Add(this.buttonHelp_SVV);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(800, 492);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Поликлиника";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
 
         }

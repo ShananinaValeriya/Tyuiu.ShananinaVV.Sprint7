@@ -52,6 +52,11 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             formAbout.ShowDialog();
         }
 
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
 
 
