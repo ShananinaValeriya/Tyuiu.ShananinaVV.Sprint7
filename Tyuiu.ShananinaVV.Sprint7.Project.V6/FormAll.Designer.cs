@@ -30,11 +30,11 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void InitializeComponent()
         {
             this.panelOne_SVV = new System.Windows.Forms.Panel();
-            this.panelTwo_SVV = new System.Windows.Forms.Panel();
-            this.groupBoxInst_SVV = new System.Windows.Forms.GroupBox();
-            this.dataGridViewAll_SVV = new System.Windows.Forms.DataGridView();
-            this.groupBoxSear_SVV = new System.Windows.Forms.GroupBox();
             this.splitterOne_SVV = new System.Windows.Forms.Splitter();
+            this.groupBoxSear_SVV = new System.Windows.Forms.GroupBox();
+            this.groupBoxInst_SVV = new System.Windows.Forms.GroupBox();
+            this.panelTwo_SVV = new System.Windows.Forms.Panel();
+            this.dataGridViewAll_SVV = new System.Windows.Forms.DataGridView();
             this.panelOne_SVV.SuspendLayout();
             this.panelTwo_SVV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAll_SVV)).BeginInit();
@@ -52,6 +52,34 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.panelOne_SVV.TabIndex = 0;
             this.panelOne_SVV.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // splitterOne_SVV
+            // 
+            this.splitterOne_SVV.Location = new System.Drawing.Point(692, 0);
+            this.splitterOne_SVV.Name = "splitterOne_SVV";
+            this.splitterOne_SVV.Size = new System.Drawing.Size(3, 193);
+            this.splitterOne_SVV.TabIndex = 2;
+            this.splitterOne_SVV.TabStop = false;
+            // 
+            // groupBoxSear_SVV
+            // 
+            this.groupBoxSear_SVV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxSear_SVV.Location = new System.Drawing.Point(692, 0);
+            this.groupBoxSear_SVV.Name = "groupBoxSear_SVV";
+            this.groupBoxSear_SVV.Size = new System.Drawing.Size(226, 193);
+            this.groupBoxSear_SVV.TabIndex = 1;
+            this.groupBoxSear_SVV.TabStop = false;
+            this.groupBoxSear_SVV.Text = "Поиск";
+            // 
+            // groupBoxInst_SVV
+            // 
+            this.groupBoxInst_SVV.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBoxInst_SVV.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxInst_SVV.Name = "groupBoxInst_SVV";
+            this.groupBoxInst_SVV.Size = new System.Drawing.Size(692, 193);
+            this.groupBoxInst_SVV.TabIndex = 0;
+            this.groupBoxInst_SVV.TabStop = false;
+            this.groupBoxInst_SVV.Text = "Инструменты";
+            // 
             // panelTwo_SVV
             // 
             this.panelTwo_SVV.Controls.Add(this.dataGridViewAll_SVV);
@@ -61,16 +89,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.panelTwo_SVV.Size = new System.Drawing.Size(918, 343);
             this.panelTwo_SVV.TabIndex = 0;
             this.panelTwo_SVV.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // groupBoxInst_SVV
-            // 
-            this.groupBoxInst_SVV.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBoxInst_SVV.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxInst_SVV.Name = "groupBoxInst_SVV";
-            this.groupBoxInst_SVV.Size = new System.Drawing.Size(568, 193);
-            this.groupBoxInst_SVV.TabIndex = 0;
-            this.groupBoxInst_SVV.TabStop = false;
-            this.groupBoxInst_SVV.Text = "Инструменты";
             // 
             // dataGridViewAll_SVV
             // 
@@ -82,24 +100,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.dataGridViewAll_SVV.RowTemplate.Height = 24;
             this.dataGridViewAll_SVV.Size = new System.Drawing.Size(918, 343);
             this.dataGridViewAll_SVV.TabIndex = 0;
-            // 
-            // groupBoxSear_SVV
-            // 
-            this.groupBoxSear_SVV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxSear_SVV.Location = new System.Drawing.Point(568, 0);
-            this.groupBoxSear_SVV.Name = "groupBoxSear_SVV";
-            this.groupBoxSear_SVV.Size = new System.Drawing.Size(350, 193);
-            this.groupBoxSear_SVV.TabIndex = 1;
-            this.groupBoxSear_SVV.TabStop = false;
-            this.groupBoxSear_SVV.Text = "Поиск";
-            // 
-            // splitterOne_SVV
-            // 
-            this.splitterOne_SVV.Location = new System.Drawing.Point(568, 0);
-            this.splitterOne_SVV.Name = "splitterOne_SVV";
-            this.splitterOne_SVV.Size = new System.Drawing.Size(3, 193);
-            this.splitterOne_SVV.TabIndex = 2;
-            this.splitterOne_SVV.TabStop = false;
             // 
             // FormAll
             // 

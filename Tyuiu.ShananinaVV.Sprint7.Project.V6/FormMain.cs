@@ -36,20 +36,20 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void buttonPatients_SVV_Click(object sender, EventArgs e)
         {
-            FormPatients formAbout = new FormPatients();
-            formAbout.ShowDialog();
+            FormPatients formPat = new FormPatients();
+            formPat.ShowDialog();
         }
 
         private void buttonDoctors_SVV_Click(object sender, EventArgs e)
         {
-            FormDoctors formAbout = new FormDoctors();
-            formAbout.ShowDialog();
+            FormDoctors formDoc = new FormDoctors();
+            formDoc.ShowDialog();
         }
 
         private void buttonAll_SVV_Click(object sender, EventArgs e)
         {
-            FormAll formAbout = new FormAll();
-            formAbout.ShowDialog();
+            FormAll formAll = new FormAll();
+            formAll.ShowDialog();
         }
 
         private void FormMain_Load(object sender, EventArgs e)

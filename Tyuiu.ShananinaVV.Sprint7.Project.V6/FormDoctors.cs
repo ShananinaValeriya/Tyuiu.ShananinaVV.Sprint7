@@ -17,16 +17,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
     {
         int index;
 
-        //int index; // индекс столбца для сортировки
-        //ListSortDirection direction; // направление сортировки (Ascending или Descending)
-
-        // Сортировка DataGridView по указанному столбцу
-
-        //List<string[]> data = new List<string[]>();
         DataTable table = new DataTable("table");
-
-        // private DataTable originalData;
-
 
         public FormDoctors()
         {
@@ -69,61 +60,80 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             buttonDoctors_SVV.Enabled = false;
             buttonBackDoc_SVV.Enabled = false;
             buttonClose_SVV.Enabled = true;
-            buttonCbros_SVV.Enabled = true;
+            buttonSort_SVV.Enabled = true;
+            buttonSortPosit_SVV.Enabled = true;
+            buttonSortSpec_SVV.Enabled = true;
         }
-
-        //private void SortDataGridViewByColumn(DataGridView dataGridView, int columnIndex)
-        // {
-        //if (dataGridView.Columns[columnIndex] is DataGridViewColumn column)
-        //{
-        //dataGridView.Sort(column, ListSortDirection.Ascending);
-        // }
-        //}
 
         private void SortByAlphabet(int columnIndex)
         {
             // Получаем столбец DataGridView, который нужно отсортировать
             DataGridViewColumn column = dataGridViewDoctors_SVV.Columns[columnIndex];
 
-            // Осуществляем сортировку по алфавиту
-            dataGridViewDoctors_SVV.Sort(column, ListSortDirection.Ascending);
+            // Проверка, была ли уже выполнена сортировка по этому столбцу
+            if (dataGridViewDoctors_SVV.SortOrder == SortOrder.Ascending)
+            {
+                // Если была выполнена сортировка по возрастанию, выполнить сортировку по убыванию
+                dataGridViewDoctors_SVV.Sort(column, ListSortDirection.Descending);
+            }
+            else
+            {
+                // Если не было выполнено сортировки или была выполнена сортировка по убыванию, выполнить сортировку по возрастанию
+                dataGridViewDoctors_SVV.Sort(column, ListSortDirection.Ascending);
+            }
         }
+    
 
         private void buttonSort_SVV_Click(object sender, EventArgs e)
         {
-            ///SortDataGridViewByColumn(dataGridViewDoctors_SVV, index); 
-            int columnIndex = 0; // Укажите здесь нужный индекс столбца
-            //int columnIndex = 1;
-            //int columnIndex = 2;
-
+            int columnIndex = 0; // Указываем нужный индекс столбца
             SortByAlphabet(columnIndex);
+        }
 
+        private void buttonSortPosit_SVV_Click(object sender, EventArgs e)
+        {
+            int columnIndex = 1;
+            SortByAlphabet(columnIndex);
+        }
+
+        private void buttonSortSpec_SVV_Click(object sender, EventArgs e)
+        {
+            int columnIndex = 2;
+            SortByAlphabet(columnIndex);
         }
 
 
         private void buttonSear_SVV_Click(object sender, EventArgs e)
 
         {
-
-            string searchText = textBoxSear_SVV.Text.ToLower();
-            foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
+            if (!string.IsNullOrEmpty(textBoxSear_SVV.Text))
             {
-                if (row.IsNewRow) continue;
-                bool found = false;
-                for (int i = 0; i < dataGridViewDoctors_SVV.Columns.Count; i++)
+                string searchText = textBoxSear_SVV.Text.ToLower();
+                foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
                 {
-                    if (row.Cells[i].Value.ToString().ToLower().Contains(searchText))
+                    if (row.IsNewRow) continue;
+                    bool found = false;
+                    for (int i = 0; i < dataGridViewDoctors_SVV.Columns.Count; i++)
                     {
-                        found = true;
-                        break;
+                        if (row.Cells[i].Value.ToString().ToLower().Contains(searchText))
+                        {
+                            found = true;
+                            break;
+                        }
                     }
+                    if (found)
+                        row.Visible = true;
+                    else
+                        row.Visible = false;
+                    
                 }
-                if (found)
-                    row.Visible = true;
-                else
-                    row.Visible = false;
+                buttonCbros_SVV.Enabled = true;
             }
-
+            
+            else
+            { 
+                MessageBox.Show("Введите данные для поиска", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     
@@ -135,7 +145,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void buttonAdd_SVV_Click(object sender, EventArgs e)
         {
-           
             string name = textBoxName_SVV.Text;
             string position = textBoxPosit_SVV.Text;
             string specialization = textBoxSpec_SVV.Text;
@@ -146,7 +155,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             textBoxSpec_SVV.Text = "";
             // Переход к добавленной строке
             dataGridViewDoctors_SVV.CurrentCell = dataGridViewDoctors_SVV.Rows[dataGridViewDoctors_SVV.Rows.Count - 1].Cells[0];
-
         }
 
 
@@ -156,19 +164,22 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             newdata.Cells[0].Value = textBoxName_SVV.Text;
             newdata.Cells[1].Value = textBoxPosit_SVV.Text;
             newdata.Cells[2].Value = textBoxSpec_SVV.Text;
-
         }
 
         private void buttonDel_SVV_Click(object sender, EventArgs e)
         {
-            index = dataGridViewDoctors_SVV.CurrentCell.RowIndex;
-            dataGridViewDoctors_SVV.Rows.RemoveAt(index);
+            DialogResult dialogResult = MessageBox.Show("Вы уверенны, что хотите удалить \nвыбранные элементы?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+            
+            if (dialogResult == DialogResult.Yes)
+            {
+                index = dataGridViewDoctors_SVV.CurrentCell.RowIndex;
+                dataGridViewDoctors_SVV.Rows.RemoveAt(index);
+            }
         }
 
         private void FormDoctors_Load(object sender, EventArgs e)
         {
             table.Columns.Add("", Type.GetType("System.Int32"));
-
         }
 
         private void buttonNew_SVV_Click(object sender, EventArgs e)
@@ -181,17 +192,10 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void dataGridViewDoctors_SVV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             index = e.RowIndex;
-            //index1 = e.ColumnIndex;
             DataGridViewRow row = dataGridViewDoctors_SVV.Rows[index];
-            //DataGridViewColumn column = dataGridViewDoctors_SVV.Columns[index];
             textBoxName_SVV.Text = row.Cells[0].Value.ToString();
             textBoxPosit_SVV.Text = row.Cells[1].Value.ToString();
             textBoxSpec_SVV.Text = row.Cells[2].Value.ToString();
-
-            //ListSortDirection direction; // направление сортировки (Ascending или Descending)
-
-            // Сортировка DataGridView по указанному столбцу
-            //dataGridViewDoctors_SVV.Sort(dataGridViewDoctors_SVV.Columns[index], direction);
         }
 
         private void buttonSave_SVV_Click(object sender, EventArgs e)
@@ -219,7 +223,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void buttonClose_SVV_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Вы сохранили изменения?", "Вопрос", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("Вы сохранили изменения?", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.Yes)
             {
                 this.Hide();
@@ -253,35 +257,89 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                     row.Visible = false;
             }
             textBoxSear_SVV.Clear();
+
+            buttonCbros_SVV.Enabled = false;
         }
 
         private void groupBoxOneDoc_SVV_Enter(object sender, EventArgs e)
         {
 
         }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void ApplyFilter(int index)
         {
+            dataGridViewDoctors_SVV.Rows.Cast<DataGridViewRow>()
+                                  .ToList()
+                                   .ForEach(row => row.Visible = Convert.ToInt32(row.Cells["ФИО"].Value) == index);
+            // Получаем BindingSource из DataGridView
+            //var bindingSource = (BindingSource)dataGridViewDoctors_SVV.DataSource;
+
+            // Создаем фильтр на основе значения переменной index
+            //string filter = "Column1 = '" + index + "'"; // Предполагая, что Column1 - это название столбца, к которому вы хотите применить фильтр
+
+            // Задаем фильтр
+            // bindingSource.Filter = filter;
+            // Получаем BindingSource из DataGridView
+            //var bindingSource = (BindingSource)dataGridViewDoctors_SVV.DataSource;
+
+            //if (index < 0 || index >= dataGridViewDoctors_SVV.Columns.Count)
+            //{
+            // return;
+            //}
+
+            // Применяем фильтр к строкам
+            //(dataGridViewDoctors_SVV.DataSource as DataTable).DefaultView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", dataGridViewDoctors_SVV.Columns[index].Name, filterText);
+
+            // Создаем фильтр на основе значения переменной index
+            // string filterText = "ФИО = " + index; // Предполагая, что Column1 - это название столбца, к которому вы хотите применить фильтр
+
+            // Задаем фильтр
+            //bindingSource.Filter = filterText;
+        }
+
+       
+
+        private void buttonFilter_SVV_Click(object sender, EventArgs e)
+        {
+            // Получаем значение переменной index из пользовательского ввода (например, из TextBox)
+            int index = Convert.ToInt32(textBoxFilter_SVV.Text);
+
+            ApplyFilter(index);
+            // Получаем значение переменной index из пользовательского ввода (например, из TextBox)
+            //int index = int.Parse(textBoxFilter_SVV.Text);
+
+            // Применяем фильтр к DataGridView
+            //ApplyFilter(index);
+            // string filterText = "ФИО = " + index;
+
+            //int index = 0; // Здесь вы указываете индекс нужного столбца
+            //string filterText = "vjdf"; // Здесь вы указываете текст фильтра
+
+            //ApplyFilter(index, filterText);
+
+            //int index = // задайте значение переменной index;
+            //string filter = $"[ColumnIndex] = {index}"; // замените ColumnIndex на название столбца, по которому необходимо фильтровать
+            //(dataGridView.DataSource as DataTable).DefaultView.RowFilter = filter;
+
+            //int index = int.Parse(textBoxFilter_SVV.Text);
+            //dataGridViewDoctors_SVV.DataSource = table.DefaultView;
+            //dataGridViewDoctors_SVV.DefaultView.RowFilter = "Column_Name = " + index;
 
         }
 
-        private void panelOneDoc_SVV_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dataGridViewDoctors_SVV_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            // Определение выбранного столбца
-           // DataGridViewColumn selectedColumn = dataGridViewDoctors_SVV.Columns[e.ColumnIndex];
-            DataGridViewColumn column = dataGridViewDoctors_SVV.Columns[index];
-
-            // Сортировка данных по выбранному столбцу в порядке возрастания
-            dataGridViewDoctors_SVV.Sort(column, ListSortDirection.Ascending);
-
-            
-        }
-
-        
+        //private void ApplyFilter(int index, string filterValue)
+        //{
+           // foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
+            //
+//string cellValue = row.Cells[index].Value.ToString();
+               // if (cellValue == filterValue)
+                //{
+                    //row.Visible = true;
+               // }
+               // else
+                //{
+                   // row.Visible = false;
+                //
+            //}
+        //}
     }
 }

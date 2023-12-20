@@ -31,10 +31,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.buttonHelp_SVV = new System.Windows.Forms.Button();
-            this.openFileDialog_SVV = new System.Windows.Forms.OpenFileDialog();
             this.buttonPatients_SVV = new System.Windows.Forms.Button();
             this.buttonDoctors_SVV = new System.Windows.Forms.Button();
-            this.saveFileDialog_SVV = new System.Windows.Forms.SaveFileDialog();
             this.buttonAll_SVV = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -48,10 +46,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonHelp_SVV.TabIndex = 0;
             this.buttonHelp_SVV.UseVisualStyleBackColor = false;
             this.buttonHelp_SVV.Click += new System.EventHandler(this.buttonHelp_SVV_Click);
-            // 
-            // openFileDialog_SVV
-            // 
-            this.openFileDialog_SVV.FileName = "openFileDialog1";
             // 
             // buttonPatients_SVV
             // 
@@ -106,10 +100,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         #endregion
 
         private System.Windows.Forms.Button buttonHelp_SVV;
-        private System.Windows.Forms.OpenFileDialog openFileDialog_SVV;
         private System.Windows.Forms.Button buttonPatients_SVV;
         private System.Windows.Forms.Button buttonDoctors_SVV;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog_SVV;
         private System.Windows.Forms.Button buttonAll_SVV;
     }
 }

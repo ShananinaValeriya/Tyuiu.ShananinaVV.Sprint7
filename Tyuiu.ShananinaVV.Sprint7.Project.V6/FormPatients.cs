@@ -61,8 +61,30 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             buttonDonePat_SVV.Enabled = false;
             buttonBackPat_SVV.Enabled = false;
             buttonClose_SVV.Enabled = true;
-            buttonCbros_SVV.Enabled = true;
+            buttonFam_SVV.Enabled = true;
+            buttonName_SVV.Enabled = true;
+            buttonOth_SVV.Enabled = true;
+            
         }
+
+        private void SortByAlphabet(int columnIndex)
+        {
+            // Получаем столбец DataGridView, который нужно отсортировать
+            DataGridViewColumn column = dataGridViewPatients_SVV.Columns[columnIndex];
+
+            // Проверка, была ли уже выполнена сортировка по этому столбцу
+            if (dataGridViewPatients_SVV.SortOrder == SortOrder.Ascending)
+            {
+                // Если была выполнена сортировка по возрастанию, выполнить сортировку по убыванию
+                dataGridViewPatients_SVV.Sort(column, ListSortDirection.Descending);
+            }
+            else
+            {
+                // Если не было выполнено сортировки или была выполнена сортировка по убыванию, выполнить сортировку по возрастанию
+                dataGridViewPatients_SVV.Sort(column, ListSortDirection.Ascending);
+            }
+        }
+
 
         private void buttonBackPat_SVV_Click(object sender, EventArgs e)
         {
@@ -89,23 +111,31 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void buttonSear_SVV_Click(object sender, EventArgs e)
         {
-            string searchText = textBoxSear_SVV.Text.ToLower();
-            foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
+            if (!string.IsNullOrEmpty(textBoxSear_SVV.Text))
             {
-                if (row.IsNewRow) continue;
-                bool found = false;
-                for (int i = 0; i < dataGridViewPatients_SVV.Columns.Count; i++)
+                string searchText = textBoxSear_SVV.Text.ToLower();
+                foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
                 {
-                    if (row.Cells[i].Value.ToString().ToLower().Contains(searchText))
+                    if (row.IsNewRow) continue;
+                    bool found = false;
+                    for (int i = 0; i < dataGridViewPatients_SVV.Columns.Count; i++)
                     {
-                        found = true;
-                        break;
+                        if (row.Cells[i].Value.ToString().ToLower().Contains(searchText))
+                        {
+                            found = true;
+                            break;
+                        }
                     }
+                    if (found)
+                        row.Visible = true;
+                    else
+                        row.Visible = false;
                 }
-                if (found)
-                    row.Visible = true;
-                else
-                    row.Visible = false;
+                buttonCbros_SVV.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Введите данные для поиска", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -203,6 +233,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                     row.Visible = false;
             }
             textBoxSear_SVV.Clear();
+            buttonCbros_SVV.Enabled = false;
         }
 
         private void buttonDel_SVV_Click(object sender, EventArgs e)
@@ -224,6 +255,24 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void textBoxName_SVV_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonFam_SVV_Click(object sender, EventArgs e)
+        {
+            int columnIndex = 1; // Указываем нужный индекс столбца
+            SortByAlphabet(columnIndex);
+        }
+
+        private void buttonName_SVV_Click(object sender, EventArgs e)
+        {
+            int columnIndex = 2; // Указываем нужный индекс столбца
+            SortByAlphabet(columnIndex);
+        }
+
+        private void buttonOth_SVV_Click(object sender, EventArgs e)
+        {
+            int columnIndex = 3; // Указываем нужный индекс столбца
+            SortByAlphabet(columnIndex);
         }
     }
 }

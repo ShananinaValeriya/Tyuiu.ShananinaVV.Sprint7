@@ -32,10 +32,16 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.panelOne_SVV = new System.Windows.Forms.Panel();
             this.splitterDD_SVV = new System.Windows.Forms.Splitter();
             this.groupBoxPanel_SVV = new System.Windows.Forms.GroupBox();
+            this.labelSear_SVV = new System.Windows.Forms.Label();
             this.textBoxSear_SVV = new System.Windows.Forms.TextBox();
             this.buttonCbros_SVV = new System.Windows.Forms.Button();
             this.buttonSear_SVV = new System.Windows.Forms.Button();
             this.groupBoxPat_SVV = new System.Windows.Forms.GroupBox();
+            this.labelDR_SVV = new System.Windows.Forms.Label();
+            this.labelOth_SVV = new System.Windows.Forms.Label();
+            this.labelName_SVV = new System.Windows.Forms.Label();
+            this.labelNumber_SVV = new System.Windows.Forms.Label();
+            this.labelFam_SVV = new System.Windows.Forms.Label();
             this.textBoxDR_SVV = new System.Windows.Forms.TextBox();
             this.textBoxNumber_SVV = new System.Windows.Forms.TextBox();
             this.textBoxOth_SVV = new System.Windows.Forms.TextBox();
@@ -51,12 +57,12 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonDonePat_SVV = new System.Windows.Forms.Button();
             this.panelTwoPat_SVV = new System.Windows.Forms.Panel();
             this.dataGridViewPatients_SVV = new System.Windows.Forms.DataGridView();
-            this.labelSear_SVV = new System.Windows.Forms.Label();
-            this.labelFam_SVV = new System.Windows.Forms.Label();
-            this.labelNumber_SVV = new System.Windows.Forms.Label();
-            this.labelName_SVV = new System.Windows.Forms.Label();
-            this.labelOth_SVV = new System.Windows.Forms.Label();
-            this.labelDR_SVV = new System.Windows.Forms.Label();
+            this.labelSort_SVV = new System.Windows.Forms.Label();
+            this.buttonFam_SVV = new System.Windows.Forms.Button();
+            this.buttonName_SVV = new System.Windows.Forms.Button();
+            this.buttonOth_SVV = new System.Windows.Forms.Button();
+            this.buttonNumber_SVV = new System.Windows.Forms.Button();
+            this.buttonDR_SVV = new System.Windows.Forms.Button();
             this.panelOne_SVV.SuspendLayout();
             this.groupBoxPanel_SVV.SuspendLayout();
             this.groupBoxPat_SVV.SuspendLayout();
@@ -72,12 +78,12 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.panelOne_SVV.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelOne_SVV.Location = new System.Drawing.Point(0, 0);
             this.panelOne_SVV.Name = "panelOne_SVV";
-            this.panelOne_SVV.Size = new System.Drawing.Size(908, 195);
+            this.panelOne_SVV.Size = new System.Drawing.Size(1173, 195);
             this.panelOne_SVV.TabIndex = 2;
             // 
             // splitterDD_SVV
             // 
-            this.splitterDD_SVV.Location = new System.Drawing.Point(634, 0);
+            this.splitterDD_SVV.Location = new System.Drawing.Point(905, 0);
             this.splitterDD_SVV.Name = "splitterDD_SVV";
             this.splitterDD_SVV.Size = new System.Drawing.Size(3, 195);
             this.splitterDD_SVV.TabIndex = 5;
@@ -90,12 +96,21 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxPanel_SVV.Controls.Add(this.buttonCbros_SVV);
             this.groupBoxPanel_SVV.Controls.Add(this.buttonSear_SVV);
             this.groupBoxPanel_SVV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxPanel_SVV.Location = new System.Drawing.Point(634, 0);
+            this.groupBoxPanel_SVV.Location = new System.Drawing.Point(905, 0);
             this.groupBoxPanel_SVV.Name = "groupBoxPanel_SVV";
-            this.groupBoxPanel_SVV.Size = new System.Drawing.Size(274, 195);
+            this.groupBoxPanel_SVV.Size = new System.Drawing.Size(268, 195);
             this.groupBoxPanel_SVV.TabIndex = 3;
             this.groupBoxPanel_SVV.TabStop = false;
             this.groupBoxPanel_SVV.Text = "Поиск";
+            // 
+            // labelSear_SVV
+            // 
+            this.labelSear_SVV.AutoSize = true;
+            this.labelSear_SVV.Location = new System.Drawing.Point(32, 57);
+            this.labelSear_SVV.Name = "labelSear_SVV";
+            this.labelSear_SVV.Size = new System.Drawing.Size(195, 17);
+            this.labelSear_SVV.TabIndex = 4;
+            this.labelSear_SVV.Text = "Введите данные для поиска";
             // 
             // textBoxSear_SVV
             // 
@@ -130,6 +145,12 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // groupBoxPat_SVV
             // 
+            this.groupBoxPat_SVV.Controls.Add(this.buttonDR_SVV);
+            this.groupBoxPat_SVV.Controls.Add(this.buttonNumber_SVV);
+            this.groupBoxPat_SVV.Controls.Add(this.buttonOth_SVV);
+            this.groupBoxPat_SVV.Controls.Add(this.buttonName_SVV);
+            this.groupBoxPat_SVV.Controls.Add(this.buttonFam_SVV);
+            this.groupBoxPat_SVV.Controls.Add(this.labelSort_SVV);
             this.groupBoxPat_SVV.Controls.Add(this.labelDR_SVV);
             this.groupBoxPat_SVV.Controls.Add(this.labelOth_SVV);
             this.groupBoxPat_SVV.Controls.Add(this.labelName_SVV);
@@ -151,11 +172,56 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxPat_SVV.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBoxPat_SVV.Location = new System.Drawing.Point(0, 0);
             this.groupBoxPat_SVV.Name = "groupBoxPat_SVV";
-            this.groupBoxPat_SVV.Size = new System.Drawing.Size(634, 195);
+            this.groupBoxPat_SVV.Size = new System.Drawing.Size(905, 195);
             this.groupBoxPat_SVV.TabIndex = 2;
             this.groupBoxPat_SVV.TabStop = false;
             this.groupBoxPat_SVV.Text = "Инструменты";
             this.groupBoxPat_SVV.Enter += new System.EventHandler(this.groupBoxPat_SVV_Enter);
+            // 
+            // labelDR_SVV
+            // 
+            this.labelDR_SVV.AutoSize = true;
+            this.labelDR_SVV.Location = new System.Drawing.Point(341, 69);
+            this.labelDR_SVV.Name = "labelDR_SVV";
+            this.labelDR_SVV.Size = new System.Drawing.Size(111, 17);
+            this.labelDR_SVV.TabIndex = 11;
+            this.labelDR_SVV.Text = "Дата рождения";
+            // 
+            // labelOth_SVV
+            // 
+            this.labelOth_SVV.AutoSize = true;
+            this.labelOth_SVV.Location = new System.Drawing.Point(163, 124);
+            this.labelOth_SVV.Name = "labelOth_SVV";
+            this.labelOth_SVV.Size = new System.Drawing.Size(71, 17);
+            this.labelOth_SVV.TabIndex = 10;
+            this.labelOth_SVV.Text = "Отчество";
+            // 
+            // labelName_SVV
+            // 
+            this.labelName_SVV.AutoSize = true;
+            this.labelName_SVV.Location = new System.Drawing.Point(164, 67);
+            this.labelName_SVV.Name = "labelName_SVV";
+            this.labelName_SVV.Size = new System.Drawing.Size(35, 17);
+            this.labelName_SVV.TabIndex = 9;
+            this.labelName_SVV.Text = "Имя";
+            // 
+            // labelNumber_SVV
+            // 
+            this.labelNumber_SVV.AutoSize = true;
+            this.labelNumber_SVV.Location = new System.Drawing.Point(341, 12);
+            this.labelNumber_SVV.Name = "labelNumber_SVV";
+            this.labelNumber_SVV.Size = new System.Drawing.Size(51, 17);
+            this.labelNumber_SVV.TabIndex = 8;
+            this.labelNumber_SVV.Text = "Номер";
+            // 
+            // labelFam_SVV
+            // 
+            this.labelFam_SVV.AutoSize = true;
+            this.labelFam_SVV.Location = new System.Drawing.Point(164, 12);
+            this.labelFam_SVV.Name = "labelFam_SVV";
+            this.labelFam_SVV.Size = new System.Drawing.Size(70, 17);
+            this.labelFam_SVV.TabIndex = 7;
+            this.labelFam_SVV.Text = "Фамилия";
             // 
             // textBoxDR_SVV
             // 
@@ -290,7 +356,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.panelTwoPat_SVV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTwoPat_SVV.Location = new System.Drawing.Point(0, 195);
             this.panelTwoPat_SVV.Name = "panelTwoPat_SVV";
-            this.panelTwoPat_SVV.Size = new System.Drawing.Size(908, 377);
+            this.panelTwoPat_SVV.Size = new System.Drawing.Size(1173, 377);
             this.panelTwoPat_SVV.TabIndex = 2;
             // 
             // dataGridViewPatients_SVV
@@ -303,70 +369,78 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.dataGridViewPatients_SVV.Name = "dataGridViewPatients_SVV";
             this.dataGridViewPatients_SVV.RowHeadersWidth = 51;
             this.dataGridViewPatients_SVV.RowTemplate.Height = 24;
-            this.dataGridViewPatients_SVV.Size = new System.Drawing.Size(908, 377);
+            this.dataGridViewPatients_SVV.Size = new System.Drawing.Size(1173, 377);
             this.dataGridViewPatients_SVV.TabIndex = 0;
             this.dataGridViewPatients_SVV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPatients_SVV_CellClick);
             this.dataGridViewPatients_SVV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPatients_SVV_CellContentClick);
             // 
-            // labelSear_SVV
+            // labelSort_SVV
             // 
-            this.labelSear_SVV.AutoSize = true;
-            this.labelSear_SVV.Location = new System.Drawing.Point(32, 57);
-            this.labelSear_SVV.Name = "labelSear_SVV";
-            this.labelSear_SVV.Size = new System.Drawing.Size(195, 17);
-            this.labelSear_SVV.TabIndex = 4;
-            this.labelSear_SVV.Text = "Введите данные для поиска";
+            this.labelSort_SVV.AutoSize = true;
+            this.labelSort_SVV.Location = new System.Drawing.Point(699, 24);
+            this.labelSort_SVV.Name = "labelSort_SVV";
+            this.labelSort_SVV.Size = new System.Drawing.Size(86, 17);
+            this.labelSort_SVV.TabIndex = 12;
+            this.labelSort_SVV.Text = "Сортировка";
             // 
-            // labelFam_SVV
+            // buttonFam_SVV
             // 
-            this.labelFam_SVV.AutoSize = true;
-            this.labelFam_SVV.Location = new System.Drawing.Point(164, 12);
-            this.labelFam_SVV.Name = "labelFam_SVV";
-            this.labelFam_SVV.Size = new System.Drawing.Size(70, 17);
-            this.labelFam_SVV.TabIndex = 7;
-            this.labelFam_SVV.Text = "Фамилия";
+            this.buttonFam_SVV.Enabled = false;
+            this.buttonFam_SVV.Location = new System.Drawing.Point(696, 51);
+            this.buttonFam_SVV.Name = "buttonFam_SVV";
+            this.buttonFam_SVV.Size = new System.Drawing.Size(136, 23);
+            this.buttonFam_SVV.TabIndex = 13;
+            this.buttonFam_SVV.Text = "Фамилия";
+            this.buttonFam_SVV.UseVisualStyleBackColor = true;
+            this.buttonFam_SVV.Click += new System.EventHandler(this.buttonFam_SVV_Click);
             // 
-            // labelNumber_SVV
+            // buttonName_SVV
             // 
-            this.labelNumber_SVV.AutoSize = true;
-            this.labelNumber_SVV.Location = new System.Drawing.Point(341, 12);
-            this.labelNumber_SVV.Name = "labelNumber_SVV";
-            this.labelNumber_SVV.Size = new System.Drawing.Size(51, 17);
-            this.labelNumber_SVV.TabIndex = 8;
-            this.labelNumber_SVV.Text = "Номер";
+            this.buttonName_SVV.Enabled = false;
+            this.buttonName_SVV.Location = new System.Drawing.Point(696, 80);
+            this.buttonName_SVV.Name = "buttonName_SVV";
+            this.buttonName_SVV.Size = new System.Drawing.Size(136, 23);
+            this.buttonName_SVV.TabIndex = 14;
+            this.buttonName_SVV.Text = "Имя";
+            this.buttonName_SVV.UseVisualStyleBackColor = true;
+            this.buttonName_SVV.Click += new System.EventHandler(this.buttonName_SVV_Click);
             // 
-            // labelName_SVV
+            // buttonOth_SVV
             // 
-            this.labelName_SVV.AutoSize = true;
-            this.labelName_SVV.Location = new System.Drawing.Point(164, 67);
-            this.labelName_SVV.Name = "labelName_SVV";
-            this.labelName_SVV.Size = new System.Drawing.Size(35, 17);
-            this.labelName_SVV.TabIndex = 9;
-            this.labelName_SVV.Text = "Имя";
+            this.buttonOth_SVV.Enabled = false;
+            this.buttonOth_SVV.Location = new System.Drawing.Point(696, 109);
+            this.buttonOth_SVV.Name = "buttonOth_SVV";
+            this.buttonOth_SVV.Size = new System.Drawing.Size(136, 23);
+            this.buttonOth_SVV.TabIndex = 15;
+            this.buttonOth_SVV.Text = "Отчество ";
+            this.buttonOth_SVV.UseVisualStyleBackColor = true;
+            this.buttonOth_SVV.Click += new System.EventHandler(this.buttonOth_SVV_Click);
             // 
-            // labelOth_SVV
+            // buttonNumber_SVV
             // 
-            this.labelOth_SVV.AutoSize = true;
-            this.labelOth_SVV.Location = new System.Drawing.Point(163, 124);
-            this.labelOth_SVV.Name = "labelOth_SVV";
-            this.labelOth_SVV.Size = new System.Drawing.Size(71, 17);
-            this.labelOth_SVV.TabIndex = 10;
-            this.labelOth_SVV.Text = "Отчество";
+            this.buttonNumber_SVV.Enabled = false;
+            this.buttonNumber_SVV.Location = new System.Drawing.Point(696, 137);
+            this.buttonNumber_SVV.Name = "buttonNumber_SVV";
+            this.buttonNumber_SVV.Size = new System.Drawing.Size(136, 23);
+            this.buttonNumber_SVV.TabIndex = 16;
+            this.buttonNumber_SVV.Text = "Номер";
+            this.buttonNumber_SVV.UseVisualStyleBackColor = true;
             // 
-            // labelDR_SVV
+            // buttonDR_SVV
             // 
-            this.labelDR_SVV.AutoSize = true;
-            this.labelDR_SVV.Location = new System.Drawing.Point(341, 69);
-            this.labelDR_SVV.Name = "labelDR_SVV";
-            this.labelDR_SVV.Size = new System.Drawing.Size(111, 17);
-            this.labelDR_SVV.TabIndex = 11;
-            this.labelDR_SVV.Text = "Дата рождения";
+            this.buttonDR_SVV.Enabled = false;
+            this.buttonDR_SVV.Location = new System.Drawing.Point(696, 166);
+            this.buttonDR_SVV.Name = "buttonDR_SVV";
+            this.buttonDR_SVV.Size = new System.Drawing.Size(136, 23);
+            this.buttonDR_SVV.TabIndex = 17;
+            this.buttonDR_SVV.Text = "Дата рождения";
+            this.buttonDR_SVV.UseVisualStyleBackColor = true;
             // 
             // FormPatients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(908, 572);
+            this.ClientSize = new System.Drawing.Size(1173, 572);
             this.Controls.Add(this.panelTwoPat_SVV);
             this.Controls.Add(this.panelOne_SVV);
             this.MinimumSize = new System.Drawing.Size(926, 619);
@@ -414,5 +488,11 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.Label labelName_SVV;
         private System.Windows.Forms.Label labelNumber_SVV;
         private System.Windows.Forms.Label labelFam_SVV;
+        private System.Windows.Forms.Button buttonDR_SVV;
+        private System.Windows.Forms.Button buttonNumber_SVV;
+        private System.Windows.Forms.Button buttonOth_SVV;
+        private System.Windows.Forms.Button buttonName_SVV;
+        private System.Windows.Forms.Button buttonFam_SVV;
+        private System.Windows.Forms.Label labelSort_SVV;
     }
 }
