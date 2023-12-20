@@ -14,12 +14,14 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
     public partial class FormPatients : Form
     {
         int index;
-        
+
         DataTable table = new DataTable("table");
+        //private DataTable dataTable;
         public FormPatients()
         {
             this.ControlBox = false; //убираем кнопки сворачивания, разворачивания и закрытия окна..
             InitializeComponent();
+
         }
 
         private void buttonDonePat_SVV_Click(object sender, EventArgs e)
@@ -40,7 +42,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                     var line = reader.ReadLine();
                     var values = line.Split(';'); // предположим, что разделитель - точка с запятой
 
-                    dataGridViewPatients_SVV.Rows.Add(values); 
+                    dataGridViewPatients_SVV.Rows.Add(values);
                 }
             }
 
@@ -64,7 +66,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             buttonFam_SVV.Enabled = true;
             buttonName_SVV.Enabled = true;
             buttonOth_SVV.Enabled = true;
-            
+            buttonNumber_SVV.Enabled = true;
+            buttonDR_SVV.Enabled = true;
+
         }
 
         private void SortByAlphabet(int columnIndex)
@@ -154,7 +158,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             textBoxOth_SVV.Text = "";
             textBoxDR_SVV.Text = "";
 
-            
+
             // Переход к добавленной строке
             dataGridViewPatients_SVV.CurrentCell = dataGridViewPatients_SVV.Rows[dataGridViewPatients_SVV.Rows.Count - 1].Cells[0];
         }
@@ -238,23 +242,13 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void buttonDel_SVV_Click(object sender, EventArgs e)
         {
-            index = dataGridViewPatients_SVV.CurrentCell.RowIndex;
-            dataGridViewPatients_SVV.Rows.RemoveAt(index);
-        }
+            DialogResult dialogResult = MessageBox.Show("Вы уверенны, что хотите удалить \nвыбранные элементы?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
 
-        private void groupBoxPat_SVV_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridViewPatients_SVV_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void textBoxName_SVV_TextChanged(object sender, EventArgs e)
-        {
-
+            if (dialogResult == DialogResult.Yes)
+            {
+                index = dataGridViewPatients_SVV.CurrentCell.RowIndex;
+                dataGridViewPatients_SVV.Rows.RemoveAt(index);
+            }
         }
 
         private void buttonFam_SVV_Click(object sender, EventArgs e)
@@ -273,6 +267,38 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         {
             int columnIndex = 3; // Указываем нужный индекс столбца
             SortByAlphabet(columnIndex);
+        }
+
+        private void buttonNumber_SVV_Click(object sender, EventArgs e)
+        {
+            int columnIndex = 0;
+            SortByAlphabet(columnIndex);
+
+            // индекс колонки, по которой нужно сортировать
+        }
+
+        private void buttonDR_SVV_Click(object sender, EventArgs e)
+        {
+            int columnIndex = 4; // Указываем нужный индекс столбца
+            SortByAlphabet(columnIndex);
+        }
+    
+
+        private void dataGridViewPatients_SVV_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
+        {
+            if (e.Column.Index == 0)
+            {
+                e.SortResult = int.Parse(e.CellValue1.ToString()).CompareTo(int.Parse(e.CellValue2.ToString()));
+                e.Handled = true;
+            }
+
+            if (e.Column.Index == 4) 
+            {
+                DateTime dt1 = Convert.ToDateTime(e.CellValue1);
+                DateTime dt2 = Convert.ToDateTime(e.CellValue2);
+                e.SortResult = System.DateTime.Compare(dt1, dt2);
+                e.Handled = true;
+            } 
         }
     }
 }
