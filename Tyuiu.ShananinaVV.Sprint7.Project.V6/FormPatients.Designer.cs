@@ -182,7 +182,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonDR_SVV.Enabled = false;
             this.buttonDR_SVV.Location = new System.Drawing.Point(638, 160);
             this.buttonDR_SVV.Name = "buttonDR_SVV";
-            this.buttonDR_SVV.Size = new System.Drawing.Size(136, 23);
+            this.buttonDR_SVV.Size = new System.Drawing.Size(136, 30);
             this.buttonDR_SVV.TabIndex = 17;
             this.buttonDR_SVV.Text = "Дата рождения";
             this.buttonDR_SVV.UseVisualStyleBackColor = true;
@@ -191,9 +191,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // buttonNumber_SVV
             // 
             this.buttonNumber_SVV.Enabled = false;
-            this.buttonNumber_SVV.Location = new System.Drawing.Point(638, 130);
+            this.buttonNumber_SVV.Location = new System.Drawing.Point(638, 35);
             this.buttonNumber_SVV.Name = "buttonNumber_SVV";
-            this.buttonNumber_SVV.Size = new System.Drawing.Size(136, 23);
+            this.buttonNumber_SVV.Size = new System.Drawing.Size(136, 30);
             this.buttonNumber_SVV.TabIndex = 16;
             this.buttonNumber_SVV.Text = "Номер";
             this.buttonNumber_SVV.UseVisualStyleBackColor = true;
@@ -202,9 +202,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // buttonOth_SVV
             // 
             this.buttonOth_SVV.Enabled = false;
-            this.buttonOth_SVV.Location = new System.Drawing.Point(638, 101);
+            this.buttonOth_SVV.Location = new System.Drawing.Point(638, 129);
             this.buttonOth_SVV.Name = "buttonOth_SVV";
-            this.buttonOth_SVV.Size = new System.Drawing.Size(136, 23);
+            this.buttonOth_SVV.Size = new System.Drawing.Size(136, 30);
             this.buttonOth_SVV.TabIndex = 15;
             this.buttonOth_SVV.Text = "Отчество ";
             this.buttonOth_SVV.UseVisualStyleBackColor = true;
@@ -213,9 +213,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // buttonName_SVV
             // 
             this.buttonName_SVV.Enabled = false;
-            this.buttonName_SVV.Location = new System.Drawing.Point(638, 72);
+            this.buttonName_SVV.Location = new System.Drawing.Point(638, 97);
             this.buttonName_SVV.Name = "buttonName_SVV";
-            this.buttonName_SVV.Size = new System.Drawing.Size(136, 23);
+            this.buttonName_SVV.Size = new System.Drawing.Size(136, 30);
             this.buttonName_SVV.TabIndex = 14;
             this.buttonName_SVV.Text = "Имя";
             this.buttonName_SVV.UseVisualStyleBackColor = true;
@@ -224,9 +224,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // buttonFam_SVV
             // 
             this.buttonFam_SVV.Enabled = false;
-            this.buttonFam_SVV.Location = new System.Drawing.Point(638, 42);
+            this.buttonFam_SVV.Location = new System.Drawing.Point(638, 66);
             this.buttonFam_SVV.Name = "buttonFam_SVV";
-            this.buttonFam_SVV.Size = new System.Drawing.Size(136, 23);
+            this.buttonFam_SVV.Size = new System.Drawing.Size(136, 30);
             this.buttonFam_SVV.TabIndex = 13;
             this.buttonFam_SVV.Text = "Фамилия";
             this.buttonFam_SVV.UseVisualStyleBackColor = true;
@@ -235,7 +235,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // labelSort_SVV
             // 
             this.labelSort_SVV.AutoSize = true;
-            this.labelSort_SVV.Location = new System.Drawing.Point(635, 18);
+            this.labelSort_SVV.Location = new System.Drawing.Point(635, 13);
             this.labelSort_SVV.Name = "labelSort_SVV";
             this.labelSort_SVV.Size = new System.Drawing.Size(86, 17);
             this.labelSort_SVV.TabIndex = 12;
