@@ -39,6 +39,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.textBoxSear_SVV = new System.Windows.Forms.TextBox();
             this.buttonSear_SVV = new System.Windows.Forms.Button();
             this.groupBoxOneDoc_SVV = new System.Windows.Forms.GroupBox();
+            this.textBoxFilter_SVV = new System.Windows.Forms.TextBox();
+            this.buttonFilter_SVV = new System.Windows.Forms.Button();
             this.buttonSortSpec_SVV = new System.Windows.Forms.Button();
             this.buttonSortPosit_SVV = new System.Windows.Forms.Button();
             this.labelSort_SVV = new System.Windows.Forms.Label();
@@ -58,9 +60,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonBackDoc_SVV = new System.Windows.Forms.Button();
             this.buttonDoctors_SVV = new System.Windows.Forms.Button();
             this.panelTwoDoc_SVV = new System.Windows.Forms.Panel();
-            this.buttonFilter_SVV = new System.Windows.Forms.Button();
-            this.textBoxFilter_SVV = new System.Windows.Forms.TextBox();
             this.bindingSourceOne_SVV = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBoxFilter_SVV = new System.Windows.Forms.ComboBox();
+            this.buttonOtmena_SVV = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoctors_SVV)).BeginInit();
             this.panelOneDoc_SVV.SuspendLayout();
             this.groupBoxSear_SVV.SuspendLayout();
@@ -104,6 +106,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // groupBoxSear_SVV
             // 
+            this.groupBoxSear_SVV.Controls.Add(this.buttonOtmena_SVV);
             this.groupBoxSear_SVV.Controls.Add(this.buttonCbros_SVV);
             this.groupBoxSear_SVV.Controls.Add(this.labelFour_SVV);
             this.groupBoxSear_SVV.Controls.Add(this.textBoxSear_SVV);
@@ -115,6 +118,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxSear_SVV.TabIndex = 1;
             this.groupBoxSear_SVV.TabStop = false;
             this.groupBoxSear_SVV.Text = "Поиск";
+            this.groupBoxSear_SVV.Enter += new System.EventHandler(this.groupBoxSear_SVV_Enter);
             // 
             // buttonCbros_SVV
             // 
@@ -159,6 +163,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // groupBoxOneDoc_SVV
             // 
+            this.groupBoxOneDoc_SVV.Controls.Add(this.comboBoxFilter_SVV);
             this.groupBoxOneDoc_SVV.Controls.Add(this.textBoxFilter_SVV);
             this.groupBoxOneDoc_SVV.Controls.Add(this.buttonFilter_SVV);
             this.groupBoxOneDoc_SVV.Controls.Add(this.buttonSortSpec_SVV);
@@ -188,6 +193,23 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxOneDoc_SVV.TabStop = false;
             this.groupBoxOneDoc_SVV.Text = "Инструменты";
             this.groupBoxOneDoc_SVV.Enter += new System.EventHandler(this.groupBoxOneDoc_SVV_Enter);
+            // 
+            // textBoxFilter_SVV
+            // 
+            this.textBoxFilter_SVV.Location = new System.Drawing.Point(211, 10);
+            this.textBoxFilter_SVV.Name = "textBoxFilter_SVV";
+            this.textBoxFilter_SVV.Size = new System.Drawing.Size(100, 22);
+            this.textBoxFilter_SVV.TabIndex = 24;
+            // 
+            // buttonFilter_SVV
+            // 
+            this.buttonFilter_SVV.Location = new System.Drawing.Point(432, 131);
+            this.buttonFilter_SVV.Name = "buttonFilter_SVV";
+            this.buttonFilter_SVV.Size = new System.Drawing.Size(129, 34);
+            this.buttonFilter_SVV.TabIndex = 23;
+            this.buttonFilter_SVV.Text = "Фильтр";
+            this.buttonFilter_SVV.UseVisualStyleBackColor = true;
+            this.buttonFilter_SVV.Click += new System.EventHandler(this.buttonFilter_SVV_Click);
             // 
             // buttonSortSpec_SVV
             // 
@@ -381,23 +403,24 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.panelTwoDoc_SVV.Size = new System.Drawing.Size(972, 372);
             this.panelTwoDoc_SVV.TabIndex = 2;
             // 
-            // buttonFilter_SVV
+            // comboBoxFilter_SVV
             // 
-            this.buttonFilter_SVV.Enabled = false;
-            this.buttonFilter_SVV.Location = new System.Drawing.Point(450, 137);
-            this.buttonFilter_SVV.Name = "buttonFilter_SVV";
-            this.buttonFilter_SVV.Size = new System.Drawing.Size(129, 23);
-            this.buttonFilter_SVV.TabIndex = 23;
-            this.buttonFilter_SVV.Text = "Фильтр";
-            this.buttonFilter_SVV.UseVisualStyleBackColor = true;
-            this.buttonFilter_SVV.Click += new System.EventHandler(this.buttonFilter_SVV_Click);
+            this.comboBoxFilter_SVV.FormattingEnabled = true;
+            this.comboBoxFilter_SVV.Location = new System.Drawing.Point(567, 140);
+            this.comboBoxFilter_SVV.Name = "comboBoxFilter_SVV";
+            this.comboBoxFilter_SVV.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxFilter_SVV.TabIndex = 25;
+            this.comboBoxFilter_SVV.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilter_SVV_SelectedIndexChanged);
             // 
-            // textBoxFilter_SVV
+            // buttonOtmena_SVV
             // 
-            this.textBoxFilter_SVV.Location = new System.Drawing.Point(591, 149);
-            this.textBoxFilter_SVV.Name = "textBoxFilter_SVV";
-            this.textBoxFilter_SVV.Size = new System.Drawing.Size(100, 22);
-            this.textBoxFilter_SVV.TabIndex = 24;
+            this.buttonOtmena_SVV.Location = new System.Drawing.Point(88, 18);
+            this.buttonOtmena_SVV.Name = "buttonOtmena_SVV";
+            this.buttonOtmena_SVV.Size = new System.Drawing.Size(99, 34);
+            this.buttonOtmena_SVV.TabIndex = 20;
+            this.buttonOtmena_SVV.Text = "Отмена";
+            this.buttonOtmena_SVV.UseVisualStyleBackColor = true;
+            this.buttonOtmena_SVV.Click += new System.EventHandler(this.buttonOtmena_SVV_Click);
             // 
             // FormDoctors
             // 
@@ -457,5 +480,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.Button buttonFilter_SVV;
         private System.Windows.Forms.TextBox textBoxFilter_SVV;
         private System.Windows.Forms.BindingSource bindingSourceOne_SVV;
+        private System.Windows.Forms.ComboBox comboBoxFilter_SVV;
+        private System.Windows.Forms.Button buttonOtmena_SVV;
     }
 }

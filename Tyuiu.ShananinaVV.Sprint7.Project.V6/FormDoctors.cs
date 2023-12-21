@@ -25,6 +25,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             InitializeComponent();
         }
 
+        private Stack<string> operationStack = new Stack<string>();
+
 
         private void buttonDoctors_SVV_Click(object sender, EventArgs e)
         {
@@ -175,11 +177,27 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                 index = dataGridViewDoctors_SVV.CurrentCell.RowIndex;
                 dataGridViewDoctors_SVV.Rows.RemoveAt(index);
             }
+            operationStack.Push("Выполненная операция");
         }
 
         private void FormDoctors_Load(object sender, EventArgs e)
         {
             table.Columns.Add("", Type.GetType("System.Int32"));
+
+            var uniqueValues = new HashSet<string>();
+            foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
+            {
+                uniqueValues.Add(row.Cells["ФИО"].Value.ToString());
+            }
+            comboBoxFilter_SVV.DataSource = uniqueValues.ToList();
+        }
+
+
+        private void comboBoxFilter_SVV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Применение фильтра к DataGridView
+            string selectedValue = comboBoxFilter_SVV.SelectedItem.ToString();
+            (dataGridViewDoctors_SVV.DataSource as DataTable).DefaultView.RowFilter = $"Ф = '{selectedValue}'";
         }
 
         private void buttonNew_SVV_Click(object sender, EventArgs e)
@@ -300,10 +318,30 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void buttonFilter_SVV_Click(object sender, EventArgs e)
         {
-            // Получаем значение переменной index из пользовательского ввода (например, из TextBox)
-            int index = Convert.ToInt32(textBoxFilter_SVV.Text);
+            
+            // Получаем выбранный индекс из ComboBox
+            int columnIndex = comboBoxFilter_SVV.SelectedIndex;
 
-            ApplyFilter(index);
+            // Получаем значение для фильтрации
+            string filterValue = textBoxFilter_SVV.Text;
+
+            // Применяем фильтр к указанной колонке
+            dataGridViewDoctors_SVV.CurrentCell = null;
+            foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
+            {
+                if (row.Cells[columnIndex].Value != null && row.Cells[columnIndex].Value.ToString().Contains(filterValue))
+                {
+                    row.Visible = true;
+                }
+                else
+                {
+                    row.Visible = false;
+                }
+            }
+            // Получаем значение переменной index из пользовательского ввода (например, из TextBox)
+            //int index = Convert.ToInt32(textBoxFilter_SVV.Text);
+
+            //ApplyFilter(index);
             // Получаем значение переменной index из пользовательского ввода (например, из TextBox)
             //int index = int.Parse(textBoxFilter_SVV.Text);
 
@@ -326,20 +364,50 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         }
 
+        private void groupBoxSear_SVV_Enter(object sender, EventArgs e)
+        {
+
+        }
+        private Stack<string> history = new Stack<string>();
+        private void buttonOtmena_SVV_Click(object sender, EventArgs e)
+        {
+            if (history.Count > 0)
+            {
+                string previousOperation = history.Pop(); // извлекаем предыдущую операцию из стека
+                                                          // выполнение отмены предыдущей операции
+
+                // Например, если вы хотите отменить введенный текст в TextBox:
+                textBoxSear_SVV.Text = previousOperation;
+            }
+            //if (operationStack.Count > 0)
+            //{
+                // Возврат на предыдущую операцию
+                // previousOperation = operationStack.Pop();
+                // Отмена выполненной операции
+                // ...
+            //}
+            else
+            { 
+                MessageBox.Show("Нет доступных операций для отмены.");
+            }
+        }
+
+
+
         //private void ApplyFilter(int index, string filterValue)
         //{
-           // foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
-            //
-//string cellValue = row.Cells[index].Value.ToString();
-               // if (cellValue == filterValue)
-                //{
-                    //row.Visible = true;
-               // }
-               // else
-                //{
-                   // row.Visible = false;
-                //
-            //}
+        // foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
+        //
+        //string cellValue = row.Cells[index].Value.ToString();
+        // if (cellValue == filterValue)
+        //{
+        //row.Visible = true;
+        // }
+        // else
+        //{
+        // row.Visible = false;
+        //
+        //}
         //}
     }
 }
