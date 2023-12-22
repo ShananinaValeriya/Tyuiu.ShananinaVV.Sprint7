@@ -137,9 +137,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                 MessageBox.Show("Введите данные для поиска", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-    
-        
+  
         private void buttonBackDoc_SVV_Click(object sender, EventArgs e)
         {
             this.Hide(); 
@@ -182,22 +180,122 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void FormDoctors_Load(object sender, EventArgs e)
         {
-            table.Columns.Add("", Type.GetType("System.Int32"));
+            //table.Columns.Add("", Type.GetType("System.Int32"));
+            //FillComboBoxWithColumns();
 
-            var uniqueValues = new HashSet<string>();
-            foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
+            for (int i = 0; i < dataGridViewDoctors_SVV.Columns.Count; i++)
             {
-                uniqueValues.Add(row.Cells["ФИО"].Value.ToString());
+                comboBoxFilter_SVV.Items.Add(dataGridViewDoctors_SVV.Columns[i].HeaderText);
             }
-            comboBoxFilter_SVV.DataSource = uniqueValues.ToList();
+            // var uniqueValues = new HashSet<string>();
+            //foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
+            //{
+            //uniqueValues.Add(row.Cells["ФИО"].Value.ToString());
+            // }
+            //comboBoxFilter_SVV.DataSource = uniqueValues.ToList();
+
+            //comboBoxFilter_SVV.Items.Add("Фильтр 1");
+            //comboBoxFilter_SVV.Items.Add("Фильтр 2");
+            //comboBoxFilter_SVV.Items.Add("Фильтр 3");
+            comboBoxFilter_SVV.DropDownStyle = ComboBoxStyle.DropDown;
+            comboBoxFilter_SVV.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBoxFilter_SVV.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
+        
+        private void FillComboBoxWithColumns()
+        {
+            // Получите ссылку на объект DataGridView
+            DataGridView dataGridView = dataGridViewDoctors_SVV; // замените "dataGridView1" на ваше имя DataGridView
+
+            // Очистите ComboBox
+            comboBoxFilter_SVV.Items.Clear();
+
+            // Добавьте имена столбцов DataGridView в ComboBox
+            foreach (DataGridViewColumn column in dataGridView.Columns)
+            {
+                comboBoxFilter_SVV.Items.Add(column.Name);
+            }
+        }
+
+        private void FillComboBoxFromColumn(DataGridView dataGridView, int index, ComboBox comboBox)
+        {
+            comboBox.Items.Clear(); // Очистить список ComboBox
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    string cellValue = row.Cells[index].Value.ToString(); // Получить значение ячейки из столбца по индексу
+                    if (!comboBox.Items.Contains(cellValue)) // Проверить, не содержится ли значение уже в списке ComboBox
+                    {
+                        comboBox.Items.Add(cellValue); // Добавить значение в список ComboBox
+                    }
+                }
+            }
         }
 
 
         private void comboBoxFilter_SVV_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            
+            // FillComboBoxFromColumn(dataGridViewDoctors_SVV, 0, comboBoxFilter_SVV); // Заполнить ComboBox данными из первого столбца DataGridView
+            // Получаем выбранный индекс столбца
+            //int columnIndex = comboBoxFilter_SVV.SelectedIndex;
+
+            // Получаем значение для фильтрации
+            //string filterValue = comboBoxFilter_SVV.Text;
+
+            // Применяем фильтр к выбранному столбцу
+            //(dataGridViewDoctors_SVV.DataSource as DataTable).DefaultView.RowFilter = string.Format("[{0}] = '{1}'", dataGridViewDoctors_SVV.Columns[columnIndex].HeaderText, filterValue);
+            // string selectedValue = comboBoxFilter_SVV.SelectedItem.ToString();
+            //int columnIndex = 0; // индекс столбца, для которого вы устанавливаете фильтр
+
+            //if (columnIndex >= 0 && columnIndex < dataGridViewDoctors_SVV.ColumnCount)
+            //{
+            //.CurrentCell = null; // Убедитесь, что текущая ячейка не выбрана
+            //foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
+            // {
+            //if (row.Cells[columnIndex].Value != null && row.Cells[columnIndex].Value.ToString() == selectedValue)
+            // { 
+            //row.Visible = true; // Отображение строк, удовлетворяющих фильтру
+            //}
+            //
+            // {
+            //row.Visible = false; // Скрытие строк, не удовлетворяющих фильтру
+            // }
+            //}
+            //}
+
+            // Получите ссылку на объект DataGridView
+            // DataGridView dataGridView = dataGridViewDoctors_SVV; // замените "dataGridView1" на ваше имя DataGridView
+
+            // Получите выбранный индекс столбца
+            //int columnIndex = comboBoxFilter_SVV.SelectedIndex;
+
+            // Примените фильтр к DataGridView
+            // if (columnIndex >= 0)
+            //{
+            // string columnName = dataGridView.Columns[columnIndex].Name;
+            // dataGridView.CurrentCell = null;
+            // foreach (DataGridViewRow row in dataGridView.Rows)
+            //{
+            // if (row.Cells[columnName].Value != null && row.Cells[columnName].Value.ToString() != "")
+            // row.Visible = true;
+            // else
+            //row.Visible = false;
+            // }
+            // }
             // Применение фильтра к DataGridView
-            string selectedValue = comboBoxFilter_SVV.SelectedItem.ToString();
-            (dataGridViewDoctors_SVV.DataSource as DataTable).DefaultView.RowFilter = $"Ф = '{selectedValue}'";
+            //string selectedValue = comboBoxFilter_SVV.SelectedItem.ToString();
+            //(dataGridViewDoctors_SVV.DataSource as DataTable).DefaultView.RowFilter = $"Ф = '{selectedValue}'";
+
+            // Получаем выбранный фильтр из ComboBox
+            //string selectedFilter = comboBoxFilter_SVV.SelectedItem.ToString();
+
+            // Применяем фильтр к колонке DataGridView
+            //dataGridViewDoctors_SVV.SelectionChanged -= dataGridViewDoctors_SVV_SelectionChanged; // Отписываемся от события, чтобы избежать рекурсии
+            //((BindingSource)dataGridViewDoctors_SVV.DataSource).Filter = $"ФИО= '{selectedFilter}'"; // Название_колонки - замените на фактическое название колонки в вашей DataGridView
+            //dataGridViewDoctors_SVV.SelectionChanged += dataGridViewDoctors_SVV_SelectionChanged; // Подписываемся на событие изменения выбора
         }
 
         private void buttonNew_SVV_Click(object sender, EventArgs e)
@@ -318,26 +416,62 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void buttonFilter_SVV_Click(object sender, EventArgs e)
         {
-            
-            // Получаем выбранный индекс из ComboBox
-            int columnIndex = comboBoxFilter_SVV.SelectedIndex;
 
-            // Получаем значение для фильтрации
-            string filterValue = textBoxFilter_SVV.Text;
+            int columnIndex = 0; // Ваш индекс столбца
+            List<string> items = new List<string>();
 
-            // Применяем фильтр к указанной колонке
-            dataGridViewDoctors_SVV.CurrentCell = null;
+            // Перебираем все строки и добавляем значение столбца в список
             foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
             {
-                if (row.Cells[columnIndex].Value != null && row.Cells[columnIndex].Value.ToString().Contains(filterValue))
+                if (row.Cells[columnIndex].Value != null && checkBoxFilter_SVV.Checked)
                 {
-                    row.Visible = true;
-                }
-                else
-                {
-                    row.Visible = false;
+                    items.Add(row.Cells[columnIndex].Value.ToString());
                 }
             }
+
+            // Очищаем combobox и добавляем список значений
+            comboBoxFilter_SVV.Items.Clear();
+            comboBoxFilter_SVV.Items.AddRange(items.ToArray());
+
+
+           
+
+            
+
+            //int index = 0; // Индекс столбца для заполнения ComboBox (в данном случае 2)
+
+            // Заполнение ComboBox данными из выбранного столбца
+            //comboBoxFilter_SVV.DataSource = dataGridViewDoctors_SVV.Rows.Cast<DataGridViewRow>()
+            //.Select(row => row.Cells[index].Value.ToString())
+            //.Distinct()
+            //.ToList();
+            // comboBoxFilter_SVV.SelectedIndex = -1;
+
+            // Добавление фильтра к заголовку таблицы
+            // dataGridViewDoctors_SVV.Columns[index].HeaderText += " (фильтр)";
+
+
+            //string filterValue = comboBoxFilter_SVV.Text;
+            //int columnIndex = 0;// здесь укажите нужный индекс
+
+            /// if (dataGridViewDoctors_SVV.Columns[index] is DataGridViewComboBoxColumn)
+            // {
+            /// DataGridViewComboBoxColumn comboBoxColumn = (DataGridViewComboBoxColumn)dataGridViewDoctors_SVV.Columns[index];
+
+            //foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
+            //{
+            //if (row.Cells[index].Value != null && row.Cells[index].Value.ToString() == filterValue)
+            ///
+            // row.Visible = true;
+            //}
+            //else
+            //{
+            // row.Visible = false;
+            //}
+            // }
+            //  }
+            // Получаем выбранный индекс из ComboBox
+
             // Получаем значение переменной index из пользовательского ввода (например, из TextBox)
             //int index = Convert.ToInt32(textBoxFilter_SVV.Text);
 
@@ -390,6 +524,84 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             { 
                 MessageBox.Show("Нет доступных операций для отмены.");
             }
+        }
+
+        private void textBoxSear_SVV_TextChanged(object sender, EventArgs e)
+        {
+            
+            string searchText = textBoxSear_SVV.Text.ToString().ToLower(); // Получите текст из TextBox
+
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                int columnIndex = 0 ; // Установите индекс столбца по умолчанию
+
+                if (radioButtonOne_SVV.Checked)
+                {
+                    columnIndex = 0; // Установите индекс столбца для поиска в первом столбце
+                }
+                else if (radioButtonTwo_SVV.Checked)
+                {
+                    columnIndex = 1; // Установите индекс столбца для поиска во втором столбце
+                }
+                else if (radioButtonThree_SVV.Checked)
+                {
+                    columnIndex = 2; // Установите индекс столбца для поиска в третьем столбце
+                }
+
+                foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
+                {
+                    if (row.Cells[columnIndex].Value != null)
+                    {
+                        if (row.Cells[columnIndex].Value.ToString().ToLower().Contains(searchText))
+                        {
+                            row.Visible = true; // Если найден текст, то отображаем строку
+                        }
+                        else
+                        {
+                            row.Visible = false; // Если текст не найден, то скрываем строку
+                        }
+                    }
+                }
+
+              
+            }
+            else
+            {
+                // Очистить фильтр, если текстовое поле пустое
+                foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
+                {
+                    row.Visible = true;
+                }
+            }
+        }
+
+        private void dataGridViewDoctors_SVV_SelectionChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonFil_SVV_Click(object sender, EventArgs e)
+        {
+            // Получаем выбранное значение из ComboBox
+            string selectedValue = comboBoxFilter_SVV.SelectedItem.ToString();
+
+            // Фильтруем таблицу по выбранному значению
+            for (int i = 0; i < dataGridViewDoctors_SVV.Rows.Count; i++)
+            {
+                if (dataGridViewDoctors_SVV.Rows[i].Cells[index].Value.ToString() == selectedValue)
+                {
+                    dataGridViewDoctors_SVV.Rows[i].Visible = true;
+                }
+                else
+                {
+                    dataGridViewDoctors_SVV.Rows[i].Visible = false;
+                }
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
 
