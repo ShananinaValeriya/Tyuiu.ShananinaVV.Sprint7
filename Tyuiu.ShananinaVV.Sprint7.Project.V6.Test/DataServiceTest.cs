@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
-
+using System.Globalization;
 using Tyuiu.ShananinaVV.Sprint7.Project.V6.Lib;
 
 namespace Tyuiu.ShananinaVV.Sprint7.Project.V6.Test
@@ -26,5 +26,16 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6.Test
             bool fileExists = fileInfo.Exists;
             Assert.AreEqual(true, fileExists);
         }
+
+        public int CalculateAge(string birthDate)
+        {
+            DateTime dob = DateTime.ParseExact(birthDate, "dd.MM.yyyy", CultureInfo.InvariantCulture);
+            DateTime today = DateTime.Today;
+            int age = today.Year - dob.Year;
+            if (dob > today.AddYears(-age)) age--;
+            return age;
+        }
+
+
     }
 }

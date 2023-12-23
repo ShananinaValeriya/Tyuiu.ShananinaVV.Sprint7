@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Globalization;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 {
@@ -239,16 +241,26 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             textBoxSear_SVV.Clear();
             buttonCbros_SVV.Enabled = false;
         }
+        private Stack<string> operationStack = new Stack<string>();
+
 
         private void buttonDel_SVV_Click(object sender, EventArgs e)
         {
+            int count = dataGridViewPatients_SVV.SelectedRows.Count;
             DialogResult dialogResult = MessageBox.Show("Вы уверенны, что хотите удалить \nвыбранные элементы?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
 
             if (dialogResult == DialogResult.Yes)
             {
-                index = dataGridViewPatients_SVV.CurrentCell.RowIndex;
-                dataGridViewPatients_SVV.Rows.RemoveAt(index);
+                while (count > 0)
+                {
+                    foreach (DataGridViewRow row in dataGridViewPatients_SVV.SelectedRows)
+                    {
+                        dataGridViewPatients_SVV.Rows.Remove(row);
+                        count--;
+                    }
+                }
             }
+            //operationStack.Push("Выполненная операция");
         }
 
         private void buttonFam_SVV_Click(object sender, EventArgs e)
@@ -299,6 +311,113 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                 e.SortResult = System.DateTime.Compare(dt1, dt2);
                 e.Handled = true;
             } 
+        }
+
+        private void buttonStatic_SVV_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+            foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
+            {
+                if (!row.IsNewRow) // Пропустить пустую строку в конце
+                {
+                    if (!string.IsNullOrEmpty(row.Cells[0].Value.ToString())) // Проверить, что ячейка не пустая
+                    {
+                        count++;
+                        //MessageBox.Show("Количество сотрудников: " + count);
+                    }
+                }
+            }
+            MessageBox.Show("Количество пациентов: " + count, "Статистика");
+        }
+
+        //private int CalculateAge(DateTime birthDate)
+        //{
+            //int age = DateTime.Today.Year - birthDate.Year;
+           // if (birthDate.Date > DateTime.Today.AddYears(-age))
+            //{
+                //age--;
+            //}
+            //return age;
+        //
+
+        // Метод для вычисления возраста на основе даты рождения
+        private int CalculateAge(DateTime birthDate)
+        {
+            DateTime currentDate = DateTime.Today;
+            int age = currentDate.Year - birthDate.Year;
+            if (birthDate > currentDate.AddYears(-age)) age--;
+            return age;
+        }
+        private void buttonChart_SVV_Click(object sender, EventArgs e)
+        {
+
+            // Создайте новую форму для отображения графика и статистики
+            FormChart chartForm = new FormChart();
+
+            // Передайте данные из dataGridView в новую форму
+            List<DateTime> birthDates = new List<DateTime>();
+            foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
+            {
+                if (row.Cells[4].Value != null && DateTime.TryParseExact(row.Cells[4].Value.ToString(), "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
+                {
+                    birthDates.Add(date);
+                }
+            }
+
+            // Вычислите возраст каждого пациента и выведите данные в статистику
+            int patientsUnder30 = birthDates.Count(date => CalculateAge(date) < 30);
+            int patientsOver30 = birthDates.Count(date => CalculateAge(date) >= 30);
+
+            chartForm.UpdateChart(patientsUnder30, patientsOver30); // Передайте данные для отображения на графике
+            chartForm.UpdateStatistics(patientsUnder30, patientsOver30); // Передайте данные для отображения статистики
+            chartForm.Show();
+
+
+            
+
+
+            //FormChart formchart = new FormChart();
+           // formchart.ShowDialog();
+
+            //var chartForm = new FormChart();
+            //var chart = chartForm.chart;
+
+            // Получаем данные из DataGridView
+            
+
+            // Отображаем новое окно с графиком
+            //chartForm.Show();
+
+            
+
+            // Добавляем данные в график
+            
+            // Добавляем график на форму и отображаем её
+            //ageStatsForm.Controls.Add(ageChart);
+            //ageStatsForm.ShowDialog();
+
+
+            //int patientsUnder30 = 0;
+            //int patientsOver30 = 0;
+
+            //foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
+            //{
+                //string birthDate = row.Cells["BirthDateColumn"].Value.ToString();
+                //int age = CalculateAge(birthDate);
+
+                //if (age < 30)
+                //{
+                    //patientsUnder30++;
+                //}
+                //else
+                //{
+                    //patientsOver30++;
+                //}
+           // }
+
+            // Выводим результаты на график
+            //chart1.Series["AgeGroup"].Points.AddXY("Under 30", patientsUnder30);
+            //chart1.Series["AgeGroup"].Points.AddXY("Over 30", patientsOver30);
         }
     }
 }

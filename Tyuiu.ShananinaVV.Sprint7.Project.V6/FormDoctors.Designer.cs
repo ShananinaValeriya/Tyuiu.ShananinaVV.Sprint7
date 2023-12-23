@@ -29,26 +29,25 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dataGridViewDoctors_SVV = new System.Windows.Forms.DataGridView();
             this.panelOneDoc_SVV = new System.Windows.Forms.Panel();
             this.splitterOne_SVV = new System.Windows.Forms.Splitter();
             this.groupBoxSear_SVV = new System.Windows.Forms.GroupBox();
-            this.radioButtonFour_SVV = new System.Windows.Forms.RadioButton();
+            this.comboBoxSpec_SVV = new System.Windows.Forms.ComboBox();
+            this.comboBoxPosit_SVV = new System.Windows.Forms.ComboBox();
+            this.comboBoxFilter_SVV = new System.Windows.Forms.ComboBox();
             this.radioButtonThree_SVV = new System.Windows.Forms.RadioButton();
             this.radioButtonTwo_SVV = new System.Windows.Forms.RadioButton();
             this.radioButtonOne_SVV = new System.Windows.Forms.RadioButton();
-            this.buttonOtmena_SVV = new System.Windows.Forms.Button();
             this.buttonCbros_SVV = new System.Windows.Forms.Button();
             this.labelFour_SVV = new System.Windows.Forms.Label();
             this.textBoxSear_SVV = new System.Windows.Forms.TextBox();
             this.buttonSear_SVV = new System.Windows.Forms.Button();
             this.groupBoxOneDoc_SVV = new System.Windows.Forms.GroupBox();
-            this.comboBoxFilter_SVV = new System.Windows.Forms.ComboBox();
-            this.textBoxFilter_SVV = new System.Windows.Forms.TextBox();
-            this.buttonFilter_SVV = new System.Windows.Forms.Button();
+            this.buttonStatic_SVV = new System.Windows.Forms.Button();
             this.buttonSortSpec_SVV = new System.Windows.Forms.Button();
             this.buttonSortPosit_SVV = new System.Windows.Forms.Button();
+            this.buttonOtmena_SVV = new System.Windows.Forms.Button();
             this.labelSort_SVV = new System.Windows.Forms.Label();
             this.buttonSort_SVV = new System.Windows.Forms.Button();
             this.buttonDel_SVV = new System.Windows.Forms.Button();
@@ -66,15 +65,11 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonBackDoc_SVV = new System.Windows.Forms.Button();
             this.buttonDoctors_SVV = new System.Windows.Forms.Button();
             this.panelTwoDoc_SVV = new System.Windows.Forms.Panel();
-            this.bindingSourceOne_SVV = new System.Windows.Forms.BindingSource(this.components);
-            this.buttonFil_SVV = new System.Windows.Forms.Button();
-            this.checkBoxFilter_SVV = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoctors_SVV)).BeginInit();
             this.panelOneDoc_SVV.SuspendLayout();
             this.groupBoxSear_SVV.SuspendLayout();
             this.groupBoxOneDoc_SVV.SuspendLayout();
             this.panelTwoDoc_SVV.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceOne_SVV)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewDoctors_SVV
@@ -87,10 +82,10 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.dataGridViewDoctors_SVV.Name = "dataGridViewDoctors_SVV";
             this.dataGridViewDoctors_SVV.RowHeadersWidth = 51;
             this.dataGridViewDoctors_SVV.RowTemplate.Height = 24;
-            this.dataGridViewDoctors_SVV.Size = new System.Drawing.Size(972, 372);
+            this.dataGridViewDoctors_SVV.Size = new System.Drawing.Size(1053, 376);
             this.dataGridViewDoctors_SVV.TabIndex = 0;
             this.dataGridViewDoctors_SVV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDoctors_SVV_CellClick);
-            this.dataGridViewDoctors_SVV.SelectionChanged += new System.EventHandler(this.dataGridViewDoctors_SVV_SelectionChanged);
+            
             // 
             // panelOneDoc_SVV
             // 
@@ -100,97 +95,114 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.panelOneDoc_SVV.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelOneDoc_SVV.Location = new System.Drawing.Point(0, 0);
             this.panelOneDoc_SVV.Name = "panelOneDoc_SVV";
-            this.panelOneDoc_SVV.Size = new System.Drawing.Size(972, 185);
+            this.panelOneDoc_SVV.Size = new System.Drawing.Size(1053, 210);
             this.panelOneDoc_SVV.TabIndex = 2;
             // 
             // splitterOne_SVV
             // 
-            this.splitterOne_SVV.Location = new System.Drawing.Point(706, 0);
+            this.splitterOne_SVV.Location = new System.Drawing.Point(713, 0);
             this.splitterOne_SVV.Name = "splitterOne_SVV";
-            this.splitterOne_SVV.Size = new System.Drawing.Size(3, 185);
+            this.splitterOne_SVV.Size = new System.Drawing.Size(3, 210);
             this.splitterOne_SVV.TabIndex = 2;
             this.splitterOne_SVV.TabStop = false;
+            
             // 
             // groupBoxSear_SVV
             // 
-            this.groupBoxSear_SVV.Controls.Add(this.radioButtonFour_SVV);
+            this.groupBoxSear_SVV.Controls.Add(this.comboBoxSpec_SVV);
+            this.groupBoxSear_SVV.Controls.Add(this.comboBoxPosit_SVV);
+            this.groupBoxSear_SVV.Controls.Add(this.comboBoxFilter_SVV);
             this.groupBoxSear_SVV.Controls.Add(this.radioButtonThree_SVV);
             this.groupBoxSear_SVV.Controls.Add(this.radioButtonTwo_SVV);
             this.groupBoxSear_SVV.Controls.Add(this.radioButtonOne_SVV);
-            this.groupBoxSear_SVV.Controls.Add(this.buttonOtmena_SVV);
             this.groupBoxSear_SVV.Controls.Add(this.buttonCbros_SVV);
             this.groupBoxSear_SVV.Controls.Add(this.labelFour_SVV);
             this.groupBoxSear_SVV.Controls.Add(this.textBoxSear_SVV);
             this.groupBoxSear_SVV.Controls.Add(this.buttonSear_SVV);
             this.groupBoxSear_SVV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxSear_SVV.Location = new System.Drawing.Point(706, 0);
+            this.groupBoxSear_SVV.Location = new System.Drawing.Point(713, 0);
             this.groupBoxSear_SVV.Name = "groupBoxSear_SVV";
-            this.groupBoxSear_SVV.Size = new System.Drawing.Size(266, 185);
+            this.groupBoxSear_SVV.Size = new System.Drawing.Size(340, 210);
             this.groupBoxSear_SVV.TabIndex = 1;
             this.groupBoxSear_SVV.TabStop = false;
-            this.groupBoxSear_SVV.Text = "Поиск";
-            this.groupBoxSear_SVV.Enter += new System.EventHandler(this.groupBoxSear_SVV_Enter);
+            this.groupBoxSear_SVV.Text = "Поиск и фильтр";
+            
             // 
-            // radioButtonFour_SVV
+            // comboBoxSpec_SVV
             // 
-            this.radioButtonFour_SVV.AutoSize = true;
-            this.radioButtonFour_SVV.Location = new System.Drawing.Point(78, 31);
-            this.radioButtonFour_SVV.Name = "radioButtonFour_SVV";
-            this.radioButtonFour_SVV.Size = new System.Drawing.Size(106, 21);
-            this.radioButtonFour_SVV.TabIndex = 24;
-            this.radioButtonFour_SVV.TabStop = true;
-            this.radioButtonFour_SVV.Text = "Без выбора";
-            this.radioButtonFour_SVV.UseVisualStyleBackColor = true;
+            this.comboBoxSpec_SVV.Enabled = false;
+            this.comboBoxSpec_SVV.FormattingEnabled = true;
+            this.comboBoxSpec_SVV.Location = new System.Drawing.Point(151, 67);
+            this.comboBoxSpec_SVV.Name = "comboBoxSpec_SVV";
+            this.comboBoxSpec_SVV.Size = new System.Drawing.Size(163, 24);
+            this.comboBoxSpec_SVV.TabIndex = 27;
+            this.comboBoxSpec_SVV.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpec_SVV_SelectedIndexChanged);
+            // 
+            // comboBoxPosit_SVV
+            // 
+            this.comboBoxPosit_SVV.Enabled = false;
+            this.comboBoxPosit_SVV.FormattingEnabled = true;
+            this.comboBoxPosit_SVV.Location = new System.Drawing.Point(151, 44);
+            this.comboBoxPosit_SVV.Name = "comboBoxPosit_SVV";
+            this.comboBoxPosit_SVV.Size = new System.Drawing.Size(163, 24);
+            this.comboBoxPosit_SVV.TabIndex = 26;
+            this.comboBoxPosit_SVV.SelectedIndexChanged += new System.EventHandler(this.comboBoxPosit_SVV_SelectedIndexChanged);
+            // 
+            // comboBoxFilter_SVV
+            // 
+            this.comboBoxFilter_SVV.Enabled = false;
+            this.comboBoxFilter_SVV.FormattingEnabled = true;
+            this.comboBoxFilter_SVV.Location = new System.Drawing.Point(151, 21);
+            this.comboBoxFilter_SVV.Name = "comboBoxFilter_SVV";
+            this.comboBoxFilter_SVV.Size = new System.Drawing.Size(163, 24);
+            this.comboBoxFilter_SVV.TabIndex = 25;
+            this.comboBoxFilter_SVV.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilter_SVV_SelectedIndexChanged);
             // 
             // radioButtonThree_SVV
             // 
             this.radioButtonThree_SVV.AutoSize = true;
-            this.radioButtonThree_SVV.Location = new System.Drawing.Point(121, 158);
+            this.radioButtonThree_SVV.Enabled = false;
+            this.radioButtonThree_SVV.Location = new System.Drawing.Point(9, 72);
             this.radioButtonThree_SVV.Name = "radioButtonThree_SVV";
             this.radioButtonThree_SVV.Size = new System.Drawing.Size(133, 21);
             this.radioButtonThree_SVV.TabIndex = 23;
             this.radioButtonThree_SVV.TabStop = true;
             this.radioButtonThree_SVV.Text = "Специализация";
             this.radioButtonThree_SVV.UseVisualStyleBackColor = true;
+            this.radioButtonThree_SVV.CheckedChanged += new System.EventHandler(this.radioButtonThree_SVV_CheckedChanged);
             // 
             // radioButtonTwo_SVV
             // 
             this.radioButtonTwo_SVV.AutoSize = true;
-            this.radioButtonTwo_SVV.Location = new System.Drawing.Point(9, 158);
+            this.radioButtonTwo_SVV.Enabled = false;
+            this.radioButtonTwo_SVV.Location = new System.Drawing.Point(9, 49);
             this.radioButtonTwo_SVV.Name = "radioButtonTwo_SVV";
             this.radioButtonTwo_SVV.Size = new System.Drawing.Size(102, 21);
             this.radioButtonTwo_SVV.TabIndex = 22;
             this.radioButtonTwo_SVV.TabStop = true;
             this.radioButtonTwo_SVV.Text = "Должность";
             this.radioButtonTwo_SVV.UseVisualStyleBackColor = true;
+            this.radioButtonTwo_SVV.CheckedChanged += new System.EventHandler(this.radioButtonTwo_SVV_CheckedChanged);
             // 
             // radioButtonOne_SVV
             // 
             this.radioButtonOne_SVV.AutoSize = true;
-            this.radioButtonOne_SVV.Location = new System.Drawing.Point(9, 31);
+            this.radioButtonOne_SVV.Enabled = false;
+            this.radioButtonOne_SVV.Location = new System.Drawing.Point(9, 24);
             this.radioButtonOne_SVV.Name = "radioButtonOne_SVV";
             this.radioButtonOne_SVV.Size = new System.Drawing.Size(63, 21);
             this.radioButtonOne_SVV.TabIndex = 21;
             this.radioButtonOne_SVV.TabStop = true;
             this.radioButtonOne_SVV.Text = "ФИО";
             this.radioButtonOne_SVV.UseVisualStyleBackColor = true;
-            // 
-            // buttonOtmena_SVV
-            // 
-            this.buttonOtmena_SVV.Location = new System.Drawing.Point(161, 12);
-            this.buttonOtmena_SVV.Name = "buttonOtmena_SVV";
-            this.buttonOtmena_SVV.Size = new System.Drawing.Size(99, 34);
-            this.buttonOtmena_SVV.TabIndex = 20;
-            this.buttonOtmena_SVV.Text = "Отмена";
-            this.buttonOtmena_SVV.UseVisualStyleBackColor = true;
-            this.buttonOtmena_SVV.Click += new System.EventHandler(this.buttonOtmena_SVV_Click);
+            this.radioButtonOne_SVV.CheckedChanged += new System.EventHandler(this.radioButtonOne_SVV_CheckedChanged);
             // 
             // buttonCbros_SVV
             // 
             this.buttonCbros_SVV.Enabled = false;
-            this.buttonCbros_SVV.Location = new System.Drawing.Point(27, 116);
+            this.buttonCbros_SVV.Location = new System.Drawing.Point(27, 155);
             this.buttonCbros_SVV.Name = "buttonCbros_SVV";
-            this.buttonCbros_SVV.Size = new System.Drawing.Size(80, 38);
+            this.buttonCbros_SVV.Size = new System.Drawing.Size(90, 38);
             this.buttonCbros_SVV.TabIndex = 19;
             this.buttonCbros_SVV.Text = "Сброс";
             this.buttonCbros_SVV.UseVisualStyleBackColor = true;
@@ -199,7 +211,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // labelFour_SVV
             // 
             this.labelFour_SVV.AutoSize = true;
-            this.labelFour_SVV.Location = new System.Drawing.Point(34, 58);
+            this.labelFour_SVV.Location = new System.Drawing.Point(34, 102);
             this.labelFour_SVV.Name = "labelFour_SVV";
             this.labelFour_SVV.Size = new System.Drawing.Size(195, 17);
             this.labelFour_SVV.TabIndex = 17;
@@ -210,18 +222,18 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.textBoxSear_SVV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxSear_SVV.Enabled = false;
             this.textBoxSear_SVV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxSear_SVV.Location = new System.Drawing.Point(27, 86);
+            this.textBoxSear_SVV.Location = new System.Drawing.Point(27, 125);
             this.textBoxSear_SVV.Name = "textBoxSear_SVV";
-            this.textBoxSear_SVV.Size = new System.Drawing.Size(217, 24);
+            this.textBoxSear_SVV.Size = new System.Drawing.Size(270, 24);
             this.textBoxSear_SVV.TabIndex = 8;
             this.textBoxSear_SVV.TextChanged += new System.EventHandler(this.textBoxSear_SVV_TextChanged);
             // 
             // buttonSear_SVV
             // 
             this.buttonSear_SVV.Enabled = false;
-            this.buttonSear_SVV.Location = new System.Drawing.Point(113, 116);
+            this.buttonSear_SVV.Location = new System.Drawing.Point(123, 155);
             this.buttonSear_SVV.Name = "buttonSear_SVV";
-            this.buttonSear_SVV.Size = new System.Drawing.Size(131, 38);
+            this.buttonSear_SVV.Size = new System.Drawing.Size(174, 38);
             this.buttonSear_SVV.TabIndex = 5;
             this.buttonSear_SVV.Text = "Искать";
             this.buttonSear_SVV.UseVisualStyleBackColor = true;
@@ -229,13 +241,10 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // groupBoxOneDoc_SVV
             // 
-            this.groupBoxOneDoc_SVV.Controls.Add(this.checkBoxFilter_SVV);
-            this.groupBoxOneDoc_SVV.Controls.Add(this.buttonFil_SVV);
-            this.groupBoxOneDoc_SVV.Controls.Add(this.comboBoxFilter_SVV);
-            this.groupBoxOneDoc_SVV.Controls.Add(this.textBoxFilter_SVV);
-            this.groupBoxOneDoc_SVV.Controls.Add(this.buttonFilter_SVV);
+            this.groupBoxOneDoc_SVV.Controls.Add(this.buttonStatic_SVV);
             this.groupBoxOneDoc_SVV.Controls.Add(this.buttonSortSpec_SVV);
             this.groupBoxOneDoc_SVV.Controls.Add(this.buttonSortPosit_SVV);
+            this.groupBoxOneDoc_SVV.Controls.Add(this.buttonOtmena_SVV);
             this.groupBoxOneDoc_SVV.Controls.Add(this.labelSort_SVV);
             this.groupBoxOneDoc_SVV.Controls.Add(this.buttonSort_SVV);
             this.groupBoxOneDoc_SVV.Controls.Add(this.buttonDel_SVV);
@@ -256,42 +265,27 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxOneDoc_SVV.Location = new System.Drawing.Point(0, 0);
             this.groupBoxOneDoc_SVV.MinimumSize = new System.Drawing.Size(540, 185);
             this.groupBoxOneDoc_SVV.Name = "groupBoxOneDoc_SVV";
-            this.groupBoxOneDoc_SVV.Size = new System.Drawing.Size(706, 185);
+            this.groupBoxOneDoc_SVV.Size = new System.Drawing.Size(713, 210);
             this.groupBoxOneDoc_SVV.TabIndex = 0;
             this.groupBoxOneDoc_SVV.TabStop = false;
             this.groupBoxOneDoc_SVV.Text = "Инструменты";
-            this.groupBoxOneDoc_SVV.Enter += new System.EventHandler(this.groupBoxOneDoc_SVV_Enter);
+            
             // 
-            // comboBoxFilter_SVV
+            // buttonStatic_SVV
             // 
-            this.comboBoxFilter_SVV.FormattingEnabled = true;
-            this.comboBoxFilter_SVV.Location = new System.Drawing.Point(567, 140);
-            this.comboBoxFilter_SVV.Name = "comboBoxFilter_SVV";
-            this.comboBoxFilter_SVV.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxFilter_SVV.TabIndex = 25;
-            this.comboBoxFilter_SVV.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilter_SVV_SelectedIndexChanged);
-            // 
-            // textBoxFilter_SVV
-            // 
-            this.textBoxFilter_SVV.Location = new System.Drawing.Point(211, 10);
-            this.textBoxFilter_SVV.Name = "textBoxFilter_SVV";
-            this.textBoxFilter_SVV.Size = new System.Drawing.Size(100, 22);
-            this.textBoxFilter_SVV.TabIndex = 24;
-            // 
-            // buttonFilter_SVV
-            // 
-            this.buttonFilter_SVV.Location = new System.Drawing.Point(432, 125);
-            this.buttonFilter_SVV.Name = "buttonFilter_SVV";
-            this.buttonFilter_SVV.Size = new System.Drawing.Size(97, 45);
-            this.buttonFilter_SVV.TabIndex = 23;
-            this.buttonFilter_SVV.Text = "Фильтр";
-            this.buttonFilter_SVV.UseVisualStyleBackColor = true;
-            this.buttonFilter_SVV.Click += new System.EventHandler(this.buttonFilter_SVV_Click);
+            this.buttonStatic_SVV.Enabled = false;
+            this.buttonStatic_SVV.Location = new System.Drawing.Point(329, 177);
+            this.buttonStatic_SVV.Name = "buttonStatic_SVV";
+            this.buttonStatic_SVV.Size = new System.Drawing.Size(200, 27);
+            this.buttonStatic_SVV.TabIndex = 24;
+            this.buttonStatic_SVV.Text = "Статистика";
+            this.buttonStatic_SVV.UseVisualStyleBackColor = true;
+            this.buttonStatic_SVV.Click += new System.EventHandler(this.buttonStatic_SVV_Click);
             // 
             // buttonSortSpec_SVV
             // 
             this.buttonSortSpec_SVV.Enabled = false;
-            this.buttonSortSpec_SVV.Location = new System.Drawing.Point(559, 102);
+            this.buttonSortSpec_SVV.Location = new System.Drawing.Point(559, 106);
             this.buttonSortSpec_SVV.Name = "buttonSortSpec_SVV";
             this.buttonSortSpec_SVV.Size = new System.Drawing.Size(132, 29);
             this.buttonSortSpec_SVV.TabIndex = 22;
@@ -310,10 +304,20 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonSortPosit_SVV.UseVisualStyleBackColor = true;
             this.buttonSortPosit_SVV.Click += new System.EventHandler(this.buttonSortPosit_SVV_Click);
             // 
+            // buttonOtmena_SVV
+            // 
+            this.buttonOtmena_SVV.Location = new System.Drawing.Point(432, 125);
+            this.buttonOtmena_SVV.Name = "buttonOtmena_SVV";
+            this.buttonOtmena_SVV.Size = new System.Drawing.Size(97, 46);
+            this.buttonOtmena_SVV.TabIndex = 20;
+            this.buttonOtmena_SVV.Text = "Отмена";
+            this.buttonOtmena_SVV.UseVisualStyleBackColor = true;
+            this.buttonOtmena_SVV.Click += new System.EventHandler(this.buttonOtmena_SVV_Click);
+            // 
             // labelSort_SVV
             // 
             this.labelSort_SVV.AutoSize = true;
-            this.labelSort_SVV.Location = new System.Drawing.Point(570, 9);
+            this.labelSort_SVV.Location = new System.Drawing.Point(556, 9);
             this.labelSort_SVV.Name = "labelSort_SVV";
             this.labelSort_SVV.Size = new System.Drawing.Size(86, 17);
             this.labelSort_SVV.TabIndex = 20;
@@ -355,7 +359,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // buttonClose_SVV
             // 
             this.buttonClose_SVV.Enabled = false;
-            this.buttonClose_SVV.Location = new System.Drawing.Point(6, 21);
+            this.buttonClose_SVV.Location = new System.Drawing.Point(6, 28);
             this.buttonClose_SVV.Name = "buttonClose_SVV";
             this.buttonClose_SVV.Size = new System.Drawing.Size(114, 46);
             this.buttonClose_SVV.TabIndex = 18;
@@ -453,7 +457,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // buttonBackDoc_SVV
             // 
-            this.buttonBackDoc_SVV.Location = new System.Drawing.Point(6, 70);
+            this.buttonBackDoc_SVV.Location = new System.Drawing.Point(6, 82);
             this.buttonBackDoc_SVV.Name = "buttonBackDoc_SVV";
             this.buttonBackDoc_SVV.Size = new System.Drawing.Size(114, 40);
             this.buttonBackDoc_SVV.TabIndex = 2;
@@ -463,7 +467,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // buttonDoctors_SVV
             // 
-            this.buttonDoctors_SVV.Location = new System.Drawing.Point(6, 114);
+            this.buttonDoctors_SVV.Location = new System.Drawing.Point(6, 128);
             this.buttonDoctors_SVV.Name = "buttonDoctors_SVV";
             this.buttonDoctors_SVV.Size = new System.Drawing.Size(114, 65);
             this.buttonDoctors_SVV.TabIndex = 1;
@@ -475,36 +479,16 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             this.panelTwoDoc_SVV.Controls.Add(this.dataGridViewDoctors_SVV);
             this.panelTwoDoc_SVV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTwoDoc_SVV.Location = new System.Drawing.Point(0, 185);
+            this.panelTwoDoc_SVV.Location = new System.Drawing.Point(0, 210);
             this.panelTwoDoc_SVV.Name = "panelTwoDoc_SVV";
-            this.panelTwoDoc_SVV.Size = new System.Drawing.Size(972, 372);
+            this.panelTwoDoc_SVV.Size = new System.Drawing.Size(1053, 376);
             this.panelTwoDoc_SVV.TabIndex = 2;
-            // 
-            // buttonFil_SVV
-            // 
-            this.buttonFil_SVV.Location = new System.Drawing.Point(542, 45);
-            this.buttonFil_SVV.Name = "buttonFil_SVV";
-            this.buttonFil_SVV.Size = new System.Drawing.Size(75, 23);
-            this.buttonFil_SVV.TabIndex = 26;
-            this.buttonFil_SVV.Text = "button1";
-            this.buttonFil_SVV.UseVisualStyleBackColor = true;
-            this.buttonFil_SVV.Click += new System.EventHandler(this.buttonFil_SVV_Click);
-            // 
-            // checkBoxFilter_SVV
-            // 
-            this.checkBoxFilter_SVV.AutoSize = true;
-            this.checkBoxFilter_SVV.Location = new System.Drawing.Point(584, 149);
-            this.checkBoxFilter_SVV.Name = "checkBoxFilter_SVV";
-            this.checkBoxFilter_SVV.Size = new System.Drawing.Size(98, 21);
-            this.checkBoxFilter_SVV.TabIndex = 27;
-            this.checkBoxFilter_SVV.Text = "checkBox1";
-            this.checkBoxFilter_SVV.UseVisualStyleBackColor = true;
             // 
             // FormDoctors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 557);
+            this.ClientSize = new System.Drawing.Size(1053, 586);
             this.Controls.Add(this.panelTwoDoc_SVV);
             this.Controls.Add(this.panelOneDoc_SVV);
             this.MaximizeBox = false;
@@ -520,7 +504,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxOneDoc_SVV.ResumeLayout(false);
             this.groupBoxOneDoc_SVV.PerformLayout();
             this.panelTwoDoc_SVV.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceOne_SVV)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -555,16 +538,13 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.Label labelSort_SVV;
         private System.Windows.Forms.Button buttonSortSpec_SVV;
         private System.Windows.Forms.Button buttonSortPosit_SVV;
-        private System.Windows.Forms.Button buttonFilter_SVV;
-        private System.Windows.Forms.TextBox textBoxFilter_SVV;
-        private System.Windows.Forms.BindingSource bindingSourceOne_SVV;
         private System.Windows.Forms.ComboBox comboBoxFilter_SVV;
         private System.Windows.Forms.Button buttonOtmena_SVV;
         private System.Windows.Forms.RadioButton radioButtonThree_SVV;
         private System.Windows.Forms.RadioButton radioButtonTwo_SVV;
         private System.Windows.Forms.RadioButton radioButtonOne_SVV;
-        private System.Windows.Forms.RadioButton radioButtonFour_SVV;
-        private System.Windows.Forms.Button buttonFil_SVV;
-        private System.Windows.Forms.CheckBox checkBoxFilter_SVV;
+        private System.Windows.Forms.ComboBox comboBoxSpec_SVV;
+        private System.Windows.Forms.ComboBox comboBoxPosit_SVV;
+        private System.Windows.Forms.Button buttonStatic_SVV;
     }
 }

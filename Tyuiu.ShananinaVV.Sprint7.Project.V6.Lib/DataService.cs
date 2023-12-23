@@ -8,6 +8,7 @@ using System.IO;
 
 namespace Tyuiu.ShananinaVV.Sprint7.Project.V6.Lib
 {
+    
     public class Patient
     {
         public int Number { get; set; }

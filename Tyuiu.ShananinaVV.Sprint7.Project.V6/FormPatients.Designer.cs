@@ -37,6 +37,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonCbros_SVV = new System.Windows.Forms.Button();
             this.buttonSear_SVV = new System.Windows.Forms.Button();
             this.groupBoxPat_SVV = new System.Windows.Forms.GroupBox();
+            this.buttonChart_SVV = new System.Windows.Forms.Button();
+            this.buttonStatic_SVV = new System.Windows.Forms.Button();
             this.buttonDR_SVV = new System.Windows.Forms.Button();
             this.buttonNumber_SVV = new System.Windows.Forms.Button();
             this.buttonOth_SVV = new System.Windows.Forms.Button();
@@ -78,14 +80,14 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.panelOne_SVV.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelOne_SVV.Location = new System.Drawing.Point(0, 0);
             this.panelOne_SVV.Name = "panelOne_SVV";
-            this.panelOne_SVV.Size = new System.Drawing.Size(1077, 195);
+            this.panelOne_SVV.Size = new System.Drawing.Size(1077, 240);
             this.panelOne_SVV.TabIndex = 2;
             // 
             // splitterDD_SVV
             // 
             this.splitterDD_SVV.Location = new System.Drawing.Point(800, 0);
             this.splitterDD_SVV.Name = "splitterDD_SVV";
-            this.splitterDD_SVV.Size = new System.Drawing.Size(3, 195);
+            this.splitterDD_SVV.Size = new System.Drawing.Size(3, 240);
             this.splitterDD_SVV.TabIndex = 5;
             this.splitterDD_SVV.TabStop = false;
             // 
@@ -98,7 +100,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxPanel_SVV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxPanel_SVV.Location = new System.Drawing.Point(800, 0);
             this.groupBoxPanel_SVV.Name = "groupBoxPanel_SVV";
-            this.groupBoxPanel_SVV.Size = new System.Drawing.Size(277, 195);
+            this.groupBoxPanel_SVV.Size = new System.Drawing.Size(277, 240);
             this.groupBoxPanel_SVV.TabIndex = 3;
             this.groupBoxPanel_SVV.TabStop = false;
             this.groupBoxPanel_SVV.Text = "Поиск";
@@ -145,6 +147,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // groupBoxPat_SVV
             // 
+            this.groupBoxPat_SVV.Controls.Add(this.buttonChart_SVV);
+            this.groupBoxPat_SVV.Controls.Add(this.buttonStatic_SVV);
             this.groupBoxPat_SVV.Controls.Add(this.buttonDR_SVV);
             this.groupBoxPat_SVV.Controls.Add(this.buttonNumber_SVV);
             this.groupBoxPat_SVV.Controls.Add(this.buttonOth_SVV);
@@ -172,10 +176,30 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxPat_SVV.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBoxPat_SVV.Location = new System.Drawing.Point(0, 0);
             this.groupBoxPat_SVV.Name = "groupBoxPat_SVV";
-            this.groupBoxPat_SVV.Size = new System.Drawing.Size(800, 195);
+            this.groupBoxPat_SVV.Size = new System.Drawing.Size(800, 240);
             this.groupBoxPat_SVV.TabIndex = 2;
             this.groupBoxPat_SVV.TabStop = false;
             this.groupBoxPat_SVV.Text = "Инструменты";
+            // 
+            // buttonChart_SVV
+            // 
+            this.buttonChart_SVV.Location = new System.Drawing.Point(325, 190);
+            this.buttonChart_SVV.Name = "buttonChart_SVV";
+            this.buttonChart_SVV.Size = new System.Drawing.Size(86, 31);
+            this.buttonChart_SVV.TabIndex = 19;
+            this.buttonChart_SVV.Text = "График";
+            this.buttonChart_SVV.UseVisualStyleBackColor = true;
+            this.buttonChart_SVV.Click += new System.EventHandler(this.buttonChart_SVV_Click);
+            // 
+            // buttonStatic_SVV
+            // 
+            this.buttonStatic_SVV.Location = new System.Drawing.Point(417, 190);
+            this.buttonStatic_SVV.Name = "buttonStatic_SVV";
+            this.buttonStatic_SVV.Size = new System.Drawing.Size(156, 31);
+            this.buttonStatic_SVV.TabIndex = 18;
+            this.buttonStatic_SVV.Text = "Статистика";
+            this.buttonStatic_SVV.UseVisualStyleBackColor = true;
+            this.buttonStatic_SVV.Click += new System.EventHandler(this.buttonStatic_SVV_Click);
             // 
             // buttonDR_SVV
             // 
@@ -416,9 +440,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             this.panelTwoPat_SVV.Controls.Add(this.dataGridViewPatients_SVV);
             this.panelTwoPat_SVV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTwoPat_SVV.Location = new System.Drawing.Point(0, 195);
+            this.panelTwoPat_SVV.Location = new System.Drawing.Point(0, 240);
             this.panelTwoPat_SVV.Name = "panelTwoPat_SVV";
-            this.panelTwoPat_SVV.Size = new System.Drawing.Size(1077, 377);
+            this.panelTwoPat_SVV.Size = new System.Drawing.Size(1077, 332);
             this.panelTwoPat_SVV.TabIndex = 2;
             // 
             // dataGridViewPatients_SVV
@@ -431,7 +455,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.dataGridViewPatients_SVV.Name = "dataGridViewPatients_SVV";
             this.dataGridViewPatients_SVV.RowHeadersWidth = 51;
             this.dataGridViewPatients_SVV.RowTemplate.Height = 24;
-            this.dataGridViewPatients_SVV.Size = new System.Drawing.Size(1077, 377);
+            this.dataGridViewPatients_SVV.Size = new System.Drawing.Size(1077, 332);
             this.dataGridViewPatients_SVV.TabIndex = 0;
             this.dataGridViewPatients_SVV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPatients_SVV_CellClick);
             this.dataGridViewPatients_SVV.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dataGridViewPatients_SVV_SortCompare);
@@ -494,5 +518,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.Button buttonName_SVV;
         private System.Windows.Forms.Button buttonFam_SVV;
         private System.Windows.Forms.Label labelSort_SVV;
+        private System.Windows.Forms.Button buttonStatic_SVV;
+        private System.Windows.Forms.Button buttonChart_SVV;
     }
 }
