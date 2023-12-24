@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Globalization;
-using System.Windows.Forms.DataVisualization.Charting;
+using Tyuiu.ShananinaVV.Sprint7.Project.V6.Lib;
+
+//using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 {
@@ -25,9 +27,10 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             InitializeComponent();
 
         }
-
+        
         private void buttonDonePat_SVV_Click(object sender, EventArgs e)
         {
+         
             // Сначала создаем колонки
             dataGridViewPatients_SVV.ColumnCount = 5;
             dataGridViewPatients_SVV.Columns[0].Name = "Номер";
@@ -50,7 +53,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
             buttonSear_SVV.Enabled = true;
             buttonAdd_SVV.Enabled = true;
-            buttonDel_SVV.Enabled = true;
+            
             buttonChange_SVV.Enabled = true;
             buttonNew_SVV.Enabled = true;
             buttonSave_SVV.Enabled = true;
@@ -70,6 +73,10 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             buttonOth_SVV.Enabled = true;
             buttonNumber_SVV.Enabled = true;
             buttonDR_SVV.Enabled = true;
+            buttonStatic_SVV.Enabled = true;
+            buttonChart_SVV.Enabled = true;
+
+            buttonCbros_SVV.Enabled = true;
 
         }
 
@@ -239,9 +246,29 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                     row.Visible = false;
             }
             textBoxSear_SVV.Clear();
-            buttonCbros_SVV.Enabled = false;
+
+            //buttonCbros_SVV.Enabled = false;
+
+            comboBoxFilFam_SVV.Items.Clear();
+            comboBoxFilNumber_SVV.Items.Clear();
+
+            comboBoxFilFam_SVV.Text = "";
+            comboBoxFilNumber_SVV.Text = "";
+        
+            // Очистить значения в 
+            radioButtonFilFam_SVV.Checked = false;
+            radioButtonFilNumber_SVV.Checked = false;
+      
+            comboBoxFilFam_SVV.SelectedIndex = -1;
+            comboBoxFilNumber_SVV.SelectedIndex = -1;
+        
+            comboBoxFilFam_SVV.Enabled = false;
+            comboBoxFilNumber_SVV.Enabled = false;
+            
+            //buttonCbros_SVV.Enabled = false;
         }
-        private Stack<string> operationStack = new Stack<string>();
+
+       // private Stack<string> operationStack = new Stack<string>();
 
 
         private void buttonDel_SVV_Click(object sender, EventArgs e)
@@ -263,6 +290,14 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             //operationStack.Push("Выполненная операция");
         }
 
+        private void buttonNumber_SVV_Click(object sender, EventArgs e)
+        {
+            int columnIndex = 0;
+            SortByAlphabet(columnIndex);
+
+            // индекс колонки, по которой нужно сортировать
+        }
+
         private void buttonFam_SVV_Click(object sender, EventArgs e)
         {
             int columnIndex = 1; // Указываем нужный индекс столбца
@@ -281,21 +316,12 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             SortByAlphabet(columnIndex);
         }
 
-        private void buttonNumber_SVV_Click(object sender, EventArgs e)
-        {
-            int columnIndex = 0;
-            SortByAlphabet(columnIndex);
-
-            // индекс колонки, по которой нужно сортировать
-        }
-
         private void buttonDR_SVV_Click(object sender, EventArgs e)
         {
             int columnIndex = 4; // Указываем нужный индекс столбца
             SortByAlphabet(columnIndex);
         }
     
-
         private void dataGridViewPatients_SVV_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
         {
             if (e.Column.Index == 0)
@@ -330,16 +356,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             MessageBox.Show("Количество пациентов: " + count, "Статистика");
         }
 
-        //private int CalculateAge(DateTime birthDate)
-        //{
-            //int age = DateTime.Today.Year - birthDate.Year;
-           // if (birthDate.Date > DateTime.Today.AddYears(-age))
-            //{
-                //age--;
-            //}
-            //return age;
-        //
-
         // Метод для вычисления возраста на основе даты рождения
         private int CalculateAge(DateTime birthDate)
         {
@@ -348,6 +364,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             if (birthDate > currentDate.AddYears(-age)) age--;
             return age;
         }
+
         private void buttonChart_SVV_Click(object sender, EventArgs e)
         {
 
@@ -371,53 +388,265 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             chartForm.UpdateChart(patientsUnder30, patientsOver30); // Передайте данные для отображения на графике
             chartForm.UpdateStatistics(patientsUnder30, patientsOver30); // Передайте данные для отображения статистики
             chartForm.Show();
+        }
+        DataService ds = new DataService();
+
+        public static string path = @"C:\Users\valer\source\repos\Tyuiu.ShananinaVV.Sprint7\Tyuiu.ShananinaVV.Sprint7.Project.V6\bin\Debug\doc.csv";
+
+        private void buttonMin_SVV_Click(object sender, EventArgs e)
+        {
+            string[,] DataMatrix = ds.GetMatrix(path);
+            string[,] SortMinDataMatrix = ds.SortMin(DataMatrix, 0);
+
+            for (int r = 0; r < SortMinDataMatrix.GetLength(0); r++)
+            {
+                for (int c = 0; c < SortMinDataMatrix.GetLength(1); c++)
+                {
+                    dataGridViewPatients_SVV.Rows[r].Cells[c].Value = SortMinDataMatrix[r, c];
+                }
+            }
+        }
+
+        private void textBoxSear_SVV_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = textBoxSear_SVV.Text.ToString().ToLower(); // Получите текст из TextBox
+
+            if (!string.IsNullOrEmpty(searchText))
+            {
+
+                int columnIndex = 0; // Установите индекс столбца по умолчанию
+
+                if (radioButtonFilNumber_SVV.Checked)
+                {
+                    columnIndex = 0; // Установите индекс столбца для поиска в первом столбце
+                }
+                else if (radioButtonFilFam_SVV.Checked)
+                {
+                    columnIndex = 1; // Установите индекс столбца для поиска во втором столбце
+                }
+                
+
+                foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
+                {
+                    if (row.Cells[columnIndex].Value != null)
+                    {
+                        if (row.Cells[columnIndex].Value.ToString().ToLower().Contains(searchText))
+                        {
+                            row.Visible = true; // Если найден текст, то отображаем строку
+                        }
+                        else
+                        {
+                            row.Visible = false; // Если текст не найден, то скрываем строку
+                        }
+                    }
+                }
 
 
+            }
+            else
+            {
+                // Очистить фильтр, если текстовое поле пустое
+                foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
+                {
+                    row.Visible = true;
+                }
+            }
+        
+        }
+
+        private void radioButtonFilNumber_SVV_CheckedChanged(object sender, EventArgs e)
+        {
+            int columnIndex = 0; // Ваш индекс столбца
+            List<string> items = new List<string>();
+
+            // Перебираем все строки и добавляем значение столбца в список
+            foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
+            {
+                if (row.Cells[columnIndex].Value != null)
+                {
+                    items.Add(row.Cells[columnIndex].Value.ToString());
+                }
+            }
+
+            // Очищаем combobox и добавляем список значений
+            comboBoxFilNumber_SVV.Items.Clear();
+            comboBoxFilNumber_SVV.Items.AddRange(items.ToArray());
+
+            comboBoxFilNumber_SVV.Enabled = true;
+
+            comboBoxFilFam_SVV.Enabled = false;
+         
+            comboBoxFilFam_SVV.Text = "";
             
+        }
 
+        private void radioButtonFilFam_SVV_CheckedChanged(object sender, EventArgs e)
+        {
+            int columnIndex = 1; // Ваш индекс столбца
+            List<string> items = new List<string>();
 
-            //FormChart formchart = new FormChart();
-           // formchart.ShowDialog();
+            // Перебираем все строки и добавляем значение столбца в список
+            foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
+            {
+                if (row.Cells[columnIndex].Value != null)
+                {
+                    items.Add(row.Cells[columnIndex].Value.ToString());
+                }
+            }
 
-            //var chartForm = new FormChart();
-            //var chart = chartForm.chart;
+            // Очищаем combobox и добавляем список значений
+            comboBoxFilFam_SVV.Items.Clear();
+            comboBoxFilFam_SVV.Items.AddRange(items.ToArray());
 
-            // Получаем данные из DataGridView
+            comboBoxFilFam_SVV.Enabled = true;
+
+            comboBoxFilNumber_SVV.Enabled = false;
+        
+            comboBoxFilNumber_SVV.Text = "";
             
+        }
 
-            // Отображаем новое окно с графиком
-            //chartForm.Show();
+        private void comboBoxFilNumber_SVV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedValue = comboBoxFilNumber_SVV.SelectedItem.ToString();
 
+            // Очистить предыдущие действия
+            foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
+            {
+                row.Visible = true;
+            }
+
+            // Перебираем все столбцы в dataGridView и скрываем строки, у которых значение в выбранном столбце не соответствует выбранному значению в comboBox
+            foreach (DataGridViewColumn column in dataGridViewPatients_SVV.Columns)
+            {
+                int columnIndex = 0;
+                foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
+                {
+                    if (row.Cells[columnIndex].Value != null && row.Cells[columnIndex].Value.ToString() != selectedValue)
+                    {
+                        row.Visible = false;
+                    }
+                }
+            }
+        }
+
+        private void comboBoxFilFam_SVV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedValue = comboBoxFilFam_SVV.SelectedItem.ToString();
+
+            // Очистить предыдущие действия
+            foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
+            {
+                row.Visible = true;
+            }
+
+            // Перебираем все столбцы в dataGridView и скрываем строки, у которых значение в выбранном столбце не соответствует выбранному значению в comboBox
+            foreach (DataGridViewColumn column in dataGridViewPatients_SVV.Columns)
+            {
+                int columnIndex = 1;
+                foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
+                {
+                    if (row.Cells[columnIndex].Value != null && row.Cells[columnIndex].Value.ToString() != selectedValue)
+                    {
+                        row.Visible = false;
+                    }
+                }
+            }
+        }
+
+        private void buttonClose_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Закрыть";
+            ;
+        }
+
+        private void buttonBackPat_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Назад";
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void buttonDonePat_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Открыть";
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void buttonChart_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "График";
             
+        }
 
-            // Добавляем данные в график
-            
-            // Добавляем график на форму и отображаем её
-            //ageStatsForm.Controls.Add(ageChart);
-            //ageStatsForm.ShowDialog();
+        private void buttonStatic_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Статистика";
+        }
 
+        private void buttonChange_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Изменить";
+        }
 
-            //int patientsUnder30 = 0;
-            //int patientsOver30 = 0;
+        private void buttonNew_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Сбросить";
+        }
 
-            //foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
-            //{
-                //string birthDate = row.Cells["BirthDateColumn"].Value.ToString();
-                //int age = CalculateAge(birthDate);
+        private void buttonSave_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Сохранить";
+        }
 
-                //if (age < 30)
-                //{
-                    //patientsUnder30++;
-                //}
-                //else
-                //{
-                    //patientsOver30++;
-                //}
-           // }
+        private void buttonAdd_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Добавить";
+        }
 
-            // Выводим результаты на график
-            //chart1.Series["AgeGroup"].Points.AddXY("Under 30", patientsUnder30);
-            //chart1.Series["AgeGroup"].Points.AddXY("Over 30", patientsOver30);
+        private void buttonNumber_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Номер";
+        }
+
+        private void buttonFam_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Фамилия";
+        }
+
+        private void buttonName_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Имя";
+        }
+
+        private void buttonOth_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Отчество";
+        }
+
+        private void buttonDR_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Дата рождения";
+        }
+
+        private void radioButtonFilNumber_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Номер";
+        }
+
+        private void radioButtonFilFam_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Фамилия";
+        }
+
+        private void buttonCbros_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Сброс";
+
+        }
+
+        private void buttonSear_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipPatients_SVV.ToolTipTitle = "Искать";
         }
     }
 }

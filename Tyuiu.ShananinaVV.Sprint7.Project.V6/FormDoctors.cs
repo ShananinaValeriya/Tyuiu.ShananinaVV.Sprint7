@@ -54,7 +54,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
             buttonSear_SVV.Enabled = true;
             buttonAdd_SVV.Enabled = true;
-            buttonDel_SVV.Enabled = true;
+            
             buttonChange_SVV.Enabled = true;
             buttonNew_SVV.Enabled = true;
             buttonSave_SVV.Enabled = true;
@@ -77,6 +77,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void SortByAlphabet(int columnIndex)
         {
+
             // Получаем столбец DataGridView, который нужно отсортировать
             DataGridViewColumn column = dataGridViewDoctors_SVV.Columns[columnIndex];
 
@@ -236,20 +237,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             }
 
 
-            //string selectedValue = comboBoxFilter_SVV.SelectedItem.ToString();
-
-            //int columnIndex = 0; // Ваш индекс столбца
-            //foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
-            //{
-                //if (row.Cells[columnIndex].Value != null && row.Cells[columnIndex].Value.ToString() != selectedValue)
-                //{
-                    //row.Visible = false;
-               //}
-                //else
-                //{
-                    //row.Visible = true;
-                //}
-            //}
+            
         }
 
         private void buttonNew_SVV_Click(object sender, EventArgs e)
@@ -355,36 +343,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         }
 
         
-        private void ApplyFilter(int index)
-        {
-            dataGridViewDoctors_SVV.Rows.Cast<DataGridViewRow>()
-                                  .ToList()
-                                   .ForEach(row => row.Visible = Convert.ToInt32(row.Cells["ФИО"].Value) == index);
-            // Получаем BindingSource из DataGridView
-            //var bindingSource = (BindingSource)dataGridViewDoctors_SVV.DataSource;
-
-            // Создаем фильтр на основе значения переменной index
-            //string filter = "Column1 = '" + index + "'"; // Предполагая, что Column1 - это название столбца, к которому вы хотите применить фильтр
-
-            // Задаем фильтр
-            // bindingSource.Filter = filter;
-            // Получаем BindingSource из DataGridView
-            //var bindingSource = (BindingSource)dataGridViewDoctors_SVV.DataSource;
-
-            //if (index < 0 || index >= dataGridViewDoctors_SVV.Columns.Count)
-            //{
-            // return;
-            //}
-
-            // Применяем фильтр к строкам
-            //(dataGridViewDoctors_SVV.DataSource as DataTable).DefaultView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", dataGridViewDoctors_SVV.Columns[index].Name, filterText);
-
-            // Создаем фильтр на основе значения переменной index
-            // string filterText = "ФИО = " + index; // Предполагая, что Column1 - это название столбца, к которому вы хотите применить фильтр
-
-            // Задаем фильтр
-            //bindingSource.Filter = filterText;
-        }
+        
 
         
         private Stack<string> history = new Stack<string>();
@@ -418,8 +377,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
             if (!string.IsNullOrEmpty(searchText))
             {
+               
                 int columnIndex = 0 ; // Установите индекс столбца по умолчанию
-
+                
                 if (radioButtonOne_SVV.Checked)
                 {
                     columnIndex = 0; // Установите индекс столбца для поиска в первом столбце
@@ -547,9 +507,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             comboBoxPosit_SVV.Text = "";
             
         }
-
-        
-
+ 
         private void comboBoxPosit_SVV_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedValue = comboBoxPosit_SVV.SelectedItem.ToString();
@@ -654,6 +612,114 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                 }   
             }
             MessageBox.Show("Количество сотрудников: " + count, "Статистика");   
+        }
+
+        private void labelThree_SVV_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxOneDoc_SVV_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxSear_SVV_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolTipDoctors_SVV_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void buttonClose_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "Закрыть";
+            
+        }
+
+        private void buttonBackDoc_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "Назад";
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void buttonDoctors_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "Открыть";
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void buttonStatic_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "Статистика";
+        }
+
+        private void textBoxName_SVV_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAdd_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "Добавить";
+        }
+
+        private void buttonChange_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "Изменить";
+        }
+
+        private void buttonSave_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "Сохранить";
+        }
+
+        private void buttonNew_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "Сбросить";
+        }
+
+        private void buttonSort_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "ФИО";
+        }
+
+        private void buttonSortPosit_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "Должность";
+        }
+
+        private void buttonSortSpec_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "Специализация";
+        }
+
+        private void buttonCbros_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "Сброс";
+        }
+
+        private void buttonSear_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "Искать";
+        }
+
+        private void radioButtonOne_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "ФИО";
+        }
+
+        private void radioButtonTwo_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "Должность";
+        }
+
+        private void radioButtonThree_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "Специализация";
         }
     }   
 }

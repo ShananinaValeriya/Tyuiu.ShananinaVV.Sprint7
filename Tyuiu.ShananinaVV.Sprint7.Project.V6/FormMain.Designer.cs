@@ -29,11 +29,14 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.buttonHelp_SVV = new System.Windows.Forms.Button();
             this.buttonPatients_SVV = new System.Windows.Forms.Button();
             this.buttonDoctors_SVV = new System.Windows.Forms.Button();
             this.buttonAll_SVV = new System.Windows.Forms.Button();
+            this.buttonRucovod_SVV = new System.Windows.Forms.Button();
+            this.toolTipMain_SVV = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // buttonHelp_SVV
@@ -44,8 +47,10 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonHelp_SVV.Name = "buttonHelp_SVV";
             this.buttonHelp_SVV.Size = new System.Drawing.Size(44, 44);
             this.buttonHelp_SVV.TabIndex = 0;
+            this.toolTipMain_SVV.SetToolTip(this.buttonHelp_SVV, "О программе");
             this.buttonHelp_SVV.UseVisualStyleBackColor = false;
             this.buttonHelp_SVV.Click += new System.EventHandler(this.buttonHelp_SVV_Click);
+            this.buttonHelp_SVV.MouseEnter += new System.EventHandler(this.buttonHelp_SVV_MouseEnter);
             // 
             // buttonPatients_SVV
             // 
@@ -77,11 +82,25 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonAll_SVV.UseVisualStyleBackColor = true;
             this.buttonAll_SVV.Click += new System.EventHandler(this.buttonAll_SVV_Click);
             // 
+            // buttonRucovod_SVV
+            // 
+            this.buttonRucovod_SVV.Location = new System.Drawing.Point(726, 72);
+            this.buttonRucovod_SVV.Name = "buttonRucovod_SVV";
+            this.buttonRucovod_SVV.Size = new System.Drawing.Size(43, 38);
+            this.buttonRucovod_SVV.TabIndex = 7;
+            this.buttonRucovod_SVV.UseVisualStyleBackColor = true;
+            // 
+            // toolTipMain_SVV
+            // 
+            this.toolTipMain_SVV.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipMain_SVV.ToolTipTitle = "Подсказка";
+            // 
             // FormMain
             // 
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(782, 445);
+            this.Controls.Add(this.buttonRucovod_SVV);
             this.Controls.Add(this.buttonAll_SVV);
             this.Controls.Add(this.buttonDoctors_SVV);
             this.Controls.Add(this.buttonPatients_SVV);
@@ -103,6 +122,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.Button buttonPatients_SVV;
         private System.Windows.Forms.Button buttonDoctors_SVV;
         private System.Windows.Forms.Button buttonAll_SVV;
+        private System.Windows.Forms.Button buttonRucovod_SVV;
+        private System.Windows.Forms.ToolTip toolTipMain_SVV;
     }
 }
 

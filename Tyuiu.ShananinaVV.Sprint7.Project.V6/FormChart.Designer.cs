@@ -70,6 +70,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.labelYounger.Size = new System.Drawing.Size(47, 17);
             this.labelYounger.TabIndex = 1;
             this.labelYounger.Text = "young";
+            this.labelYounger.Click += new System.EventHandler(this.labelYounger_Click);
             // 
             // splitter1
             // 
