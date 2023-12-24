@@ -506,7 +506,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.Controls.Add(this.panelTwoDoc_SVV);
             this.Controls.Add(this.panelOneDoc_SVV);
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(990, 604);
+            this.MaximumSize = new System.Drawing.Size(1010, 633);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1010, 633);
             this.Name = "FormDoctors";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "База врачей";

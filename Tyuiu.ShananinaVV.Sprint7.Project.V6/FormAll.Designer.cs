@@ -765,7 +765,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.Controls.Add(this.panelTwo_SVV);
             this.Controls.Add(this.panelOne_SVV);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1523, 890);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1523, 890);
             this.Name = "FormAll";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Общая база";

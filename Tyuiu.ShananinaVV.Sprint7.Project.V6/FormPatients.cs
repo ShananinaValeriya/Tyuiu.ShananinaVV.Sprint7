@@ -78,6 +78,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
             buttonCbros_SVV.Enabled = true;
 
+            radioButtonFilFam_SVV.Enabled = true;
+            radioButtonFilNumber_SVV.Enabled = true;
+
         }
 
         private void SortByAlphabet(int columnIndex)

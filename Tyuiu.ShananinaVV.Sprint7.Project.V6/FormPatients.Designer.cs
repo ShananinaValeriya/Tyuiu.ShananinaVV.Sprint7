@@ -266,6 +266,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // comboBoxFilFam_SVV
             // 
+            this.comboBoxFilFam_SVV.Enabled = false;
             this.comboBoxFilFam_SVV.FormattingEnabled = true;
             this.comboBoxFilFam_SVV.Location = new System.Drawing.Point(125, 69);
             this.comboBoxFilFam_SVV.Name = "comboBoxFilFam_SVV";
@@ -275,6 +276,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // comboBoxFilNumber_SVV
             // 
+            this.comboBoxFilNumber_SVV.Enabled = false;
             this.comboBoxFilNumber_SVV.FormattingEnabled = true;
             this.comboBoxFilNumber_SVV.Location = new System.Drawing.Point(125, 35);
             this.comboBoxFilNumber_SVV.Name = "comboBoxFilNumber_SVV";
@@ -285,6 +287,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // radioButtonFilFam_SVV
             // 
             this.radioButtonFilFam_SVV.AutoSize = true;
+            this.radioButtonFilFam_SVV.Enabled = false;
             this.radioButtonFilFam_SVV.Location = new System.Drawing.Point(6, 69);
             this.radioButtonFilFam_SVV.Name = "radioButtonFilFam_SVV";
             this.radioButtonFilFam_SVV.Size = new System.Drawing.Size(91, 21);
@@ -299,6 +302,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // radioButtonFilNumber_SVV
             // 
             this.radioButtonFilNumber_SVV.AutoSize = true;
+            this.radioButtonFilNumber_SVV.Enabled = false;
             this.radioButtonFilNumber_SVV.Location = new System.Drawing.Point(6, 38);
             this.radioButtonFilNumber_SVV.Name = "radioButtonFilNumber_SVV";
             this.radioButtonFilNumber_SVV.Size = new System.Drawing.Size(72, 21);
@@ -521,7 +525,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.panelTwoPat_SVV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTwoPat_SVV.Location = new System.Drawing.Point(0, 263);
             this.panelTwoPat_SVV.Name = "panelTwoPat_SVV";
-            this.panelTwoPat_SVV.Size = new System.Drawing.Size(1142, 345);
+            this.panelTwoPat_SVV.Size = new System.Drawing.Size(1142, 309);
             this.panelTwoPat_SVV.TabIndex = 2;
             // 
             // dataGridViewPatients_SVV
@@ -534,7 +538,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.dataGridViewPatients_SVV.Name = "dataGridViewPatients_SVV";
             this.dataGridViewPatients_SVV.RowHeadersWidth = 51;
             this.dataGridViewPatients_SVV.RowTemplate.Height = 24;
-            this.dataGridViewPatients_SVV.Size = new System.Drawing.Size(1142, 345);
+            this.dataGridViewPatients_SVV.Size = new System.Drawing.Size(1142, 309);
             this.dataGridViewPatients_SVV.TabIndex = 0;
             this.dataGridViewPatients_SVV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPatients_SVV_CellClick);
             this.dataGridViewPatients_SVV.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dataGridViewPatients_SVV_SortCompare);
@@ -547,10 +551,13 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1142, 608);
+            this.ClientSize = new System.Drawing.Size(1142, 572);
             this.Controls.Add(this.panelTwoPat_SVV);
             this.Controls.Add(this.panelOne_SVV);
-            this.MinimumSize = new System.Drawing.Size(926, 619);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1160, 619);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1160, 619);
             this.Name = "FormPatients";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "База пациентов";
