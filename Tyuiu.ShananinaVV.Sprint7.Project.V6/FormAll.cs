@@ -23,6 +23,13 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.ControlBox = false;
             //DuplicateData(0, dataGridViewPatients_SVV, targtDataGridView);
             //comboBoxFIODoc_SVV.SelectedIndex = -1;
+            //comboBoxDispUch_SVV.Items.AddRange(new object[] { "Да", "Нет" });
+
+            comboBoxDispUch_SVV.Items.Add("Да");
+            comboBoxDispUch_SVV.Items.Add("Нет");
+
+            comboBoxAmbLech_SVV.Items.Add("Да");
+            comboBoxAmbLech_SVV.Items.Add("Нет");
 
         }
 
@@ -96,9 +103,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             textBoxDr_SVV.Enabled = true;
             comboBoxFIODoc_SVV.Enabled = true;
             textBoxDiagnoz_SVV.Enabled = true;
-            textBoxDispUch_SVV.Enabled = true;
+            comboBoxDispUch_SVV.Enabled = true;
             textBoxCrok_SVV.Enabled = true;
-            textBoxAmbLech_SVV.Enabled = true;
+            comboBoxAmbLech_SVV.Enabled = true;
             textBoxPrimech_SVV.Enabled = true;
             textBoxFilterSearch_SVV.Enabled = true;
 
@@ -178,9 +185,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             string dr = textBoxDr_SVV.Text;
             string docname = comboBoxFIODoc_SVV.Text;
             string diagnoz = textBoxDiagnoz_SVV.Text;
-            string amblech = textBoxAmbLech_SVV.Text;
+            string amblech = comboBoxAmbLech_SVV.Text;
             string crokpoter = textBoxCrok_SVV.Text;
-            string dispuch = textBoxDispUch_SVV.Text;
+            string dispuch = comboBoxDispUch_SVV.Text;
             string primech = textBoxPrimech_SVV.Text;
 
             // Проверка на заполнение всех полей
@@ -199,9 +206,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             textBoxDr_SVV.Text = "";
             comboBoxFIODoc_SVV.Text = "";
             textBoxDiagnoz_SVV.Text = "";
-            textBoxAmbLech_SVV.Text = "";
+            comboBoxAmbLech_SVV.Text = "";
             textBoxCrok_SVV.Text = "";
-            textBoxDispUch_SVV.Text = "";
+            comboBoxDispUch_SVV.Text = "";
             textBoxPrimech_SVV.Text = "";
 
             // Переход к добавленной строке
@@ -217,9 +224,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             textBoxDr_SVV.Text = String.Empty;
             comboBoxFIODoc_SVV.Text = String.Empty;
             textBoxDiagnoz_SVV.Text = String.Empty;
-            textBoxAmbLech_SVV.Text = String.Empty;
+            comboBoxAmbLech_SVV.Text = String.Empty;
             textBoxCrok_SVV.Text = String.Empty;
-            textBoxDispUch_SVV.Text = String.Empty;
+            comboBoxDispUch_SVV.Text = String.Empty;
             textBoxPrimech_SVV.Text = String.Empty;
             
         }
@@ -235,9 +242,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             textBoxDr_SVV.Text = row.Cells[4].Value.ToString();
             comboBoxFIODoc_SVV.Text = row.Cells[5].Value.ToString();
             textBoxDiagnoz_SVV.Text = row.Cells[6].Value.ToString();
-            textBoxAmbLech_SVV.Text = row.Cells[7].Value.ToString();
+            comboBoxAmbLech_SVV.Text = row.Cells[7].Value.ToString();
             textBoxCrok_SVV.Text = row.Cells[8].Value.ToString();
-            textBoxDispUch_SVV.Text = row.Cells[9].Value.ToString();
+            comboBoxDispUch_SVV.Text = row.Cells[9].Value.ToString();
             textBoxPrimech_SVV.Text = row.Cells[10].Value.ToString();
         }
 
@@ -261,6 +268,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void buttonChange_SVV_Click(object sender, EventArgs e)
         {
+
             DataGridViewRow newdata = dataGridViewAll_SVV.Rows[index];
             newdata.Cells[0].Value = textBoxNumber_SVV.Text;
             newdata.Cells[1].Value = textBoxFam_SVV.Text;
@@ -269,9 +277,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             newdata.Cells[4].Value = textBoxDr_SVV.Text;
             newdata.Cells[5].Value = comboBoxFIODoc_SVV.Text;
             newdata.Cells[6].Value = textBoxDiagnoz_SVV.Text;
-            newdata.Cells[7].Value = textBoxAmbLech_SVV.Text;
+            newdata.Cells[7].Value = comboBoxAmbLech_SVV.Text;
             newdata.Cells[8].Value = textBoxCrok_SVV.Text;
-            newdata.Cells[9].Value = textBoxDispUch_SVV.Text;
+            newdata.Cells[9].Value = comboBoxDispUch_SVV.Text;
             newdata.Cells[10].Value = textBoxPrimech_SVV.Text;
            
         }
@@ -369,6 +377,11 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                 }
             }
             MessageBox.Show("Количество записей: " + count, "Статистика");
+
+
+            
+
+            
         }
 
         private void textBoxDr_SVV_TextChanged(object sender, EventArgs e)
@@ -990,10 +1003,65 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void comboBoxDispUch_SVV_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Добавляем возможные значения ("Да" и "Нет") в комбо-бокс
-            comboBoxDispUch_SVV.Items.AddRange(new object[] { "Да", "Нет" });
+            //comboBoxDispUch_SVV.Items.AddRange(new object[] { "Да", "Нет" });
             
 
-            comboBoxDispUch_SVV.SelectedIndex = -1;
+            //comboBoxDispUch_SVV.SelectedIndex = -1;
+        }
+
+        private void groupBoxMenu_SVV_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonStaticTwo_SVV_Click(object sender, EventArgs e)
+        {
+
+            
+
+            int yesCount = 0;
+            //int noCount = 0;
+            // Предположим, что столбец с индексом 7 содержит значения "Да" и "Нет"
+            int columnIndex = 7;
+
+            foreach (DataGridViewRow row in dataGridViewAll_SVV.Rows)
+            {
+                if (row.Cells[columnIndex].Value != null)
+                {
+                    string cellValue = row.Cells[columnIndex].Value.ToString();
+
+                    if (cellValue.Equals("Да", StringComparison.OrdinalIgnoreCase))
+                    {
+                        yesCount++;
+                    }
+                    
+                }
+            }
+            MessageBox.Show("Количество пациентов, нуждающихся\nв амбулаторном лечении: " + yesCount, "Статистика");
+        }
+
+        private void buttonStaticThree_SVV_Click(object sender, EventArgs e)
+        {
+            int yesCount = 0;
+            //int noCount = 0;
+            // Предположим, что столбец с индексом 7 содержит значения "Да" и "Нет"
+            int columnIndex = 9;
+
+            foreach (DataGridViewRow row in dataGridViewAll_SVV.Rows)
+            {
+                if (row.Cells[columnIndex].Value != null)
+                {
+                    string cellValue = row.Cells[columnIndex].Value.ToString();
+
+                    if (cellValue.Equals("Да", StringComparison.OrdinalIgnoreCase))
+                    {
+                        yesCount++;
+                    }
+
+                }
+            }
+            MessageBox.Show("Количество пациентов, состоящих\nна диспансерном учете: " + yesCount, "Статистика");
+
         }
     }
 }

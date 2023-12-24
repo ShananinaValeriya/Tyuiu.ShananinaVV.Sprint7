@@ -70,9 +70,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.labelFam_SVV = new System.Windows.Forms.Label();
             this.labelNumber_SVV = new System.Windows.Forms.Label();
             this.textBoxPrimech_SVV = new System.Windows.Forms.TextBox();
-            this.textBoxDispUch_SVV = new System.Windows.Forms.TextBox();
             this.textBoxCrok_SVV = new System.Windows.Forms.TextBox();
-            this.textBoxAmbLech_SVV = new System.Windows.Forms.TextBox();
             this.textBoxDiagnoz_SVV = new System.Windows.Forms.TextBox();
             this.textBoxOth_SVV = new System.Windows.Forms.TextBox();
             this.textBoxName_SVV = new System.Windows.Forms.TextBox();
@@ -88,6 +86,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.toolTipAll_SVV = new System.Windows.Forms.ToolTip(this.components);
             this.comboBoxDispUch_SVV = new System.Windows.Forms.ComboBox();
             this.comboBoxAmbLech_SVV = new System.Windows.Forms.ComboBox();
+            this.buttonStaticTwo_SVV = new System.Windows.Forms.Button();
+            this.buttonStaticThree_SVV = new System.Windows.Forms.Button();
             this.panelOne_SVV.SuspendLayout();
             this.groupBoxSortir_SVV.SuspendLayout();
             this.groupBoxMenu_SVV.SuspendLayout();
@@ -117,8 +117,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxSortir_SVV.Controls.Add(this.buttonSortDiagnoz_SVV);
             this.groupBoxSortir_SVV.Controls.Add(this.buttonSortFam_SVV);
             this.groupBoxSortir_SVV.Controls.Add(this.buttonSortFIODoc_SVV);
-            this.groupBoxSortir_SVV.Controls.Add(this.textBoxDispUch_SVV);
-            this.groupBoxSortir_SVV.Controls.Add(this.textBoxAmbLech_SVV);
             this.groupBoxSortir_SVV.Location = new System.Drawing.Point(902, 12);
             this.groupBoxSortir_SVV.Name = "groupBoxSortir_SVV";
             this.groupBoxSortir_SVV.Size = new System.Drawing.Size(211, 315);
@@ -194,6 +192,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // groupBoxMenu_SVV
             // 
+            this.groupBoxMenu_SVV.Controls.Add(this.buttonStaticTwo_SVV);
             this.groupBoxMenu_SVV.Controls.Add(this.buttonChart_SVV);
             this.groupBoxMenu_SVV.Controls.Add(this.buttonClose_SVV);
             this.groupBoxMenu_SVV.Controls.Add(this.buttonBack_SVV);
@@ -205,12 +204,13 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxMenu_SVV.TabIndex = 3;
             this.groupBoxMenu_SVV.TabStop = false;
             this.groupBoxMenu_SVV.Text = "Меню";
+            this.groupBoxMenu_SVV.Enter += new System.EventHandler(this.groupBoxMenu_SVV_Enter);
             // 
             // buttonChart_SVV
             // 
-            this.buttonChart_SVV.Location = new System.Drawing.Point(7, 247);
+            this.buttonChart_SVV.Location = new System.Drawing.Point(7, 277);
             this.buttonChart_SVV.Name = "buttonChart_SVV";
-            this.buttonChart_SVV.Size = new System.Drawing.Size(137, 61);
+            this.buttonChart_SVV.Size = new System.Drawing.Size(137, 31);
             this.buttonChart_SVV.TabIndex = 14;
             this.buttonChart_SVV.Text = "График";
             this.toolTipAll_SVV.SetToolTip(this.buttonChart_SVV, "Построить график\r\n");
@@ -260,9 +260,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonStatic_SVV.Enabled = false;
             this.buttonStatic_SVV.Location = new System.Drawing.Point(7, 185);
             this.buttonStatic_SVV.Name = "buttonStatic_SVV";
-            this.buttonStatic_SVV.Size = new System.Drawing.Size(137, 56);
+            this.buttonStatic_SVV.Size = new System.Drawing.Size(137, 45);
             this.buttonStatic_SVV.TabIndex = 10;
-            this.buttonStatic_SVV.Text = "Статистика";
+            this.buttonStatic_SVV.Text = "Количество записей";
             this.toolTipAll_SVV.SetToolTip(this.buttonStatic_SVV, "Посмотреть статистичексие данные");
             this.buttonStatic_SVV.UseVisualStyleBackColor = true;
             this.buttonStatic_SVV.Click += new System.EventHandler(this.buttonStatic_SVV_Click);
@@ -422,6 +422,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // groupBoxEdit_SVV
             // 
+            this.groupBoxEdit_SVV.Controls.Add(this.buttonStaticThree_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.comboBoxAmbLech_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.comboBoxDispUch_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.comboBoxFIODoc_SVV);
@@ -586,16 +587,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.textBoxPrimech_SVV.Size = new System.Drawing.Size(160, 137);
             this.textBoxPrimech_SVV.TabIndex = 6;
             // 
-            // textBoxDispUch_SVV
-            // 
-            this.textBoxDispUch_SVV.Enabled = false;
-            this.textBoxDispUch_SVV.Location = new System.Drawing.Point(15, 259);
-            this.textBoxDispUch_SVV.Name = "textBoxDispUch_SVV";
-            this.textBoxDispUch_SVV.Size = new System.Drawing.Size(160, 22);
-            this.textBoxDispUch_SVV.TabIndex = 6;
-            this.toolTipAll_SVV.SetToolTip(this.textBoxDispUch_SVV, "Введите \"Да\" или \"Нет\"\r\n");
-            this.textBoxDispUch_SVV.MouseEnter += new System.EventHandler(this.textBoxDispUch_SVV_MouseEnter);
-            // 
             // textBoxCrok_SVV
             // 
             this.textBoxCrok_SVV.Enabled = false;
@@ -603,16 +594,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.textBoxCrok_SVV.Name = "textBoxCrok_SVV";
             this.textBoxCrok_SVV.Size = new System.Drawing.Size(160, 22);
             this.textBoxCrok_SVV.TabIndex = 6;
-            // 
-            // textBoxAmbLech_SVV
-            // 
-            this.textBoxAmbLech_SVV.Enabled = false;
-            this.textBoxAmbLech_SVV.Location = new System.Drawing.Point(15, 287);
-            this.textBoxAmbLech_SVV.Name = "textBoxAmbLech_SVV";
-            this.textBoxAmbLech_SVV.Size = new System.Drawing.Size(160, 22);
-            this.textBoxAmbLech_SVV.TabIndex = 6;
-            this.toolTipAll_SVV.SetToolTip(this.textBoxAmbLech_SVV, "Введите \"Да\" или \"Нет\"\r\n");
-            this.textBoxAmbLech_SVV.MouseEnter += new System.EventHandler(this.textBoxAmbLech_SVV_MouseEnter);
             // 
             // textBoxDiagnoz_SVV
             // 
@@ -751,6 +732,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // comboBoxDispUch_SVV
             // 
+            this.comboBoxDispUch_SVV.Enabled = false;
             this.comboBoxDispUch_SVV.FormattingEnabled = true;
             this.comboBoxDispUch_SVV.Location = new System.Drawing.Point(205, 196);
             this.comboBoxDispUch_SVV.Name = "comboBoxDispUch_SVV";
@@ -760,11 +742,32 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // comboBoxAmbLech_SVV
             // 
+            this.comboBoxAmbLech_SVV.Enabled = false;
             this.comboBoxAmbLech_SVV.FormattingEnabled = true;
             this.comboBoxAmbLech_SVV.Location = new System.Drawing.Point(402, 78);
             this.comboBoxAmbLech_SVV.Name = "comboBoxAmbLech_SVV";
             this.comboBoxAmbLech_SVV.Size = new System.Drawing.Size(160, 24);
             this.comboBoxAmbLech_SVV.TabIndex = 15;
+            // 
+            // buttonStaticTwo_SVV
+            // 
+            this.buttonStaticTwo_SVV.Location = new System.Drawing.Point(7, 237);
+            this.buttonStaticTwo_SVV.Name = "buttonStaticTwo_SVV";
+            this.buttonStaticTwo_SVV.Size = new System.Drawing.Size(137, 34);
+            this.buttonStaticTwo_SVV.TabIndex = 15;
+            this.buttonStaticTwo_SVV.Text = "Статистика";
+            this.buttonStaticTwo_SVV.UseVisualStyleBackColor = true;
+            this.buttonStaticTwo_SVV.Click += new System.EventHandler(this.buttonStaticTwo_SVV_Click);
+            // 
+            // buttonStaticThree_SVV
+            // 
+            this.buttonStaticThree_SVV.Location = new System.Drawing.Point(277, 13);
+            this.buttonStaticThree_SVV.Name = "buttonStaticThree_SVV";
+            this.buttonStaticThree_SVV.Size = new System.Drawing.Size(117, 27);
+            this.buttonStaticThree_SVV.TabIndex = 16;
+            this.buttonStaticThree_SVV.Text = "Статистика";
+            this.buttonStaticThree_SVV.UseVisualStyleBackColor = true;
+            this.buttonStaticThree_SVV.Click += new System.EventHandler(this.buttonStaticThree_SVV_Click);
             // 
             // FormAll
             // 
@@ -783,7 +786,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.Load += new System.EventHandler(this.FormAll_Load);
             this.panelOne_SVV.ResumeLayout(false);
             this.groupBoxSortir_SVV.ResumeLayout(false);
-            this.groupBoxSortir_SVV.PerformLayout();
             this.groupBoxMenu_SVV.ResumeLayout(false);
             this.groupBoxSearFiltr_SVV.ResumeLayout(false);
             this.groupBoxSearFiltr_SVV.PerformLayout();
@@ -817,9 +819,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.Label labelFam_SVV;
         private System.Windows.Forms.Label labelNumber_SVV;
         private System.Windows.Forms.TextBox textBoxPrimech_SVV;
-        private System.Windows.Forms.TextBox textBoxDispUch_SVV;
         private System.Windows.Forms.TextBox textBoxCrok_SVV;
-        private System.Windows.Forms.TextBox textBoxAmbLech_SVV;
         private System.Windows.Forms.TextBox textBoxDiagnoz_SVV;
         private System.Windows.Forms.TextBox textBoxOth_SVV;
         private System.Windows.Forms.TextBox textBoxName_SVV;
@@ -855,5 +855,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.ComboBox comboBoxFIODoc_SVV;
         private System.Windows.Forms.ComboBox comboBoxAmbLech_SVV;
         private System.Windows.Forms.ComboBox comboBoxDispUch_SVV;
+        private System.Windows.Forms.Button buttonStaticTwo_SVV;
+        private System.Windows.Forms.Button buttonStaticThree_SVV;
     }
 }
