@@ -43,7 +43,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonBack_SVV = new System.Windows.Forms.Button();
             this.buttonOpenBase_SVV = new System.Windows.Forms.Button();
             this.buttonStatic_SVV = new System.Windows.Forms.Button();
-            this.splitterOne_SVV = new System.Windows.Forms.Splitter();
             this.groupBoxSearFiltr_SVV = new System.Windows.Forms.GroupBox();
             this.comboBoxFilDiagnoz_SVV = new System.Windows.Forms.ComboBox();
             this.comboBoxFilFIODoc_SVV = new System.Windows.Forms.ComboBox();
@@ -101,7 +100,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             this.panelOne_SVV.Controls.Add(this.groupBoxSortir_SVV);
             this.panelOne_SVV.Controls.Add(this.groupBoxMenu_SVV);
-            this.panelOne_SVV.Controls.Add(this.splitterOne_SVV);
             this.panelOne_SVV.Controls.Add(this.groupBoxSearFiltr_SVV);
             this.panelOne_SVV.Controls.Add(this.groupBoxEdit_SVV);
             this.panelOne_SVV.Dock = System.Windows.Forms.DockStyle.Top;
@@ -265,14 +263,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonStatic_SVV.UseVisualStyleBackColor = true;
             this.buttonStatic_SVV.Click += new System.EventHandler(this.buttonStatic_SVV_Click);
             this.buttonStatic_SVV.MouseEnter += new System.EventHandler(this.buttonStatic_SVV_MouseEnter);
-            // 
-            // splitterOne_SVV
-            // 
-            this.splitterOne_SVV.Location = new System.Drawing.Point(0, 0);
-            this.splitterOne_SVV.Name = "splitterOne_SVV";
-            this.splitterOne_SVV.Size = new System.Drawing.Size(3, 334);
-            this.splitterOne_SVV.TabIndex = 2;
-            this.splitterOne_SVV.TabStop = false;
             // 
             // groupBoxSearFiltr_SVV
             // 
@@ -795,7 +785,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         #endregion
 
         private System.Windows.Forms.Panel panelOne_SVV;
-        private System.Windows.Forms.Splitter splitterOne_SVV;
         private System.Windows.Forms.GroupBox groupBoxSearFiltr_SVV;
         private System.Windows.Forms.GroupBox groupBoxEdit_SVV;
         private System.Windows.Forms.Panel panelTwo_SVV;

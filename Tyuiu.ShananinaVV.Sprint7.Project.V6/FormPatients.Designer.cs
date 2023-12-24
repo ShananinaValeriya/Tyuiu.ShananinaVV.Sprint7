@@ -43,7 +43,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonClose_SVV = new System.Windows.Forms.Button();
             this.buttonBackPat_SVV = new System.Windows.Forms.Button();
             this.buttonDonePat_SVV = new System.Windows.Forms.Button();
-            this.splitterDD_SVV = new System.Windows.Forms.Splitter();
             this.groupBoxPanel_SVV = new System.Windows.Forms.GroupBox();
             this.comboBoxFilFam_SVV = new System.Windows.Forms.ComboBox();
             this.comboBoxFilNumber_SVV = new System.Windows.Forms.ComboBox();
@@ -84,7 +83,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             this.panelOne_SVV.Controls.Add(this.groupBoxSort_SVV);
             this.panelOne_SVV.Controls.Add(this.groupBoxMeny_SVV);
-            this.panelOne_SVV.Controls.Add(this.splitterDD_SVV);
             this.panelOne_SVV.Controls.Add(this.groupBoxPanel_SVV);
             this.panelOne_SVV.Controls.Add(this.groupBoxPat_SVV);
             this.panelOne_SVV.Dock = System.Windows.Forms.DockStyle.Top;
@@ -248,14 +246,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonDonePat_SVV.UseVisualStyleBackColor = true;
             this.buttonDonePat_SVV.Click += new System.EventHandler(this.buttonDonePat_SVV_Click);
             this.buttonDonePat_SVV.MouseEnter += new System.EventHandler(this.buttonDonePat_SVV_MouseEnter);
-            // 
-            // splitterDD_SVV
-            // 
-            this.splitterDD_SVV.Location = new System.Drawing.Point(0, 0);
-            this.splitterDD_SVV.Name = "splitterDD_SVV";
-            this.splitterDD_SVV.Size = new System.Drawing.Size(3, 263);
-            this.splitterDD_SVV.TabIndex = 5;
-            this.splitterDD_SVV.TabStop = false;
             // 
             // groupBoxPanel_SVV
             // 
@@ -586,7 +576,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.Button buttonBackPat_SVV;
         private System.Windows.Forms.GroupBox groupBoxPat_SVV;
         private System.Windows.Forms.GroupBox groupBoxPanel_SVV;
-        private System.Windows.Forms.Splitter splitterDD_SVV;
         private System.Windows.Forms.Button buttonCbros_SVV;
         private System.Windows.Forms.Button buttonSear_SVV;
         private System.Windows.Forms.Button buttonSave_SVV;

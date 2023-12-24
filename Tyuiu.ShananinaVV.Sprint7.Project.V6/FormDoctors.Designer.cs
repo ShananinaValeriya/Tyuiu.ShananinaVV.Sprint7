@@ -41,7 +41,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonClose_SVV = new System.Windows.Forms.Button();
             this.buttonBackDoc_SVV = new System.Windows.Forms.Button();
             this.buttonDoctors_SVV = new System.Windows.Forms.Button();
-            this.splitterOne_SVV = new System.Windows.Forms.Splitter();
             this.groupBoxSear_SVV = new System.Windows.Forms.GroupBox();
             this.comboBoxSpec_SVV = new System.Windows.Forms.ComboBox();
             this.comboBoxPosit_SVV = new System.Windows.Forms.ComboBox();
@@ -93,7 +92,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             this.panelOneDoc_SVV.Controls.Add(this.groupBoxSort_SVV);
             this.panelOneDoc_SVV.Controls.Add(this.groupBoxMeny_SVV);
-            this.panelOneDoc_SVV.Controls.Add(this.splitterOne_SVV);
             this.panelOneDoc_SVV.Controls.Add(this.groupBoxSear_SVV);
             this.panelOneDoc_SVV.Controls.Add(this.groupBoxOneDoc_SVV);
             this.panelOneDoc_SVV.Dock = System.Windows.Forms.DockStyle.Top;
@@ -215,14 +213,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonDoctors_SVV.UseVisualStyleBackColor = true;
             this.buttonDoctors_SVV.Click += new System.EventHandler(this.buttonDoctors_SVV_Click);
             this.buttonDoctors_SVV.MouseEnter += new System.EventHandler(this.buttonDoctors_SVV_MouseEnter);
-            // 
-            // splitterOne_SVV
-            // 
-            this.splitterOne_SVV.Location = new System.Drawing.Point(0, 0);
-            this.splitterOne_SVV.Name = "splitterOne_SVV";
-            this.splitterOne_SVV.Size = new System.Drawing.Size(3, 261);
-            this.splitterOne_SVV.TabIndex = 2;
-            this.splitterOne_SVV.TabStop = false;
             // 
             // groupBoxSear_SVV
             // 
@@ -558,7 +548,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.Button buttonAdd_SVV;
         private System.Windows.Forms.Button buttonBackDoc_SVV;
         private System.Windows.Forms.Button buttonDoctors_SVV;
-        private System.Windows.Forms.Splitter splitterOne_SVV;
         private System.Windows.Forms.Button buttonSort_SVV;
         private System.Windows.Forms.Button buttonSortSpec_SVV;
         private System.Windows.Forms.Button buttonSortPosit_SVV;
