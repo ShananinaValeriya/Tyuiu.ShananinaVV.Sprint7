@@ -22,6 +22,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             InitializeComponent();
             this.ControlBox = false;
             //DuplicateData(0, dataGridViewPatients_SVV, targtDataGridView);
+            //comboBoxFIODoc_SVV.SelectedIndex = -1;
 
         }
 
@@ -30,6 +31,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         }
         
+
         private void buttonOpenBase_SVV_Click(object sender, EventArgs e)
         {
             dataGridViewAll_SVV.ColumnCount = 11; // 4 колонок изначально + 6 новые колонки для добавления данных из второго файла
@@ -80,7 +82,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             }
             //this.WindowState = FormWindowState.Maximized;
 
-            buttonSearch_SVV.Enabled = true;
+            
             buttonAdd_SVV.Enabled = true;
             buttonDelete_SVV.Enabled = true;
             buttonChange_SVV.Enabled = true;
@@ -92,7 +94,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             textBoxName_SVV.Enabled = true;
             textBoxOth_SVV.Enabled = true;
             textBoxDr_SVV.Enabled = true;
-            textBoxFIODoc_SVV.Enabled = true;
+            comboBoxFIODoc_SVV.Enabled = true;
             textBoxDiagnoz_SVV.Enabled = true;
             textBoxDispUch_SVV.Enabled = true;
             textBoxCrok_SVV.Enabled = true;
@@ -117,9 +119,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             radioButtonFilNumber_SVV.Enabled = true;
             radioButtonFilFIODoc_SVV.Enabled = true;
             radioButtonFilDiagnoz_SVV.Enabled = true;
-            
 
-            
+            comboBoxFIODoc_SVV.SelectedIndex = -1;
+
 
             buttonStatic_SVV.Enabled = true;
         }
@@ -137,26 +139,21 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
             try
             {
-                using (var writer = new StreamWriter("pat.csv"))
+                using (var writerPat = new StreamWriter("pat.csv"))
+                using (var writerAll = new StreamWriter("all.csv"))
                 {
                     foreach (DataGridViewRow row in dataGridViewAll_SVV.Rows)
                     {
-                        writer.WriteLine(string.Join(";", row.Cells.Cast<DataGridViewCell>().Select(cell => cell.Value)));
+                        writerPat.WriteLine(string.Join(";", row.Cells.Cast<DataGridViewCell>().Take(5).Select(cell => cell.Value)));
+                        writerAll.WriteLine(string.Join(";", row.Cells.Cast<DataGridViewCell>().Skip(5).Select(cell => cell.Value)));
                     }
                 }
 
-                using (var writer = new StreamWriter("all.csv"))
-                {
-                    foreach (DataGridViewRow row in dataGridViewAll_SVV.Rows)
-                    {
-                        writer.WriteLine(string.Join(";", row.Cells.Cast<DataGridViewCell>().Select(cell => cell.Value)));
-                    }
-                }
                 MessageBox.Show("Данные успешно сохранены!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при сохранении данных: {ex.Message}");
+                MessageBox.Show("Произошла ошибка при сохранении данных: " + ex.Message);
             }
 
 
@@ -179,20 +176,28 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             string name = textBoxName_SVV.Text;
             string fathname = textBoxOth_SVV.Text;
             string dr = textBoxDr_SVV.Text;
-            string docname = textBoxFIODoc_SVV.Text;
+            string docname = comboBoxFIODoc_SVV.Text;
             string diagnoz = textBoxDiagnoz_SVV.Text;
             string amblech = textBoxAmbLech_SVV.Text;
             string crokpoter = textBoxCrok_SVV.Text;
             string dispuch = textBoxDispUch_SVV.Text;
             string primech = textBoxPrimech_SVV.Text;
-          
+
+            // Проверка на заполнение всех полей
+            if (string.IsNullOrWhiteSpace(number) || string.IsNullOrWhiteSpace(surname) || string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(fathname) || string.IsNullOrWhiteSpace(dr) || string.IsNullOrWhiteSpace(docname) || string.IsNullOrWhiteSpace(diagnoz) || string.IsNullOrWhiteSpace(amblech) || string.IsNullOrWhiteSpace(crokpoter) || string.IsNullOrWhiteSpace(dispuch) || string.IsNullOrWhiteSpace(primech))
+            {
+                // Вывод ошибки
+                MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Остановить выполнение метода
+            }
+
             dataGridViewAll_SVV.Rows.Add(number, surname, name, fathname, dr, docname, diagnoz, amblech, crokpoter, dispuch, primech );
             textBoxNumber_SVV.Text = "";
             textBoxFam_SVV.Text= "";
             textBoxName_SVV.Text ="";
             textBoxOth_SVV.Text = "";
             textBoxDr_SVV.Text = "";
-            textBoxFIODoc_SVV.Text = "";
+            comboBoxFIODoc_SVV.Text = "";
             textBoxDiagnoz_SVV.Text = "";
             textBoxAmbLech_SVV.Text = "";
             textBoxCrok_SVV.Text = "";
@@ -210,7 +215,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             textBoxName_SVV.Text = String.Empty;
             textBoxOth_SVV.Text = String.Empty;
             textBoxDr_SVV.Text = String.Empty;
-            textBoxFIODoc_SVV.Text = String.Empty;
+            comboBoxFIODoc_SVV.Text = String.Empty;
             textBoxDiagnoz_SVV.Text = String.Empty;
             textBoxAmbLech_SVV.Text = String.Empty;
             textBoxCrok_SVV.Text = String.Empty;
@@ -228,7 +233,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             textBoxName_SVV.Text = row.Cells[2].Value.ToString();
             textBoxOth_SVV.Text = row.Cells[3].Value.ToString();
             textBoxDr_SVV.Text = row.Cells[4].Value.ToString();
-            textBoxFIODoc_SVV.Text = row.Cells[5].Value.ToString();
+            comboBoxFIODoc_SVV.Text = row.Cells[5].Value.ToString();
             textBoxDiagnoz_SVV.Text = row.Cells[6].Value.ToString();
             textBoxAmbLech_SVV.Text = row.Cells[7].Value.ToString();
             textBoxCrok_SVV.Text = row.Cells[8].Value.ToString();
@@ -262,7 +267,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             newdata.Cells[2].Value = textBoxName_SVV.Text;
             newdata.Cells[3].Value = textBoxOth_SVV.Text;
             newdata.Cells[4].Value = textBoxDr_SVV.Text;
-            newdata.Cells[5].Value = textBoxFIODoc_SVV.Text;
+            newdata.Cells[5].Value = comboBoxFIODoc_SVV.Text;
             newdata.Cells[6].Value = textBoxDiagnoz_SVV.Text;
             newdata.Cells[7].Value = textBoxAmbLech_SVV.Text;
             newdata.Cells[8].Value = textBoxCrok_SVV.Text;
@@ -398,7 +403,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
             // Очищаем combobox и добавляем список значений
             comboBoxFilNumber_SVV.Items.Clear();
-            comboBoxFilNumber_SVV.Items.AddRange(items.ToArray());
+            comboBoxFilNumber_SVV.Items.AddRange(items.Distinct().ToArray());
 
             comboBoxFilNumber_SVV.Enabled = true;
 
@@ -532,7 +537,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
             // Очищаем combobox и добавляем список значений
             comboBoxFilFam_SVV.Items.Clear();
-            comboBoxFilFam_SVV.Items.AddRange(items.ToArray());
+            comboBoxFilFam_SVV.Items.AddRange(items.Distinct().ToArray());
 
             comboBoxFilFam_SVV.Enabled = true;
 
@@ -563,9 +568,11 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                 }
             }
 
-            // Очищаем combobox и добавляем список значений
+            // Очищаем combobox
             comboBoxFilFIODoc_SVV.Items.Clear();
-            comboBoxFilFIODoc_SVV.Items.AddRange(items.ToArray());
+
+            // Добавляем только уникальные значения
+            comboBoxFilFIODoc_SVV.Items.AddRange(items.Distinct().ToArray());
 
             comboBoxFilFIODoc_SVV.Enabled = true;
 
@@ -584,6 +591,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void radioButtonFilDiagnoz_SVV_CheckedChanged(object sender, EventArgs e)
         {
+            
             int columnIndex = 6; // Ваш индекс столбца
             List<string> items = new List<string>();
 
@@ -598,7 +606,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
             // Очищаем combobox и добавляем список значений
             comboBoxFilDiagnoz_SVV.Items.Clear();
-            comboBoxFilDiagnoz_SVV.Items.AddRange(items.ToArray());
+            comboBoxFilDiagnoz_SVV.Items.AddRange(items.Distinct().ToArray());
 
             comboBoxFilDiagnoz_SVV.Enabled = true;
 
@@ -641,9 +649,10 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             }
             
         }
-
+        
         private void comboBoxFilFIODoc_SVV_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             string selectedValue = comboBoxFilFIODoc_SVV.SelectedItem.ToString();
 
             // Очистить предыдущие действия
@@ -664,43 +673,11 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                     }
                 }
             }
-
-            
         }
 
         
 
-        private void buttonSearch_SVV_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(textBoxFilterSearch_SVV.Text))
-            {
-                string searchText = textBoxFilterSearch_SVV.Text.ToLower();
-                foreach (DataGridViewRow row in dataGridViewAll_SVV.Rows)
-                {
-                    if (row.IsNewRow) continue;
-                    bool found = false;
-                    for (int i = 0; i < dataGridViewAll_SVV.Columns.Count; i++)
-                    {
-                        if (row.Cells[i].Value.ToString().ToLower().Contains(searchText))
-                        {
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (found)
-                        row.Visible = true;
-                    else
-                        row.Visible = false;
-
-                }
-                buttonCbrSear_SVV.Enabled = true;
-            }
-
-            else
-            {
-                MessageBox.Show("Введите данные для поиска", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
 
         private void buttonCbrSear_SVV_Click(object sender, EventArgs e)
         {
@@ -937,6 +914,86 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void labelDispUch_SVV_Click(object sender, EventArgs e)
         {
 
+        }
+
+        
+
+        private void textBoxFIODoc_SVV_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<string> doctorsList = new List<string>();
+
+            // Читаем файл CSV
+            using (StreamReader reader = new StreamReader("doc.csv"))
+            {
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    string[] values = line.Split(';');
+
+                    // Добавляем врачей в список
+                    doctorsList.Add(values[0]); // 0 - индекс столбца с именами врачей
+                }
+            }
+
+            // Заполняем ComboBox найденными врачами
+            comboBoxFIODoc_SVV.DataSource = doctorsList;
+        }
+
+        private void FormAll_Load(object sender, EventArgs e)
+        {
+            // Читаем файл csv
+            List<string[]> data = new List<string[]>();
+            using (StreamReader reader = new StreamReader("doc.csv"))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] row = line.Split(';');
+                    data.Add(row);
+                }
+            }
+
+            // Получаем список всех врачей из столбца с заданным индексом
+            List<string> doctors = new List<string>();
+            foreach (string[] row in data)
+            {
+                if (row.Length > 0)
+                {
+                    string doctor = row[0]; // Индекс столбца с врачами
+                    doctors.Add(doctor);
+                }
+            }
+
+            // Заполняем ComboBox данными
+            comboBoxFIODoc_SVV.DataSource = doctors;
+        }
+
+        private void comboBoxFIODoc_SVV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            //comboBoxFIODoc_SVV.DropDownStyle = ComboBoxStyle.DropDownList;
+            //comboBoxFIODoc_SVV.SelectedItem = null;
+            //comboBoxFIODoc_SVV.SelectedIndex = -1;
+            //comboBoxFIODoc_SVV.SelectedIndex = 0; // выбрать первый элемент
+        }
+
+        private void groupBoxSortir_SVV_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxDispUch_SVV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Добавляем возможные значения ("Да" и "Нет") в комбо-бокс
+            comboBoxDispUch_SVV.Items.AddRange(new object[] { "Да", "Нет" });
+            
+
+            comboBoxDispUch_SVV.SelectedIndex = -1;
         }
     }
 }

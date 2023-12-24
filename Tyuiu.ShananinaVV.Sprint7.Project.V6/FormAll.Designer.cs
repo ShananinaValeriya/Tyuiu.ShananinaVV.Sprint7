@@ -53,10 +53,10 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.radioButtonFilFam_SVV = new System.Windows.Forms.RadioButton();
             this.radioButtonFilNumber_SVV = new System.Windows.Forms.RadioButton();
             this.buttonCbrSear_SVV = new System.Windows.Forms.Button();
-            this.buttonSearch_SVV = new System.Windows.Forms.Button();
             this.labelSearch_SVV = new System.Windows.Forms.Label();
             this.textBoxFilterSearch_SVV = new System.Windows.Forms.TextBox();
             this.groupBoxEdit_SVV = new System.Windows.Forms.GroupBox();
+            this.comboBoxFIODoc_SVV = new System.Windows.Forms.ComboBox();
             this.textBoxDr_SVV = new System.Windows.Forms.TextBox();
             this.labelDr_SVV = new System.Windows.Forms.Label();
             this.labelCrok_SVV = new System.Windows.Forms.Label();
@@ -74,7 +74,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.textBoxCrok_SVV = new System.Windows.Forms.TextBox();
             this.textBoxAmbLech_SVV = new System.Windows.Forms.TextBox();
             this.textBoxDiagnoz_SVV = new System.Windows.Forms.TextBox();
-            this.textBoxFIODoc_SVV = new System.Windows.Forms.TextBox();
             this.textBoxOth_SVV = new System.Windows.Forms.TextBox();
             this.textBoxName_SVV = new System.Windows.Forms.TextBox();
             this.textBoxFam_SVV = new System.Windows.Forms.TextBox();
@@ -87,6 +86,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.panelTwo_SVV = new System.Windows.Forms.Panel();
             this.dataGridViewAll_SVV = new System.Windows.Forms.DataGridView();
             this.toolTipAll_SVV = new System.Windows.Forms.ToolTip(this.components);
+            this.comboBoxDispUch_SVV = new System.Windows.Forms.ComboBox();
+            this.comboBoxAmbLech_SVV = new System.Windows.Forms.ComboBox();
             this.panelOne_SVV.SuspendLayout();
             this.groupBoxSortir_SVV.SuspendLayout();
             this.groupBoxMenu_SVV.SuspendLayout();
@@ -116,12 +117,15 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxSortir_SVV.Controls.Add(this.buttonSortDiagnoz_SVV);
             this.groupBoxSortir_SVV.Controls.Add(this.buttonSortFam_SVV);
             this.groupBoxSortir_SVV.Controls.Add(this.buttonSortFIODoc_SVV);
+            this.groupBoxSortir_SVV.Controls.Add(this.textBoxDispUch_SVV);
+            this.groupBoxSortir_SVV.Controls.Add(this.textBoxAmbLech_SVV);
             this.groupBoxSortir_SVV.Location = new System.Drawing.Point(902, 12);
             this.groupBoxSortir_SVV.Name = "groupBoxSortir_SVV";
             this.groupBoxSortir_SVV.Size = new System.Drawing.Size(211, 315);
             this.groupBoxSortir_SVV.TabIndex = 4;
             this.groupBoxSortir_SVV.TabStop = false;
             this.groupBoxSortir_SVV.Text = "Сортировка";
+            this.groupBoxSortir_SVV.Enter += new System.EventHandler(this.groupBoxSortir_SVV_Enter);
             // 
             // buttonSortDR_SVV
             // 
@@ -275,7 +279,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxSearFiltr_SVV.Controls.Add(this.radioButtonFilFam_SVV);
             this.groupBoxSearFiltr_SVV.Controls.Add(this.radioButtonFilNumber_SVV);
             this.groupBoxSearFiltr_SVV.Controls.Add(this.buttonCbrSear_SVV);
-            this.groupBoxSearFiltr_SVV.Controls.Add(this.buttonSearch_SVV);
             this.groupBoxSearFiltr_SVV.Controls.Add(this.labelSearch_SVV);
             this.groupBoxSearFiltr_SVV.Controls.Add(this.textBoxFilterSearch_SVV);
             this.groupBoxSearFiltr_SVV.Location = new System.Drawing.Point(1119, 12);
@@ -391,26 +394,13 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonCbrSear_SVV.Enabled = false;
             this.buttonCbrSear_SVV.Location = new System.Drawing.Point(53, 253);
             this.buttonCbrSear_SVV.Name = "buttonCbrSear_SVV";
-            this.buttonCbrSear_SVV.Size = new System.Drawing.Size(110, 42);
+            this.buttonCbrSear_SVV.Size = new System.Drawing.Size(264, 42);
             this.buttonCbrSear_SVV.TabIndex = 3;
             this.buttonCbrSear_SVV.Text = "Сброс";
             this.toolTipAll_SVV.SetToolTip(this.buttonCbrSear_SVV, "Сбросить поиск и фильтр");
             this.buttonCbrSear_SVV.UseVisualStyleBackColor = true;
             this.buttonCbrSear_SVV.Click += new System.EventHandler(this.buttonCbrSear_SVV_Click);
             this.buttonCbrSear_SVV.MouseEnter += new System.EventHandler(this.buttonCbrSear_SVV_MouseEnter);
-            // 
-            // buttonSearch_SVV
-            // 
-            this.buttonSearch_SVV.Enabled = false;
-            this.buttonSearch_SVV.Location = new System.Drawing.Point(169, 253);
-            this.buttonSearch_SVV.Name = "buttonSearch_SVV";
-            this.buttonSearch_SVV.Size = new System.Drawing.Size(148, 42);
-            this.buttonSearch_SVV.TabIndex = 2;
-            this.buttonSearch_SVV.Text = "Искать";
-            this.toolTipAll_SVV.SetToolTip(this.buttonSearch_SVV, "Поиск по введенным данным\r\n");
-            this.buttonSearch_SVV.UseVisualStyleBackColor = true;
-            this.buttonSearch_SVV.Click += new System.EventHandler(this.buttonSearch_SVV_Click);
-            this.buttonSearch_SVV.MouseEnter += new System.EventHandler(this.buttonSearch_SVV_MouseEnter);
             // 
             // labelSearch_SVV
             // 
@@ -432,6 +422,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // groupBoxEdit_SVV
             // 
+            this.groupBoxEdit_SVV.Controls.Add(this.comboBoxAmbLech_SVV);
+            this.groupBoxEdit_SVV.Controls.Add(this.comboBoxDispUch_SVV);
+            this.groupBoxEdit_SVV.Controls.Add(this.comboBoxFIODoc_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.textBoxDr_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.labelDr_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.labelCrok_SVV);
@@ -445,11 +438,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxEdit_SVV.Controls.Add(this.labelFam_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.labelNumber_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.textBoxPrimech_SVV);
-            this.groupBoxEdit_SVV.Controls.Add(this.textBoxDispUch_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.textBoxCrok_SVV);
-            this.groupBoxEdit_SVV.Controls.Add(this.textBoxAmbLech_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.textBoxDiagnoz_SVV);
-            this.groupBoxEdit_SVV.Controls.Add(this.textBoxFIODoc_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.textBoxOth_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.textBoxName_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.textBoxFam_SVV);
@@ -466,6 +456,16 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxEdit_SVV.TabStop = false;
             this.groupBoxEdit_SVV.Text = "Редактирование";
             this.groupBoxEdit_SVV.Enter += new System.EventHandler(this.groupBoxInst_SVV_Enter);
+            // 
+            // comboBoxFIODoc_SVV
+            // 
+            this.comboBoxFIODoc_SVV.Enabled = false;
+            this.comboBoxFIODoc_SVV.FormattingEnabled = true;
+            this.comboBoxFIODoc_SVV.Location = new System.Drawing.Point(205, 78);
+            this.comboBoxFIODoc_SVV.Name = "comboBoxFIODoc_SVV";
+            this.comboBoxFIODoc_SVV.Size = new System.Drawing.Size(160, 24);
+            this.comboBoxFIODoc_SVV.TabIndex = 13;
+            this.comboBoxFIODoc_SVV.SelectedIndexChanged += new System.EventHandler(this.comboBoxFIODoc_SVV_SelectedIndexChanged);
             // 
             // textBoxDr_SVV
             // 
@@ -589,7 +589,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // textBoxDispUch_SVV
             // 
             this.textBoxDispUch_SVV.Enabled = false;
-            this.textBoxDispUch_SVV.Location = new System.Drawing.Point(205, 197);
+            this.textBoxDispUch_SVV.Location = new System.Drawing.Point(15, 259);
             this.textBoxDispUch_SVV.Name = "textBoxDispUch_SVV";
             this.textBoxDispUch_SVV.Size = new System.Drawing.Size(160, 22);
             this.textBoxDispUch_SVV.TabIndex = 6;
@@ -607,7 +607,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // textBoxAmbLech_SVV
             // 
             this.textBoxAmbLech_SVV.Enabled = false;
-            this.textBoxAmbLech_SVV.Location = new System.Drawing.Point(402, 78);
+            this.textBoxAmbLech_SVV.Location = new System.Drawing.Point(15, 287);
             this.textBoxAmbLech_SVV.Name = "textBoxAmbLech_SVV";
             this.textBoxAmbLech_SVV.Size = new System.Drawing.Size(160, 22);
             this.textBoxAmbLech_SVV.TabIndex = 6;
@@ -622,14 +622,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.textBoxDiagnoz_SVV.Size = new System.Drawing.Size(160, 22);
             this.textBoxDiagnoz_SVV.TabIndex = 6;
             this.textBoxDiagnoz_SVV.TextChanged += new System.EventHandler(this.textBoxDiagnoz_SVV_TextChanged);
-            // 
-            // textBoxFIODoc_SVV
-            // 
-            this.textBoxFIODoc_SVV.Enabled = false;
-            this.textBoxFIODoc_SVV.Location = new System.Drawing.Point(205, 80);
-            this.textBoxFIODoc_SVV.Name = "textBoxFIODoc_SVV";
-            this.textBoxFIODoc_SVV.Size = new System.Drawing.Size(160, 22);
-            this.textBoxFIODoc_SVV.TabIndex = 6;
             // 
             // textBoxOth_SVV
             // 
@@ -757,6 +749,23 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             this.toolTipAll_SVV.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // comboBoxDispUch_SVV
+            // 
+            this.comboBoxDispUch_SVV.FormattingEnabled = true;
+            this.comboBoxDispUch_SVV.Location = new System.Drawing.Point(205, 196);
+            this.comboBoxDispUch_SVV.Name = "comboBoxDispUch_SVV";
+            this.comboBoxDispUch_SVV.Size = new System.Drawing.Size(160, 24);
+            this.comboBoxDispUch_SVV.TabIndex = 14;
+            this.comboBoxDispUch_SVV.SelectedIndexChanged += new System.EventHandler(this.comboBoxDispUch_SVV_SelectedIndexChanged);
+            // 
+            // comboBoxAmbLech_SVV
+            // 
+            this.comboBoxAmbLech_SVV.FormattingEnabled = true;
+            this.comboBoxAmbLech_SVV.Location = new System.Drawing.Point(402, 78);
+            this.comboBoxAmbLech_SVV.Name = "comboBoxAmbLech_SVV";
+            this.comboBoxAmbLech_SVV.Size = new System.Drawing.Size(160, 24);
+            this.comboBoxAmbLech_SVV.TabIndex = 15;
+            // 
             // FormAll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -771,8 +780,10 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.Name = "FormAll";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Общая база";
+            this.Load += new System.EventHandler(this.FormAll_Load);
             this.panelOne_SVV.ResumeLayout(false);
             this.groupBoxSortir_SVV.ResumeLayout(false);
+            this.groupBoxSortir_SVV.PerformLayout();
             this.groupBoxMenu_SVV.ResumeLayout(false);
             this.groupBoxSearFiltr_SVV.ResumeLayout(false);
             this.groupBoxSearFiltr_SVV.PerformLayout();
@@ -810,7 +821,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.TextBox textBoxCrok_SVV;
         private System.Windows.Forms.TextBox textBoxAmbLech_SVV;
         private System.Windows.Forms.TextBox textBoxDiagnoz_SVV;
-        private System.Windows.Forms.TextBox textBoxFIODoc_SVV;
         private System.Windows.Forms.TextBox textBoxOth_SVV;
         private System.Windows.Forms.TextBox textBoxName_SVV;
         private System.Windows.Forms.TextBox textBoxFam_SVV;
@@ -836,12 +846,14 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.RadioButton radioButtonFilFam_SVV;
         private System.Windows.Forms.RadioButton radioButtonFilNumber_SVV;
         private System.Windows.Forms.Button buttonCbrSear_SVV;
-        private System.Windows.Forms.Button buttonSearch_SVV;
         private System.Windows.Forms.Label labelSearch_SVV;
         private System.Windows.Forms.TextBox textBoxFilterSearch_SVV;
         private System.Windows.Forms.Button buttonChart_SVV;
         private System.Windows.Forms.GroupBox groupBoxMenu_SVV;
         private System.Windows.Forms.GroupBox groupBoxSortir_SVV;
         private System.Windows.Forms.ToolTip toolTipAll_SVV;
+        private System.Windows.Forms.ComboBox comboBoxFIODoc_SVV;
+        private System.Windows.Forms.ComboBox comboBoxAmbLech_SVV;
+        private System.Windows.Forms.ComboBox comboBoxDispUch_SVV;
     }
 }

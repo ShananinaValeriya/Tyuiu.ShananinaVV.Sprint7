@@ -51,7 +51,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonCbros_SVV = new System.Windows.Forms.Button();
             this.labelFour_SVV = new System.Windows.Forms.Label();
             this.textBoxSear_SVV = new System.Windows.Forms.TextBox();
-            this.buttonSear_SVV = new System.Windows.Forms.Button();
             this.groupBoxOneDoc_SVV = new System.Windows.Forms.GroupBox();
             this.buttonSave_SVV = new System.Windows.Forms.Button();
             this.labelThree_SVV = new System.Windows.Forms.Label();
@@ -225,14 +224,13 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxSear_SVV.Controls.Add(this.buttonCbros_SVV);
             this.groupBoxSear_SVV.Controls.Add(this.labelFour_SVV);
             this.groupBoxSear_SVV.Controls.Add(this.textBoxSear_SVV);
-            this.groupBoxSear_SVV.Controls.Add(this.buttonSear_SVV);
             this.groupBoxSear_SVV.Location = new System.Drawing.Point(639, 12);
             this.groupBoxSear_SVV.Name = "groupBoxSear_SVV";
             this.groupBoxSear_SVV.Size = new System.Drawing.Size(340, 240);
             this.groupBoxSear_SVV.TabIndex = 1;
             this.groupBoxSear_SVV.TabStop = false;
             this.groupBoxSear_SVV.Text = "Поиск и фильтр";
-            this.groupBoxSear_SVV.Enter += new System.EventHandler(this.groupBoxSear_SVV_Enter);
+
             // 
             // comboBoxSpec_SVV
             // 
@@ -314,7 +312,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonCbros_SVV.Enabled = false;
             this.buttonCbros_SVV.Location = new System.Drawing.Point(27, 169);
             this.buttonCbros_SVV.Name = "buttonCbros_SVV";
-            this.buttonCbros_SVV.Size = new System.Drawing.Size(90, 38);
+            this.buttonCbros_SVV.Size = new System.Drawing.Size(270, 38);
             this.buttonCbros_SVV.TabIndex = 19;
             this.buttonCbros_SVV.Text = "Сброс";
             this.toolTipDoctors_SVV.SetToolTip(this.buttonCbros_SVV, "Сбросить поиск и фильтр");
@@ -340,20 +338,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.textBoxSear_SVV.Name = "textBoxSear_SVV";
             this.textBoxSear_SVV.Size = new System.Drawing.Size(270, 24);
             this.textBoxSear_SVV.TabIndex = 8;
+            this.toolTipDoctors_SVV.SetToolTip(this.textBoxSear_SVV, "По умолчанию поиск задан по ФИО");
             this.textBoxSear_SVV.TextChanged += new System.EventHandler(this.textBoxSear_SVV_TextChanged);
-            // 
-            // buttonSear_SVV
-            // 
-            this.buttonSear_SVV.Enabled = false;
-            this.buttonSear_SVV.Location = new System.Drawing.Point(123, 169);
-            this.buttonSear_SVV.Name = "buttonSear_SVV";
-            this.buttonSear_SVV.Size = new System.Drawing.Size(174, 38);
-            this.buttonSear_SVV.TabIndex = 5;
-            this.buttonSear_SVV.Text = "Искать";
-            this.toolTipDoctors_SVV.SetToolTip(this.buttonSear_SVV, "Поиск по введенным данным\r\n");
-            this.buttonSear_SVV.UseVisualStyleBackColor = true;
-            this.buttonSear_SVV.Click += new System.EventHandler(this.buttonSear_SVV_Click);
-            this.buttonSear_SVV.MouseEnter += new System.EventHandler(this.buttonSear_SVV_MouseEnter);
+            this.textBoxSear_SVV.MouseEnter += new System.EventHandler(this.textBoxSear_SVV_MouseEnter);
             // 
             // groupBoxOneDoc_SVV
             // 
@@ -373,8 +360,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxOneDoc_SVV.TabIndex = 0;
             this.groupBoxOneDoc_SVV.TabStop = false;
             this.groupBoxOneDoc_SVV.Text = "Инструменты";
-            this.groupBoxOneDoc_SVV.Enter += new System.EventHandler(this.groupBoxOneDoc_SVV_Enter);
-            // 
+            
             // buttonSave_SVV
             // 
             this.buttonSave_SVV.Enabled = false;
@@ -396,7 +382,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.labelThree_SVV.Size = new System.Drawing.Size(112, 17);
             this.labelThree_SVV.TabIndex = 16;
             this.labelThree_SVV.Text = "Специализация";
-            this.labelThree_SVV.Click += new System.EventHandler(this.labelThree_SVV_Click);
+            
             // 
             // labelTwo_SVV
             // 
@@ -469,7 +455,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.textBoxName_SVV.Name = "textBoxName_SVV";
             this.textBoxName_SVV.Size = new System.Drawing.Size(175, 24);
             this.textBoxName_SVV.TabIndex = 9;
-            this.textBoxName_SVV.TextChanged += new System.EventHandler(this.textBoxName_SVV_TextChanged);
+            
             // 
             // buttonAdd_SVV
             // 
@@ -496,7 +482,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // toolTipDoctors_SVV
             // 
             this.toolTipDoctors_SVV.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipDoctors_SVV.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTipDoctors_SVV_Popup);
+            
             // 
             // FormDoctors
             // 
@@ -546,7 +532,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.TextBox textBoxPosit_SVV;
         private System.Windows.Forms.TextBox textBoxName_SVV;
         private System.Windows.Forms.TextBox textBoxSear_SVV;
-        private System.Windows.Forms.Button buttonSear_SVV;
         private System.Windows.Forms.Button buttonAdd_SVV;
         private System.Windows.Forms.Button buttonBackDoc_SVV;
         private System.Windows.Forms.Button buttonDoctors_SVV;

@@ -52,7 +52,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                 }
             }
 
-            buttonSear_SVV.Enabled = true;
+           
             buttonAdd_SVV.Enabled = true;
             
             buttonChange_SVV.Enabled = true;
@@ -116,40 +116,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             SortByAlphabet(columnIndex);
         }
 
-
-        private void buttonSear_SVV_Click(object sender, EventArgs e)
-
-        {
-            if (!string.IsNullOrEmpty(textBoxSear_SVV.Text))
-            {
-                string searchText = textBoxSear_SVV.Text.ToLower();
-                foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
-                {
-                    if (row.IsNewRow) continue;
-                    bool found = false;
-                    for (int i = 0; i < dataGridViewDoctors_SVV.Columns.Count; i++)
-                    {
-                        if (row.Cells[i].Value.ToString().ToLower().Contains(searchText))
-                        {
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (found)
-                        row.Visible = true;
-                    else
-                        row.Visible = false;
-                    
-                }
-                buttonCbros_SVV.Enabled = true;
-            }
-            
-            else
-            { 
-                MessageBox.Show("Введите данные для поиска", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-  
         private void buttonBackDoc_SVV_Click(object sender, EventArgs e)
         {
             this.Hide(); 
@@ -160,6 +126,13 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             string name = textBoxName_SVV.Text;
             string position = textBoxPosit_SVV.Text;
             string specialization = textBoxSpec_SVV.Text;
+
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(position) || string.IsNullOrWhiteSpace(specialization))
+            {
+                // Вывод ошибки
+                MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Остановить выполнение метода
+            }
 
             dataGridViewDoctors_SVV.Rows.Add(name, position, specialization);
             textBoxName_SVV.Text = "";
@@ -341,34 +314,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             comboBoxPosit_SVV.Enabled = false;
             comboBoxSpec_SVV.Enabled = false;
         }
-
         
-        
-
-        
-        private Stack<string> history = new Stack<string>();
-        private void buttonOtmena_SVV_Click(object sender, EventArgs e)
-        {
-            if (history.Count > 0)
-            {
-                string previousOperation = history.Pop(); // извлекаем предыдущую операцию из стека
-                                                          // выполнение отмены предыдущей операции
-
-                // Например, если вы хотите отменить введенный текст в TextBox:
-                textBoxSear_SVV.Text = previousOperation;
-            }
-            //if (operationStack.Count > 0)
-            //{
-                // Возврат на предыдущую операцию
-                // previousOperation = operationStack.Pop();
-                // Отмена выполненной операции
-                // ...
-            //}
-            else
-            { 
-                MessageBox.Show("Нет доступных операций для отмены.");
-            }
-        }
 
         private void textBoxSear_SVV_TextChanged(object sender, EventArgs e)
         {
@@ -438,7 +384,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
             // Очищаем combobox и добавляем список значений
             comboBoxFilter_SVV.Items.Clear();
-            comboBoxFilter_SVV.Items.AddRange(items.ToArray());
+            comboBoxFilter_SVV.Items.AddRange(items.Distinct().ToArray());
 
             comboBoxFilter_SVV.Enabled = true;
 
@@ -468,7 +414,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
             // Очищаем combobox и добавляем список значений
             comboBoxPosit_SVV.Items.Clear();
-            comboBoxPosit_SVV.Items.AddRange(items.ToArray());
+            comboBoxPosit_SVV.Items.AddRange(items.Distinct().ToArray());
 
             comboBoxPosit_SVV.Enabled = true;
 
@@ -496,7 +442,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
             // Очищаем combobox и добавляем список значений
             comboBoxSpec_SVV.Items.Clear();
-            comboBoxSpec_SVV.Items.AddRange(items.ToArray());
+            comboBoxSpec_SVV.Items.AddRange(items.Distinct().ToArray());
 
             comboBoxSpec_SVV.Enabled = true;
 
@@ -614,26 +560,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             MessageBox.Show("Количество сотрудников: " + count, "Статистика");   
         }
 
-        private void labelThree_SVV_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBoxOneDoc_SVV_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBoxSear_SVV_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolTipDoctors_SVV_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
-
+       
         private void buttonClose_SVV_MouseEnter(object sender, EventArgs e)
         {
             toolTipDoctors_SVV.ToolTipTitle = "Закрыть";
@@ -657,11 +584,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             toolTipDoctors_SVV.ToolTipTitle = "Статистика";
         }
 
-        private void textBoxName_SVV_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void buttonAdd_SVV_MouseEnter(object sender, EventArgs e)
         {
             toolTipDoctors_SVV.ToolTipTitle = "Добавить";
@@ -720,6 +643,11 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void radioButtonThree_SVV_MouseEnter(object sender, EventArgs e)
         {
             toolTipDoctors_SVV.ToolTipTitle = "Специализация";
+        }
+
+        private void textBoxSear_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipDoctors_SVV.ToolTipTitle = "Ввод данных для поиска";
         }
     }   
 }

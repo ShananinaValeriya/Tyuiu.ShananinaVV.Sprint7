@@ -163,6 +163,14 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             string fathname = textBoxOth_SVV.Text;
             string dr = textBoxDR_SVV.Text;
 
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(surname) || string.IsNullOrWhiteSpace(number) || string.IsNullOrWhiteSpace(fathname) || string.IsNullOrWhiteSpace(dr))
+            {
+                // Вывод ошибки
+                MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Остановить выполнение метода
+            }
+
+
             dataGridViewPatients_SVV.Rows.Add(number, surname, name, fathname, dr);
             textBoxNumber_SVV.Text = "";
             textBoxFam_SVV.Text = "";
@@ -473,7 +481,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
             // Очищаем combobox и добавляем список значений
             comboBoxFilNumber_SVV.Items.Clear();
-            comboBoxFilNumber_SVV.Items.AddRange(items.ToArray());
+            comboBoxFilNumber_SVV.Items.AddRange(items.Distinct().ToArray());
 
             comboBoxFilNumber_SVV.Enabled = true;
 
@@ -499,7 +507,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
             // Очищаем combobox и добавляем список значений
             comboBoxFilFam_SVV.Items.Clear();
-            comboBoxFilFam_SVV.Items.AddRange(items.ToArray());
+            comboBoxFilFam_SVV.Items.AddRange(items.Distinct().ToArray());
 
             comboBoxFilFam_SVV.Enabled = true;
 
