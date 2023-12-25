@@ -11,7 +11,7 @@ using System.IO;
 using System.Globalization;
 using Tyuiu.ShananinaVV.Sprint7.Project.V6.Lib;
 
-//using System.Windows.Forms.DataVisualization.Charting;
+
 
 namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 {
@@ -20,7 +20,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         int index;
 
         DataTable table = new DataTable("table");
-        //private DataTable dataTable;
+        
         public FormPatients()
         {
             this.ControlBox = false; //убираем кнопки сворачивания, разворачивания и закрытия окна..
@@ -45,13 +45,12 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
-                    var values = line.Split(';'); // предположим, что разделитель - точка с запятой
+                    var values = line.Split(';'); // разделитель - точка с запятой
 
                     dataGridViewPatients_SVV.Rows.Add(values);
                 }
             }
 
-            buttonSear_SVV.Enabled = true;
             buttonAdd_SVV.Enabled = true;
             
             buttonChange_SVV.Enabled = true;
@@ -125,36 +124,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             }
         }
 
-        private void buttonSear_SVV_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(textBoxSear_SVV.Text))
-            {
-                string searchText = textBoxSear_SVV.Text.ToLower();
-                foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
-                {
-                    if (row.IsNewRow) continue;
-                    bool found = false;
-                    for (int i = 0; i < dataGridViewPatients_SVV.Columns.Count; i++)
-                    {
-                        if (row.Cells[i].Value.ToString().ToLower().Contains(searchText))
-                        {
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (found)
-                        row.Visible = true;
-                    else
-                        row.Visible = false;
-                }
-                buttonCbros_SVV.Enabled = true;
-            }
-            else
-            {
-                MessageBox.Show("Введите данные для поиска", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+      
         private void buttonAdd_SVV_Click(object sender, EventArgs e)
         {
             string number = textBoxNumber_SVV.Text;
@@ -279,11 +249,13 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             //buttonCbros_SVV.Enabled = false;
         }
 
-       // private Stack<string> operationStack = new Stack<string>();
+      
 
 
         private void buttonDel_SVV_Click(object sender, EventArgs e)
         {
+
+            
             int count = dataGridViewPatients_SVV.SelectedRows.Count;
             DialogResult dialogResult = MessageBox.Show("Вы уверенны, что хотите удалить \nвыбранные элементы?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
 
@@ -351,38 +323,25 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         }
 
         private void buttonStatic_SVV_Click(object sender, EventArgs e)
+
         {
-            int count = 0;
-            foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
-            {
-                if (!row.IsNewRow) // Пропустить пустую строку в конце
-                {
-                    if (!string.IsNullOrEmpty(row.Cells[0].Value.ToString())) // Проверить, что ячейка не пустая
-                    {
-                        count++;
-                        //MessageBox.Show("Количество сотрудников: " + count);
-                    }
-                }
-            }
+            int count = ds.GetNonEmptyRowCount(dataGridViewPatients_SVV);
+            // делаем что-то с полученным значением count
+            
             MessageBox.Show("Количество пациентов: " + count, "Статистика");
+
         }
 
-        // Метод для вычисления возраста на основе даты рождения
-        private int CalculateAge(DateTime birthDate)
-        {
-            DateTime currentDate = DateTime.Today;
-            int age = currentDate.Year - birthDate.Year;
-            if (birthDate > currentDate.AddYears(-age)) age--;
-            return age;
-        }
+        
+        DataService ds = new DataService();
 
         private void buttonChart_SVV_Click(object sender, EventArgs e)
         {
 
-            // Создайте новую форму для отображения графика и статистики
+            // Создать новую форму для отображения графика и статистики
             FormChart chartForm = new FormChart();
 
-            // Передайте данные из dataGridView в новую форму
+            // Передать данные из dataGridView в новую форму
             List<DateTime> birthDates = new List<DateTime>();
             foreach (DataGridViewRow row in dataGridViewPatients_SVV.Rows)
             {
@@ -392,48 +351,32 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                 }
             }
 
-            // Вычислите возраст каждого пациента и выведите данные в статистику
-            int patientsUnder30 = birthDates.Count(date => CalculateAge(date) < 30);
-            int patientsOver30 = birthDates.Count(date => CalculateAge(date) >= 30);
+            // вычислить возраст каждого пациента и вывести данные в статистику
+            int patientsUnder30 = birthDates.Count(date => ds.CalculateAge(date) < 30);
+            int patientsOver30 = birthDates.Count(date => ds.CalculateAge(date) >= 30);
 
-            chartForm.UpdateChart(patientsUnder30, patientsOver30); // Передайте данные для отображения на графике
-            chartForm.UpdateStatistics(patientsUnder30, patientsOver30); // Передайте данные для отображения статистики
+            chartForm.UpdateChart(patientsUnder30, patientsOver30); // передача данных для отображения на графике
+            chartForm.UpdateStatistics(patientsUnder30, patientsOver30); // передача данных для отображения статистики
             chartForm.Show();
         }
-        DataService ds = new DataService();
 
-        public static string path = @"C:\Users\valer\source\repos\Tyuiu.ShananinaVV.Sprint7\Tyuiu.ShananinaVV.Sprint7.Project.V6\bin\Debug\doc.csv";
-
-        private void buttonMin_SVV_Click(object sender, EventArgs e)
-        {
-            string[,] DataMatrix = ds.GetMatrix(path);
-            string[,] SortMinDataMatrix = ds.SortMin(DataMatrix, 0);
-
-            for (int r = 0; r < SortMinDataMatrix.GetLength(0); r++)
-            {
-                for (int c = 0; c < SortMinDataMatrix.GetLength(1); c++)
-                {
-                    dataGridViewPatients_SVV.Rows[r].Cells[c].Value = SortMinDataMatrix[r, c];
-                }
-            }
-        }
 
         private void textBoxSear_SVV_TextChanged(object sender, EventArgs e)
         {
-            string searchText = textBoxSear_SVV.Text.ToString().ToLower(); // Получите текст из TextBox
+            string searchText = textBoxSear_SVV.Text.ToString().ToLower(); // текст из TextBox
 
             if (!string.IsNullOrEmpty(searchText))
             {
 
-                int columnIndex = 0; // Установите индекс столбца по умолчанию
+                int columnIndex = 0; // индекс столбца по умолчанию
 
                 if (radioButtonFilNumber_SVV.Checked)
                 {
-                    columnIndex = 0; // Установите индекс столбца для поиска в первом столбце
+                    columnIndex = 0; //  индекс столбца для поиска в первом столбце
                 }
                 else if (radioButtonFilFam_SVV.Checked)
                 {
-                    columnIndex = 1; // Установите индекс столбца для поиска во втором столбце
+                    columnIndex = 1; //  индекс столбца для поиска во втором столбце
                 }
                 
 
@@ -467,7 +410,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void radioButtonFilNumber_SVV_CheckedChanged(object sender, EventArgs e)
         {
-            int columnIndex = 0; // Ваш индекс столбца
+            int columnIndex = 0; //  индекс столбца
             List<string> items = new List<string>();
 
             // Перебираем все строки и добавляем значение столбца в список
@@ -493,7 +436,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void radioButtonFilFam_SVV_CheckedChanged(object sender, EventArgs e)
         {
-            int columnIndex = 1; // Ваш индекс столбца
+            int columnIndex = 1; //  индекс столбца
             List<string> items = new List<string>();
 
             // Перебираем все строки и добавляем значение столбца в список
@@ -655,9 +598,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         }
 
-        private void buttonSear_SVV_MouseEnter(object sender, EventArgs e)
+        private void textBoxSear_SVV_MouseEnter(object sender, EventArgs e)
         {
-            toolTipPatients_SVV.ToolTipTitle = "Искать";
+            toolTipPatients_SVV.ToolTipTitle = "Ввод данных для поиска";
         }
     }
 }

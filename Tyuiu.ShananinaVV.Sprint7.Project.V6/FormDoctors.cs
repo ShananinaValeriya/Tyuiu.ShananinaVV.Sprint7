@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Windows.Forms.DataVisualization.Charting;
+using Tyuiu.ShananinaVV.Sprint7.Project.V6.Lib;
 
 
 
@@ -543,20 +544,12 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             chartForm.ShowDialog();
         }
 
+        DataService ds = new DataService();
         private void buttonStatic_SVV_Click(object sender, EventArgs e)
         {
-            int count = 0; 
-            foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
-            {
-                if (!row.IsNewRow) // Пропустить пустую строку в конце
-                {
-                    if (!string.IsNullOrEmpty(row.Cells[0].Value.ToString())) // Проверить, что ячейка не пустая
-                    {
-                        count++;
-                        //MessageBox.Show("Количество сотрудников: " + count);
-                    }
-                }   
-            }
+
+            int count = ds.GetNonEmptyRowCount(dataGridViewDoctors_SVV);
+            // делаем что-то с полученным значением count
             MessageBox.Show("Количество сотрудников: " + count, "Статистика");   
         }
 

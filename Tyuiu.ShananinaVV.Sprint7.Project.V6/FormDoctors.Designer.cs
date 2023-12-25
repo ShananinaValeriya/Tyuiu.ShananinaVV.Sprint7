@@ -89,6 +89,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // panelOneDoc_SVV
             // 
+            this.panelOneDoc_SVV.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panelOneDoc_SVV.Controls.Add(this.groupBoxSort_SVV);
             this.panelOneDoc_SVV.Controls.Add(this.groupBoxMeny_SVV);
             this.panelOneDoc_SVV.Controls.Add(this.groupBoxSear_SVV);
@@ -230,7 +231,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxSear_SVV.TabIndex = 1;
             this.groupBoxSear_SVV.TabStop = false;
             this.groupBoxSear_SVV.Text = "Поиск и фильтр";
-
             // 
             // comboBoxSpec_SVV
             // 
@@ -360,7 +360,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxOneDoc_SVV.TabIndex = 0;
             this.groupBoxOneDoc_SVV.TabStop = false;
             this.groupBoxOneDoc_SVV.Text = "Инструменты";
-            
+            // 
             // buttonSave_SVV
             // 
             this.buttonSave_SVV.Enabled = false;
@@ -382,7 +382,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.labelThree_SVV.Size = new System.Drawing.Size(112, 17);
             this.labelThree_SVV.TabIndex = 16;
             this.labelThree_SVV.Text = "Специализация";
-            
             // 
             // labelTwo_SVV
             // 
@@ -455,7 +454,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.textBoxName_SVV.Name = "textBoxName_SVV";
             this.textBoxName_SVV.Size = new System.Drawing.Size(175, 24);
             this.textBoxName_SVV.TabIndex = 9;
-            
             // 
             // buttonAdd_SVV
             // 
@@ -482,7 +480,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // toolTipDoctors_SVV
             // 
             this.toolTipDoctors_SVV.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            
             // 
             // FormDoctors
             // 

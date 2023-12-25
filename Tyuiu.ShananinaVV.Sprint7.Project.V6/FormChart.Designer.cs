@@ -35,7 +35,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.panelUsl_SVV = new System.Windows.Forms.Panel();
             this.labelOlder = new System.Windows.Forms.Label();
             this.labelYounger = new System.Windows.Forms.Label();
-            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.splitterOne_SVV = new System.Windows.Forms.Splitter();
             this.panelChart_SVV = new System.Windows.Forms.Panel();
             this.chartDoctors_SVV = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panelUsl_SVV.SuspendLayout();
@@ -72,13 +72,13 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.labelYounger.Text = "young";
             this.labelYounger.Click += new System.EventHandler(this.labelYounger_Click);
             // 
-            // splitter1
+            // splitterOne_SVV
             // 
-            this.splitter1.Location = new System.Drawing.Point(272, 0);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 450);
-            this.splitter1.TabIndex = 2;
-            this.splitter1.TabStop = false;
+            this.splitterOne_SVV.Location = new System.Drawing.Point(272, 0);
+            this.splitterOne_SVV.Name = "splitterOne_SVV";
+            this.splitterOne_SVV.Size = new System.Drawing.Size(3, 450);
+            this.splitterOne_SVV.TabIndex = 2;
+            this.splitterOne_SVV.TabStop = false;
             // 
             // panelChart_SVV
             // 
@@ -106,6 +106,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.chartDoctors_SVV.Series.Add(series1);
             this.chartDoctors_SVV.Size = new System.Drawing.Size(525, 450);
             this.chartDoctors_SVV.TabIndex = 0;
+            this.chartDoctors_SVV.Click += new System.EventHandler(this.chartDoctors_SVV_Click);
             // 
             // FormChart
             // 
@@ -113,7 +114,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panelChart_SVV);
-            this.Controls.Add(this.splitter1);
+            this.Controls.Add(this.splitterOne_SVV);
             this.Controls.Add(this.panelUsl_SVV);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -131,7 +132,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         #endregion
 
         private System.Windows.Forms.Panel panelUsl_SVV;
-        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.Splitter splitterOne_SVV;
         private System.Windows.Forms.Panel panelChart_SVV;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDoctors_SVV;
         private System.Windows.Forms.Label labelOlder;

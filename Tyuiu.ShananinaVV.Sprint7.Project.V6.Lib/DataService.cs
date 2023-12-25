@@ -2,149 +2,80 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using System.Threading.Tasks;
-using System.IO;
+
 
 
 namespace Tyuiu.ShananinaVV.Sprint7.Project.V6.Lib
 {
     public class DataService
     {
-        public string[,] SortMin(string[,] matrix, int NumberColumn)
+
+        // Метод для вычисления возраста на основе даты рождения
+        public int CalculateAge(DateTime birthDate)
         {
-            int[] Entrance = new int[matrix.GetLength(0) - 1];
-            Entrance[Entrance.Length - 1] = Convert.ToInt32(matrix[matrix.GetLength(0) - 1, NumberColumn]);
-            for (int i = 0; i < Entrance.Length - 1; i++)
+            DateTime today = DateTime.Today;
+            int age = today.Year - birthDate.Year;
+            if (birthDate > today.AddYears(-age)) age--;
+            return age;
+        }
+
+        public int GetNonEmptyRowCount(DataGridView dataGridView)
+        {
+            int count = 0;
+            foreach (DataGridViewRow row in dataGridView.Rows)
             {
-                Entrance[i] = Convert.ToInt32(matrix[i + 1, NumberColumn]);
-            }
-
-            Array.Sort(Entrance, (x, y) => x.CompareTo(y));
-
-            string[,] SortMatrix = new string[matrix.GetLength(0), matrix.GetLength(1)];
-
-            for (int i = 0; i < SortMatrix.GetLength(1); i++)
-            {
-                SortMatrix[0, i] = matrix[0, i];
-            }
-
-            for (int i = 0; i < SortMatrix.GetLength(0) - 1; i++)
-            {
-                for (int j = 1; j < matrix.GetLength(0); j++)
+                if (!row.IsNewRow) // Пропустить пустую строку в конце
                 {
-                    if (Entrance[i] == Convert.ToInt32(matrix[j, NumberColumn]))
+                    if (!string.IsNullOrEmpty(row.Cells[0].Value.ToString())) // Проверить, что ячейка не пустая
                     {
-                        for (int c = 0; c < SortMatrix.GetLength(1); c++)
-                        {
-                            SortMatrix[i + 1, c] = matrix[j, c];
-                        }
-                        matrix[j, NumberColumn] = "-1";
-                        break;
+                        count++;
                     }
                 }
             }
-            return SortMatrix;
+            return count;
         }
 
-
-
-        public string[,] GetMatrix(string path) // возврашает данные из excel
+        public int CountYesValues(DataGridView dataGridView, int columnIndex)
         {
-            string[] str = File.ReadAllLines(path);
+            int yesCount = 0;
 
-            int columns = str[0].Split(';').Length;
-            int rows = str.Length;
-
-            string[,] matrix = new string[rows, columns];
-
-            for (int i = 0; i < str.Length; i++)
+            foreach (DataGridViewRow row in dataGridView.Rows)
             {
-                string strIndexI = str[i];
-                string[] strArr = strIndexI.Split(';');
-                for (int c = 0; c < strArr.Length; c++)
+                if (row.Cells[columnIndex].Value != null)
                 {
-                    matrix[i, c] = strArr[c];
-                }
-            }
-            return matrix;
-        }
+                    string cellValue = row.Cells[columnIndex].Value.ToString();
 
-        public string[,] SortMax(string[,] matrix, int NumberColumn)
-        {
-            int[] Entrance = new int[matrix.GetLength(0) - 1];
-            Entrance[Entrance.Length - 1] = Convert.ToInt32(matrix[matrix.GetLength(0) - 1, NumberColumn]);
-            for (int i = 0; i < Entrance.Length - 1; i++)
-            {
-                Entrance[i] = Convert.ToInt32(matrix[i + 1, NumberColumn]);
-            }
-
-            Array.Sort(Entrance, (x, y) => y.CompareTo(x));
-
-            string[,] SortMatrix = new string[matrix.GetLength(0), matrix.GetLength(1)];
-
-            for (int i = 0; i < SortMatrix.GetLength(1); i++)
-            {
-                SortMatrix[0, i] = matrix[0, i];
-            }
-
-            for (int i = 0; i < SortMatrix.GetLength(0) - 1; i++)
-            {
-                for (int j = 1; j < matrix.GetLength(0); j++)
-                {
-                    if (Entrance[i] == Convert.ToInt32(matrix[j, NumberColumn]))
+                    if (cellValue.Equals("Да", StringComparison.OrdinalIgnoreCase))
                     {
-                        for (int c = 0; c < SortMatrix.GetLength(1); c++)
-                        {
-                            SortMatrix[i + 1, c] = matrix[j, c];
-                        }
-                        matrix[j, NumberColumn] = "-1";
-                        break;
+                        yesCount++;
                     }
                 }
             }
-            return SortMatrix;
+
+            return yesCount;
         }
 
-        public class Patient
+       
+        public int CountNoValues(DataGridView dataGridView, int columnIndex)
         {
-            public int Number { get; set; }
-            public string LastName { get; set; }
-            public string FirstName { get; set; }
-            public string MiddleName { get; set; }
-            public DateTime DateOfBirth { get; set; }
-        }
-
-
-        public class PatientRepository
-        {
-            private const string PatientsFilePath = "patients.csv";
-
-            public List<Patient> GetAllPatients()
+            int noCount = 0;
+            foreach (DataGridViewRow row in dataGridView.Rows)
             {
-                List<Patient> patients = new List<Patient>();
-
-                using (StreamReader reader = new StreamReader(PatientsFilePath))
+                if (row.Cells[columnIndex].Value != null)
                 {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
+                    string cellValue = row.Cells[columnIndex].Value.ToString();
+
+                    if (cellValue.Equals("Нет", StringComparison.OrdinalIgnoreCase))
                     {
-                        string[] values = line.Split(';');
-
-                        if (values.Length == 5)
-                        {
-                            Patient patient = new Patient();
-                            patient.Number = int.Parse(values[0]);
-                            patient.LastName = values[1];
-                            patient.FirstName = values[2];
-                            patient.MiddleName = values[3];
-                            patient.DateOfBirth = DateTime.Parse(values[4]);
-
-                            patients.Add(patient);
-                        }
+                        noCount++;
                     }
                 }
-                return patients;
             }
+            return noCount;
         }
     }
+
 }
+

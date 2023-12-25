@@ -57,5 +57,10 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         {
 
         }
+
+        private void chartDoctors_SVV_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

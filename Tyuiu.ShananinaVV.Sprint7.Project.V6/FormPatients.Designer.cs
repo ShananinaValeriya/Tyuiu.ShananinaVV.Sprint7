@@ -51,7 +51,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.labelSear_SVV = new System.Windows.Forms.Label();
             this.textBoxSear_SVV = new System.Windows.Forms.TextBox();
             this.buttonCbros_SVV = new System.Windows.Forms.Button();
-            this.buttonSear_SVV = new System.Windows.Forms.Button();
             this.groupBoxPat_SVV = new System.Windows.Forms.GroupBox();
             this.labelDR_SVV = new System.Windows.Forms.Label();
             this.labelOth_SVV = new System.Windows.Forms.Label();
@@ -81,6 +80,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // panelOne_SVV
             // 
+            this.panelOne_SVV.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panelOne_SVV.Controls.Add(this.groupBoxSort_SVV);
             this.panelOne_SVV.Controls.Add(this.groupBoxMeny_SVV);
             this.panelOne_SVV.Controls.Add(this.groupBoxPanel_SVV);
@@ -98,9 +98,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxSort_SVV.Controls.Add(this.buttonOth_SVV);
             this.groupBoxSort_SVV.Controls.Add(this.buttonFam_SVV);
             this.groupBoxSort_SVV.Controls.Add(this.buttonName_SVV);
-            this.groupBoxSort_SVV.Location = new System.Drawing.Point(679, 15);
+            this.groupBoxSort_SVV.Location = new System.Drawing.Point(679, 12);
             this.groupBoxSort_SVV.Name = "groupBoxSort_SVV";
-            this.groupBoxSort_SVV.Size = new System.Drawing.Size(169, 239);
+            this.groupBoxSort_SVV.Size = new System.Drawing.Size(169, 242);
             this.groupBoxSort_SVV.TabIndex = 7;
             this.groupBoxSort_SVV.TabStop = false;
             this.groupBoxSort_SVV.Text = "Сортировка";
@@ -256,10 +256,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxPanel_SVV.Controls.Add(this.labelSear_SVV);
             this.groupBoxPanel_SVV.Controls.Add(this.textBoxSear_SVV);
             this.groupBoxPanel_SVV.Controls.Add(this.buttonCbros_SVV);
-            this.groupBoxPanel_SVV.Controls.Add(this.buttonSear_SVV);
-            this.groupBoxPanel_SVV.Location = new System.Drawing.Point(854, 15);
+            this.groupBoxPanel_SVV.Location = new System.Drawing.Point(854, 12);
             this.groupBoxPanel_SVV.Name = "groupBoxPanel_SVV";
-            this.groupBoxPanel_SVV.Size = new System.Drawing.Size(277, 240);
+            this.groupBoxPanel_SVV.Size = new System.Drawing.Size(277, 243);
             this.groupBoxPanel_SVV.TabIndex = 3;
             this.groupBoxPanel_SVV.TabStop = false;
             this.groupBoxPanel_SVV.Text = "Поиск и фильтрация";
@@ -331,33 +330,22 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.textBoxSear_SVV.Name = "textBoxSear_SVV";
             this.textBoxSear_SVV.Size = new System.Drawing.Size(233, 22);
             this.textBoxSear_SVV.TabIndex = 3;
+            this.toolTipPatients_SVV.SetToolTip(this.textBoxSear_SVV, "По умолчанию поиск задан по номеру\r\n");
             this.textBoxSear_SVV.TextChanged += new System.EventHandler(this.textBoxSear_SVV_TextChanged);
+            this.textBoxSear_SVV.MouseEnter += new System.EventHandler(this.textBoxSear_SVV_MouseEnter);
             // 
             // buttonCbros_SVV
             // 
             this.buttonCbros_SVV.Enabled = false;
             this.buttonCbros_SVV.Location = new System.Drawing.Point(21, 181);
             this.buttonCbros_SVV.Name = "buttonCbros_SVV";
-            this.buttonCbros_SVV.Size = new System.Drawing.Size(86, 40);
+            this.buttonCbros_SVV.Size = new System.Drawing.Size(233, 29);
             this.buttonCbros_SVV.TabIndex = 2;
             this.buttonCbros_SVV.Text = "Сброс";
             this.toolTipPatients_SVV.SetToolTip(this.buttonCbros_SVV, "Сбросить поиск и фильтр\r\n");
             this.buttonCbros_SVV.UseVisualStyleBackColor = true;
             this.buttonCbros_SVV.Click += new System.EventHandler(this.buttonCbros_SVV_Click);
             this.buttonCbros_SVV.MouseEnter += new System.EventHandler(this.buttonCbros_SVV_MouseEnter);
-            // 
-            // buttonSear_SVV
-            // 
-            this.buttonSear_SVV.Enabled = false;
-            this.buttonSear_SVV.Location = new System.Drawing.Point(113, 181);
-            this.buttonSear_SVV.Name = "buttonSear_SVV";
-            this.buttonSear_SVV.Size = new System.Drawing.Size(141, 40);
-            this.buttonSear_SVV.TabIndex = 1;
-            this.buttonSear_SVV.Text = "Искать";
-            this.toolTipPatients_SVV.SetToolTip(this.buttonSear_SVV, "Поиск по введенным данным");
-            this.buttonSear_SVV.UseVisualStyleBackColor = true;
-            this.buttonSear_SVV.Click += new System.EventHandler(this.buttonSear_SVV_Click);
-            this.buttonSear_SVV.MouseEnter += new System.EventHandler(this.buttonSear_SVV_MouseEnter);
             // 
             // groupBoxPat_SVV
             // 
@@ -584,7 +572,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.GroupBox groupBoxPat_SVV;
         private System.Windows.Forms.GroupBox groupBoxPanel_SVV;
         private System.Windows.Forms.Button buttonCbros_SVV;
-        private System.Windows.Forms.Button buttonSear_SVV;
         private System.Windows.Forms.Button buttonSave_SVV;
         private System.Windows.Forms.Button buttonChange_SVV;
         private System.Windows.Forms.Button buttonAdd_SVV;

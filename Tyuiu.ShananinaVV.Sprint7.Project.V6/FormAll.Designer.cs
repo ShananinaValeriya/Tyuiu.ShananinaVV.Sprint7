@@ -38,8 +38,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonSortFam_SVV = new System.Windows.Forms.Button();
             this.buttonSortFIODoc_SVV = new System.Windows.Forms.Button();
             this.groupBoxMenu_SVV = new System.Windows.Forms.GroupBox();
-            this.buttonChart_SVV = new System.Windows.Forms.Button();
+            this.buttonStaticTwo_SVV = new System.Windows.Forms.Button();
             this.buttonClose_SVV = new System.Windows.Forms.Button();
+            this.buttonStaticThree_SVV = new System.Windows.Forms.Button();
             this.buttonBack_SVV = new System.Windows.Forms.Button();
             this.buttonOpenBase_SVV = new System.Windows.Forms.Button();
             this.buttonStatic_SVV = new System.Windows.Forms.Button();
@@ -56,6 +57,10 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.labelSearch_SVV = new System.Windows.Forms.Label();
             this.textBoxFilterSearch_SVV = new System.Windows.Forms.TextBox();
             this.groupBoxEdit_SVV = new System.Windows.Forms.GroupBox();
+            this.buttonChartTwo_SVV = new System.Windows.Forms.Button();
+            this.buttonChart_SVV = new System.Windows.Forms.Button();
+            this.comboBoxAmbLech_SVV = new System.Windows.Forms.ComboBox();
+            this.comboBoxDispUch_SVV = new System.Windows.Forms.ComboBox();
             this.comboBoxFIODoc_SVV = new System.Windows.Forms.ComboBox();
             this.textBoxDr_SVV = new System.Windows.Forms.TextBox();
             this.labelDr_SVV = new System.Windows.Forms.Label();
@@ -84,10 +89,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.panelTwo_SVV = new System.Windows.Forms.Panel();
             this.dataGridViewAll_SVV = new System.Windows.Forms.DataGridView();
             this.toolTipAll_SVV = new System.Windows.Forms.ToolTip(this.components);
-            this.comboBoxDispUch_SVV = new System.Windows.Forms.ComboBox();
-            this.comboBoxAmbLech_SVV = new System.Windows.Forms.ComboBox();
-            this.buttonStaticTwo_SVV = new System.Windows.Forms.Button();
-            this.buttonStaticThree_SVV = new System.Windows.Forms.Button();
             this.panelOne_SVV.SuspendLayout();
             this.groupBoxSortir_SVV.SuspendLayout();
             this.groupBoxMenu_SVV.SuspendLayout();
@@ -108,7 +109,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.panelOne_SVV.Name = "panelOne_SVV";
             this.panelOne_SVV.Size = new System.Drawing.Size(1505, 334);
             this.panelOne_SVV.TabIndex = 0;
-            this.panelOne_SVV.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // groupBoxSortir_SVV
             // 
@@ -123,7 +123,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxSortir_SVV.TabIndex = 4;
             this.groupBoxSortir_SVV.TabStop = false;
             this.groupBoxSortir_SVV.Text = "Сортировка";
-            this.groupBoxSortir_SVV.Enter += new System.EventHandler(this.groupBoxSortir_SVV_Enter);
             // 
             // buttonSortDR_SVV
             // 
@@ -193,8 +192,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // groupBoxMenu_SVV
             // 
             this.groupBoxMenu_SVV.Controls.Add(this.buttonStaticTwo_SVV);
-            this.groupBoxMenu_SVV.Controls.Add(this.buttonChart_SVV);
             this.groupBoxMenu_SVV.Controls.Add(this.buttonClose_SVV);
+            this.groupBoxMenu_SVV.Controls.Add(this.buttonStaticThree_SVV);
             this.groupBoxMenu_SVV.Controls.Add(this.buttonBack_SVV);
             this.groupBoxMenu_SVV.Controls.Add(this.buttonOpenBase_SVV);
             this.groupBoxMenu_SVV.Controls.Add(this.buttonStatic_SVV);
@@ -204,19 +203,19 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxMenu_SVV.TabIndex = 3;
             this.groupBoxMenu_SVV.TabStop = false;
             this.groupBoxMenu_SVV.Text = "Меню";
-            this.groupBoxMenu_SVV.Enter += new System.EventHandler(this.groupBoxMenu_SVV_Enter);
             // 
-            // buttonChart_SVV
+            // buttonStaticTwo_SVV
             // 
-            this.buttonChart_SVV.Location = new System.Drawing.Point(7, 277);
-            this.buttonChart_SVV.Name = "buttonChart_SVV";
-            this.buttonChart_SVV.Size = new System.Drawing.Size(137, 31);
-            this.buttonChart_SVV.TabIndex = 14;
-            this.buttonChart_SVV.Text = "График";
-            this.toolTipAll_SVV.SetToolTip(this.buttonChart_SVV, "Построить график\r\n");
-            this.buttonChart_SVV.UseVisualStyleBackColor = true;
-            this.buttonChart_SVV.Click += new System.EventHandler(this.buttonChart_SVV_Click);
-            this.buttonChart_SVV.MouseEnter += new System.EventHandler(this.buttonChart_SVV_MouseEnter);
+            this.buttonStaticTwo_SVV.Enabled = false;
+            this.buttonStaticTwo_SVV.Location = new System.Drawing.Point(7, 237);
+            this.buttonStaticTwo_SVV.Name = "buttonStaticTwo_SVV";
+            this.buttonStaticTwo_SVV.Size = new System.Drawing.Size(137, 34);
+            this.buttonStaticTwo_SVV.TabIndex = 15;
+            this.buttonStaticTwo_SVV.Text = "Статистика АЛ";
+            this.toolTipAll_SVV.SetToolTip(this.buttonStaticTwo_SVV, "Посмотреть статистические данные");
+            this.buttonStaticTwo_SVV.UseVisualStyleBackColor = true;
+            this.buttonStaticTwo_SVV.Click += new System.EventHandler(this.buttonStaticTwo_SVV_Click);
+            this.buttonStaticTwo_SVV.MouseEnter += new System.EventHandler(this.buttonStaticTwo_SVV_MouseEnter);
             // 
             // buttonClose_SVV
             // 
@@ -230,6 +229,19 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.buttonClose_SVV.UseVisualStyleBackColor = true;
             this.buttonClose_SVV.Click += new System.EventHandler(this.buttonClose_SVV_Click);
             this.buttonClose_SVV.MouseEnter += new System.EventHandler(this.buttonClose_SVV_MouseEnter);
+            // 
+            // buttonStaticThree_SVV
+            // 
+            this.buttonStaticThree_SVV.Enabled = false;
+            this.buttonStaticThree_SVV.Location = new System.Drawing.Point(7, 277);
+            this.buttonStaticThree_SVV.Name = "buttonStaticThree_SVV";
+            this.buttonStaticThree_SVV.Size = new System.Drawing.Size(137, 31);
+            this.buttonStaticThree_SVV.TabIndex = 16;
+            this.buttonStaticThree_SVV.Text = "Статистика ДУ";
+            this.toolTipAll_SVV.SetToolTip(this.buttonStaticThree_SVV, "Посмотреть статистические данные");
+            this.buttonStaticThree_SVV.UseVisualStyleBackColor = true;
+            this.buttonStaticThree_SVV.Click += new System.EventHandler(this.buttonStaticThree_SVV_Click);
+            this.buttonStaticThree_SVV.MouseEnter += new System.EventHandler(this.buttonStaticThree_SVV_MouseEnter);
             // 
             // buttonBack_SVV
             // 
@@ -287,7 +299,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxSearFiltr_SVV.TabIndex = 1;
             this.groupBoxSearFiltr_SVV.TabStop = false;
             this.groupBoxSearFiltr_SVV.Text = "Поиск и фильтрация";
-            this.groupBoxSearFiltr_SVV.Enter += new System.EventHandler(this.groupBoxSear_SVV_Enter);
             // 
             // comboBoxFilDiagnoz_SVV
             // 
@@ -422,7 +433,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // groupBoxEdit_SVV
             // 
-            this.groupBoxEdit_SVV.Controls.Add(this.buttonStaticThree_SVV);
+            this.groupBoxEdit_SVV.Controls.Add(this.buttonChartTwo_SVV);
+            this.groupBoxEdit_SVV.Controls.Add(this.buttonChart_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.comboBoxAmbLech_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.comboBoxDispUch_SVV);
             this.groupBoxEdit_SVV.Controls.Add(this.comboBoxFIODoc_SVV);
@@ -456,17 +468,64 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.groupBoxEdit_SVV.TabIndex = 0;
             this.groupBoxEdit_SVV.TabStop = false;
             this.groupBoxEdit_SVV.Text = "Редактирование";
-            this.groupBoxEdit_SVV.Enter += new System.EventHandler(this.groupBoxInst_SVV_Enter);
+            // 
+            // buttonChartTwo_SVV
+            // 
+            this.buttonChartTwo_SVV.Enabled = false;
+            this.buttonChartTwo_SVV.Location = new System.Drawing.Point(288, 167);
+            this.buttonChartTwo_SVV.Name = "buttonChartTwo_SVV";
+            this.buttonChartTwo_SVV.Size = new System.Drawing.Size(77, 26);
+            this.buttonChartTwo_SVV.TabIndex = 17;
+            this.buttonChartTwo_SVV.Text = "График";
+            this.toolTipAll_SVV.SetToolTip(this.buttonChartTwo_SVV, "Построить график");
+            this.buttonChartTwo_SVV.UseVisualStyleBackColor = true;
+            this.buttonChartTwo_SVV.Click += new System.EventHandler(this.buttonChartTwo_SVV_Click);
+            this.buttonChartTwo_SVV.MouseEnter += new System.EventHandler(this.buttonChartTwo_SVV_MouseEnter);
+            // 
+            // buttonChart_SVV
+            // 
+            this.buttonChart_SVV.Enabled = false;
+            this.buttonChart_SVV.Location = new System.Drawing.Point(485, 49);
+            this.buttonChart_SVV.Name = "buttonChart_SVV";
+            this.buttonChart_SVV.Size = new System.Drawing.Size(77, 26);
+            this.buttonChart_SVV.TabIndex = 14;
+            this.buttonChart_SVV.Text = "График";
+            this.toolTipAll_SVV.SetToolTip(this.buttonChart_SVV, "Построить график\r\n");
+            this.buttonChart_SVV.UseVisualStyleBackColor = true;
+            this.buttonChart_SVV.Click += new System.EventHandler(this.buttonChart_SVV_Click);
+            this.buttonChart_SVV.MouseEnter += new System.EventHandler(this.buttonChart_SVV_MouseEnter);
+            // 
+            // comboBoxAmbLech_SVV
+            // 
+            this.comboBoxAmbLech_SVV.Enabled = false;
+            this.comboBoxAmbLech_SVV.FormattingEnabled = true;
+            this.comboBoxAmbLech_SVV.Location = new System.Drawing.Point(402, 78);
+            this.comboBoxAmbLech_SVV.Name = "comboBoxAmbLech_SVV";
+            this.comboBoxAmbLech_SVV.Size = new System.Drawing.Size(160, 24);
+            this.comboBoxAmbLech_SVV.TabIndex = 15;
+            this.toolTipAll_SVV.SetToolTip(this.comboBoxAmbLech_SVV, "Выберите \"Да\" или \"Нет\"");
+            this.comboBoxAmbLech_SVV.SelectedIndexChanged += new System.EventHandler(this.comboBoxAmbLech_SVV_SelectedIndexChanged);
+            this.comboBoxAmbLech_SVV.MouseEnter += new System.EventHandler(this.comboBoxAmbLech_SVV_MouseEnter);
+            // 
+            // comboBoxDispUch_SVV
+            // 
+            this.comboBoxDispUch_SVV.Enabled = false;
+            this.comboBoxDispUch_SVV.FormattingEnabled = true;
+            this.comboBoxDispUch_SVV.Location = new System.Drawing.Point(205, 196);
+            this.comboBoxDispUch_SVV.Name = "comboBoxDispUch_SVV";
+            this.comboBoxDispUch_SVV.Size = new System.Drawing.Size(160, 24);
+            this.comboBoxDispUch_SVV.TabIndex = 14;
+            this.toolTipAll_SVV.SetToolTip(this.comboBoxDispUch_SVV, "Выберите \"Да\" или \"Нет\"");
+            this.comboBoxDispUch_SVV.MouseEnter += new System.EventHandler(this.comboBoxDispUch_SVV_MouseEnter);
             // 
             // comboBoxFIODoc_SVV
             // 
             this.comboBoxFIODoc_SVV.Enabled = false;
             this.comboBoxFIODoc_SVV.FormattingEnabled = true;
-            this.comboBoxFIODoc_SVV.Location = new System.Drawing.Point(205, 78);
+            this.comboBoxFIODoc_SVV.Location = new System.Drawing.Point(205, 60);
             this.comboBoxFIODoc_SVV.Name = "comboBoxFIODoc_SVV";
             this.comboBoxFIODoc_SVV.Size = new System.Drawing.Size(160, 24);
             this.comboBoxFIODoc_SVV.TabIndex = 13;
-            this.comboBoxFIODoc_SVV.SelectedIndexChanged += new System.EventHandler(this.comboBoxFIODoc_SVV_SelectedIndexChanged);
             // 
             // textBoxDr_SVV
             // 
@@ -475,7 +534,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.textBoxDr_SVV.Name = "textBoxDr_SVV";
             this.textBoxDr_SVV.Size = new System.Drawing.Size(156, 22);
             this.textBoxDr_SVV.TabIndex = 12;
-            this.textBoxDr_SVV.TextChanged += new System.EventHandler(this.textBoxDr_SVV_TextChanged);
             // 
             // labelDr_SVV
             // 
@@ -489,12 +547,11 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // labelCrok_SVV
             // 
             this.labelCrok_SVV.AutoSize = true;
-            this.labelCrok_SVV.Location = new System.Drawing.Point(202, 223);
+            this.labelCrok_SVV.Location = new System.Drawing.Point(202, 226);
             this.labelCrok_SVV.Name = "labelCrok_SVV";
             this.labelCrok_SVV.Size = new System.Drawing.Size(130, 34);
             this.labelCrok_SVV.TabIndex = 7;
             this.labelCrok_SVV.Text = "Срок потери \r\nтрудоспособности";
-            this.labelCrok_SVV.Click += new System.EventHandler(this.labelCrok_SVV_Click);
             // 
             // labelPrimech_SVV
             // 
@@ -508,17 +565,16 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // labelDispUch_SVV
             // 
             this.labelDispUch_SVV.AutoSize = true;
-            this.labelDispUch_SVV.Location = new System.Drawing.Point(202, 174);
+            this.labelDispUch_SVV.Location = new System.Drawing.Point(205, 148);
             this.labelDispUch_SVV.Name = "labelDispUch_SVV";
-            this.labelDispUch_SVV.Size = new System.Drawing.Size(141, 17);
+            this.labelDispUch_SVV.Size = new System.Drawing.Size(111, 34);
             this.labelDispUch_SVV.TabIndex = 7;
-            this.labelDispUch_SVV.Text = "Диспансерный учет";
-            this.labelDispUch_SVV.Click += new System.EventHandler(this.labelDispUch_SVV_Click);
+            this.labelDispUch_SVV.Text = "Диспансерный \r\nучет\r\n";
             // 
             // labelAmbLech_SVV
             // 
             this.labelAmbLech_SVV.AutoSize = true;
-            this.labelAmbLech_SVV.Location = new System.Drawing.Point(399, 37);
+            this.labelAmbLech_SVV.Location = new System.Drawing.Point(400, 31);
             this.labelAmbLech_SVV.Name = "labelAmbLech_SVV";
             this.labelAmbLech_SVV.Size = new System.Drawing.Size(108, 34);
             this.labelAmbLech_SVV.TabIndex = 7;
@@ -527,7 +583,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // labelDiagnoz_SVV
             // 
             this.labelDiagnoz_SVV.AutoSize = true;
-            this.labelDiagnoz_SVV.Location = new System.Drawing.Point(202, 114);
+            this.labelDiagnoz_SVV.Location = new System.Drawing.Point(202, 97);
             this.labelDiagnoz_SVV.Name = "labelDiagnoz_SVV";
             this.labelDiagnoz_SVV.Size = new System.Drawing.Size(63, 17);
             this.labelDiagnoz_SVV.TabIndex = 7;
@@ -536,7 +592,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // labelFIODoc_SVV
             // 
             this.labelFIODoc_SVV.AutoSize = true;
-            this.labelFIODoc_SVV.Location = new System.Drawing.Point(202, 39);
+            this.labelFIODoc_SVV.Location = new System.Drawing.Point(202, 23);
             this.labelFIODoc_SVV.Name = "labelFIODoc_SVV";
             this.labelFIODoc_SVV.Size = new System.Drawing.Size(114, 34);
             this.labelFIODoc_SVV.TabIndex = 7;
@@ -598,11 +654,10 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // textBoxDiagnoz_SVV
             // 
             this.textBoxDiagnoz_SVV.Enabled = false;
-            this.textBoxDiagnoz_SVV.Location = new System.Drawing.Point(205, 136);
+            this.textBoxDiagnoz_SVV.Location = new System.Drawing.Point(205, 117);
             this.textBoxDiagnoz_SVV.Name = "textBoxDiagnoz_SVV";
             this.textBoxDiagnoz_SVV.Size = new System.Drawing.Size(160, 22);
             this.textBoxDiagnoz_SVV.TabIndex = 6;
-            this.textBoxDiagnoz_SVV.TextChanged += new System.EventHandler(this.textBoxDiagnoz_SVV_TextChanged);
             // 
             // textBoxOth_SVV
             // 
@@ -709,7 +764,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.panelTwo_SVV.Name = "panelTwo_SVV";
             this.panelTwo_SVV.Size = new System.Drawing.Size(1505, 509);
             this.panelTwo_SVV.TabIndex = 0;
-            this.panelTwo_SVV.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // dataGridViewAll_SVV
             // 
@@ -729,45 +783,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // toolTipAll_SVV
             // 
             this.toolTipAll_SVV.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            // 
-            // comboBoxDispUch_SVV
-            // 
-            this.comboBoxDispUch_SVV.Enabled = false;
-            this.comboBoxDispUch_SVV.FormattingEnabled = true;
-            this.comboBoxDispUch_SVV.Location = new System.Drawing.Point(205, 196);
-            this.comboBoxDispUch_SVV.Name = "comboBoxDispUch_SVV";
-            this.comboBoxDispUch_SVV.Size = new System.Drawing.Size(160, 24);
-            this.comboBoxDispUch_SVV.TabIndex = 14;
-            this.comboBoxDispUch_SVV.SelectedIndexChanged += new System.EventHandler(this.comboBoxDispUch_SVV_SelectedIndexChanged);
-            // 
-            // comboBoxAmbLech_SVV
-            // 
-            this.comboBoxAmbLech_SVV.Enabled = false;
-            this.comboBoxAmbLech_SVV.FormattingEnabled = true;
-            this.comboBoxAmbLech_SVV.Location = new System.Drawing.Point(402, 78);
-            this.comboBoxAmbLech_SVV.Name = "comboBoxAmbLech_SVV";
-            this.comboBoxAmbLech_SVV.Size = new System.Drawing.Size(160, 24);
-            this.comboBoxAmbLech_SVV.TabIndex = 15;
-            // 
-            // buttonStaticTwo_SVV
-            // 
-            this.buttonStaticTwo_SVV.Location = new System.Drawing.Point(7, 237);
-            this.buttonStaticTwo_SVV.Name = "buttonStaticTwo_SVV";
-            this.buttonStaticTwo_SVV.Size = new System.Drawing.Size(137, 34);
-            this.buttonStaticTwo_SVV.TabIndex = 15;
-            this.buttonStaticTwo_SVV.Text = "Статистика";
-            this.buttonStaticTwo_SVV.UseVisualStyleBackColor = true;
-            this.buttonStaticTwo_SVV.Click += new System.EventHandler(this.buttonStaticTwo_SVV_Click);
-            // 
-            // buttonStaticThree_SVV
-            // 
-            this.buttonStaticThree_SVV.Location = new System.Drawing.Point(277, 13);
-            this.buttonStaticThree_SVV.Name = "buttonStaticThree_SVV";
-            this.buttonStaticThree_SVV.Size = new System.Drawing.Size(117, 27);
-            this.buttonStaticThree_SVV.TabIndex = 16;
-            this.buttonStaticThree_SVV.Text = "Статистика";
-            this.buttonStaticThree_SVV.UseVisualStyleBackColor = true;
-            this.buttonStaticThree_SVV.Click += new System.EventHandler(this.buttonStaticThree_SVV_Click);
             // 
             // FormAll
             // 
@@ -857,5 +872,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.ComboBox comboBoxDispUch_SVV;
         private System.Windows.Forms.Button buttonStaticTwo_SVV;
         private System.Windows.Forms.Button buttonStaticThree_SVV;
+        private System.Windows.Forms.Button buttonChartTwo_SVV;
     }
 }

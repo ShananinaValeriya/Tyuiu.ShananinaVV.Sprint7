@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using Tyuiu.ShananinaVV.Sprint7.Project.V6.Lib;
 using System.Windows.Forms.DataVisualization.Charting;
 
 
@@ -21,9 +21,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         {
             InitializeComponent();
             this.ControlBox = false;
-            //DuplicateData(0, dataGridViewPatients_SVV, targtDataGridView);
-            //comboBoxFIODoc_SVV.SelectedIndex = -1;
-            //comboBoxDispUch_SVV.Items.AddRange(new object[] { "Да", "Нет" });
+            
 
             comboBoxDispUch_SVV.Items.Add("Да");
             comboBoxDispUch_SVV.Items.Add("Нет");
@@ -32,12 +30,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             comboBoxAmbLech_SVV.Items.Add("Нет");
 
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        
 
         private void buttonOpenBase_SVV_Click(object sender, EventArgs e)
         {
@@ -120,8 +112,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             buttonSortFIODoc_SVV.Enabled = true;
             buttonSortDiagnoz_SVV.Enabled = true;
 
-            //buttonCbrSear_SVV.Enabled = true;
-
             radioButtonFilFam_SVV.Enabled = true;
             radioButtonFilNumber_SVV.Enabled = true;
             radioButtonFilFIODoc_SVV.Enabled = true;
@@ -129,16 +119,19 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
             comboBoxFIODoc_SVV.SelectedIndex = -1;
 
-
             buttonStatic_SVV.Enabled = true;
+
+            buttonStaticTwo_SVV.Enabled = true;
+            buttonStaticThree_SVV.Enabled = true;
+            buttonChartTwo_SVV.Enabled = true;
+            buttonChart_SVV.Enabled = true;
+
+            buttonCbrSear_SVV.Enabled = true;
         }
 
 
         
-        private void groupBoxSear_SVV_Enter(object sender, EventArgs e)
-        {
-
-        }
+        
 
         
         private void buttonSave_SVV_Click(object sender, EventArgs e)
@@ -166,15 +159,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         }
 
-        private void labelCrok_SVV_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBoxInst_SVV_Enter(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void buttonAdd_SVV_Click(object sender, EventArgs e)
         {
@@ -362,32 +347,19 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             SortByAlphabet(columnIndex);
         }
 
+
+        DataService ds = new DataService();
+
+
         private void buttonStatic_SVV_Click(object sender, EventArgs e)
         {
-            int count = 0;
-            foreach (DataGridViewRow row in dataGridViewAll_SVV.Rows)
-            {
-                if (!row.IsNewRow) // Пропустить пустую строку в конце
-                {
-                    if (!string.IsNullOrEmpty(row.Cells[0].Value.ToString())) // Проверить, что ячейка не пустая
-                    {
-                        count++;
-                        //MessageBox.Show("Количество сотрудников: " + count);
-                    }
-                }
-            }
+            int count = ds.GetNonEmptyRowCount(dataGridViewAll_SVV);
+           
             MessageBox.Show("Количество записей: " + count, "Статистика");
-
-
-            
-
             
         }
 
-        private void textBoxDr_SVV_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void buttonSortDR_SVV_Click(object sender, EventArgs e)
         {
@@ -395,10 +367,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             SortByAlphabet(columnIndex);
         }
 
-        private void textBoxDiagnoz_SVV_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void radioButtonFilNumber_SVV_CheckedChanged(object sender, EventArgs e)
         {
@@ -430,7 +399,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             comboBoxFilFIODoc_SVV.Text = "";
             comboBoxFilDiagnoz_SVV.Text = "";
 
-            buttonCbrSear_SVV.Enabled = true;
+            //buttonCbrSear_SVV.Enabled = true;
         }
 
         private void textBoxFilterSearch_SVV_TextChanged(object sender, EventArgs e)
@@ -757,56 +726,20 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void buttonChart_SVV_Click(object sender, EventArgs e)
         {
-            // Создание новой формы для отображения графика
-            Form graphForm = new Form();
 
-            // Создание графика
-            Chart chart = new Chart();
+            FormChartAll chartForm = new FormChartAll();
 
-            // Добавление графика на новую форму
-            graphForm.Controls.Add(chart);
+            int columnIndex = 7;
+            int yesCount = ds.CountYesValues(dataGridViewAll_SVV, columnIndex);
+            int noCount = ds.CountNoValues(dataGridViewAll_SVV, columnIndex);
 
-            // Установка размеров и расположения графика на новой форме
-            chart.Size = new Size(400, 300);
-            chart.Location = new Point(10, 10);
+            chartForm.UpdateChart(yesCount, noCount); // Передайте данные для отображения на графике
+            chartForm.UpdateStatistics(yesCount, noCount); // Передайте данные для отображения статистики
+            chartForm.Show();
 
-            // Создание серии данных для графика
-            Series series = new Series();
-            series.ChartType = SeriesChartType.Bar; // Тип графика - столбчатая диаграмма
-
-            
-
-            
-            // Получение данных из datagridview и подсчет количества "Да" и "Нет"
-            int countYes = 0;
-            int countNo = 0;
-
-            foreach (DataGridViewRow row in dataGridViewAll_SVV.Rows)
-            {
-                if (row.Cells[7].Value != null)
-                {
-                    if (row.Cells[7].Value.ToString() == "Да")
-                    {
-                        countYes++;
-                    }
-                    else if (row.Cells[7].Value.ToString() == "Нет")
-                    {
-                        countNo++;
-                    }
-                }
-            }
-
-            // Добавление данных в серию графика
-            series.Points.AddXY("Да", countYes);
-            series.Points.AddXY("Нет", countNo);
-
-            // Добавление серии на график
-            chart.Series.Add(series);
-
-            // Отображение формы с графиком
-            graphForm.ShowDialog();
         }
 
+     
         private void buttonClose_SVV_MouseEnter(object sender, EventArgs e)
         {
             toolTipAll_SVV.ToolTipTitle = "Закрыть";
@@ -826,7 +759,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void buttonStatic_SVV_MouseEnter(object sender, EventArgs e)
         {
-            toolTipAll_SVV.ToolTipTitle = "Статистика";
+            toolTipAll_SVV.ToolTipTitle = "Количество записей";
         }
 
         private void buttonChart_SVV_MouseEnter(object sender, EventArgs e)
@@ -924,39 +857,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             toolTipAll_SVV.ToolTipTitle = "Нужно ли амбулаторное лечение?";
         }
 
-        private void labelDispUch_SVV_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
-
-        private void textBoxFIODoc_SVV_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            List<string> doctorsList = new List<string>();
-
-            // Читаем файл CSV
-            using (StreamReader reader = new StreamReader("doc.csv"))
-            {
-                while (!reader.EndOfStream)
-                {
-                    string line = reader.ReadLine();
-                    string[] values = line.Split(';');
-
-                    // Добавляем врачей в список
-                    doctorsList.Add(values[0]); // 0 - индекс столбца с именами врачей
-                }
-            }
-
-            // Заполняем ComboBox найденными врачами
-            comboBoxFIODoc_SVV.DataSource = doctorsList;
-        }
-
+      
         private void FormAll_Load(object sender, EventArgs e)
         {
             // Читаем файл csv
@@ -986,82 +887,63 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             comboBoxFIODoc_SVV.DataSource = doctors;
         }
 
-        private void comboBoxFIODoc_SVV_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            //comboBoxFIODoc_SVV.DropDownStyle = ComboBoxStyle.DropDownList;
-            //comboBoxFIODoc_SVV.SelectedItem = null;
-            //comboBoxFIODoc_SVV.SelectedIndex = -1;
-            //comboBoxFIODoc_SVV.SelectedIndex = 0; // выбрать первый элемент
-        }
-
-        private void groupBoxSortir_SVV_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxDispUch_SVV_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Добавляем возможные значения ("Да" и "Нет") в комбо-бокс
-            //comboBoxDispUch_SVV.Items.AddRange(new object[] { "Да", "Нет" });
-            
-
-            //comboBoxDispUch_SVV.SelectedIndex = -1;
-        }
-
-        private void groupBoxMenu_SVV_Enter(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonStaticTwo_SVV_Click(object sender, EventArgs e)
         {
-
+            int yesCount = ds.CountYesValues(dataGridViewAll_SVV, 7);
             
-
-            int yesCount = 0;
-            //int noCount = 0;
-            // Предположим, что столбец с индексом 7 содержит значения "Да" и "Нет"
-            int columnIndex = 7;
-
-            foreach (DataGridViewRow row in dataGridViewAll_SVV.Rows)
-            {
-                if (row.Cells[columnIndex].Value != null)
-                {
-                    string cellValue = row.Cells[columnIndex].Value.ToString();
-
-                    if (cellValue.Equals("Да", StringComparison.OrdinalIgnoreCase))
-                    {
-                        yesCount++;
-                    }
-                    
-                }
-            }
-            MessageBox.Show("Количество пациентов, нуждающихся\nв амбулаторном лечении: " + yesCount, "Статистика");
+            MessageBox.Show("Количество пациентов, нуждающихся\nв амбулаторном лечении: " + yesCount, "Статистика АЛ");
         }
 
         private void buttonStaticThree_SVV_Click(object sender, EventArgs e)
         {
-            int yesCount = 0;
-            //int noCount = 0;
-            // Предположим, что столбец с индексом 7 содержит значения "Да" и "Нет"
+            int yesCount = ds.CountYesValues(dataGridViewAll_SVV, 9);
+
+            MessageBox.Show("Количество пациентов, состоящих\nна диспансерном учете: " + yesCount, "Статистика ДУ");
+
+        }
+
+        private void buttonChartTwo_SVV_Click(object sender, EventArgs e)
+        {
+            FormChartAll chartForm = new FormChartAll();
+
             int columnIndex = 9;
+            int yesCount = ds.CountYesValues(dataGridViewAll_SVV, columnIndex);
+            int noCount = ds.CountNoValues(dataGridViewAll_SVV, columnIndex);
 
-            foreach (DataGridViewRow row in dataGridViewAll_SVV.Rows)
-            {
-                if (row.Cells[columnIndex].Value != null)
-                {
-                    string cellValue = row.Cells[columnIndex].Value.ToString();
+            chartForm.UpdateChartTwo(yesCount, noCount); // Передайте данные для отображения на графике
+            chartForm.UpdateStatisticsTwo(yesCount, noCount); // Передайте данные для отображения статистики
+            chartForm.Show();
+        }
 
-                    if (cellValue.Equals("Да", StringComparison.OrdinalIgnoreCase))
-                    {
-                        yesCount++;
-                    }
+        private void buttonStaticTwo_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipAll_SVV.ToolTipTitle = "Статистика амбулаторного \nлечения";
+        }
 
-                }
-            }
-            MessageBox.Show("Количество пациентов, состоящих\nна диспансерном учете: " + yesCount, "Статистика");
+        private void buttonStaticThree_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipAll_SVV.ToolTipTitle = "Статистика диспансерного \nучета";
+        }
 
+        private void buttonChartTwo_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipAll_SVV.ToolTipTitle = "График";
+        }
+
+        private void comboBoxDispUch_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipAll_SVV.ToolTipTitle = "Стоит ли на диспансерном учете?";
+        }
+
+        private void comboBoxAmbLech_SVV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxAmbLech_SVV_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipAll_SVV.ToolTipTitle = "Нужно ли амбулаторное лечение?";
         }
     }
 }
