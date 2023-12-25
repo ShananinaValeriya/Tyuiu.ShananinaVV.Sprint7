@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Windows.Forms.DataVisualization.Charting;
 using Tyuiu.ShananinaVV.Sprint7.Project.V6.Lib;
 
 
@@ -26,11 +25,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         {
             this.ControlBox = false; //убираем кнопки сворачивания, разворачивания и закрытия окна..
             InitializeComponent();
-            //buttonDel_SVV.Click += buttonDel_SVV_Click;
+            
         }
-
-        private Stack<string> operationStack = new Stack<string>();
-
 
         private void buttonDoctors_SVV_Click(object sender, EventArgs e)
         {
@@ -101,7 +97,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             int columnIndex = 0; // Указываем нужный индекс столбца
             SortByAlphabet(columnIndex);
 
-            // Отменить сортировку
+           
             
         }
 
@@ -152,24 +148,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             newdata.Cells[2].Value = textBoxSpec_SVV.Text;
         }
 
-        private void buttonDel_SVV_Click(object sender, EventArgs e)
-        {
-            int count = dataGridViewDoctors_SVV.SelectedRows.Count;
-            DialogResult dialogResult = MessageBox.Show("Вы уверенны, что хотите удалить \nвыбранные элементы?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
-
-            if (dialogResult == DialogResult.Yes)
-            {
-                while (count > 0)
-                {
-                    foreach (DataGridViewRow row in dataGridViewDoctors_SVV.SelectedRows)
-                    {
-                        dataGridViewDoctors_SVV.Rows.Remove(row);
-                        count--;
-                    }
-                }
-            }
-            //operationStack.Push("Выполненная операция");
-        }
 
         private void FormDoctors_Load(object sender, EventArgs e)
         {
@@ -290,7 +268,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             }
             textBoxSear_SVV.Clear();
 
-            //buttonCbros_SVV.Enabled = false;
+           
 
             comboBoxFilter_SVV.Items.Clear();
             comboBoxPosit_SVV.Items.Clear();
@@ -320,24 +298,24 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void textBoxSear_SVV_TextChanged(object sender, EventArgs e)
         {
             
-            string searchText = textBoxSear_SVV.Text.ToString().ToLower(); // Получите текст из TextBox
+            string searchText = textBoxSear_SVV.Text.ToString().ToLower(); //  текст из TextBox
 
             if (!string.IsNullOrEmpty(searchText))
             {
                
-                int columnIndex = 0 ; // Установите индекс столбца по умолчанию
+                int columnIndex = 0 ; // индекс столбца по умолчанию
                 
                 if (radioButtonOne_SVV.Checked)
                 {
-                    columnIndex = 0; // Установите индекс столбца для поиска в первом столбце
+                    columnIndex = 0; //индекс столбца для поиска в первом столбце
                 }
                 else if (radioButtonTwo_SVV.Checked)
                 {
-                    columnIndex = 1; // Установите индекс столбца для поиска во втором столбце
+                    columnIndex = 1; //  индекс столбца для поиска во втором столбце
                 }
                 else if (radioButtonThree_SVV.Checked)
                 {
-                    columnIndex = 2; // Установите индекс столбца для поиска в третьем столбце
+                    columnIndex = 2; //  индекс столбца для поиска в третьем столбце
                 }
 
                 foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
@@ -371,7 +349,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void radioButtonOne_SVV_CheckedChanged(object sender, EventArgs e)
         {
-            int columnIndex = 0; // Ваш индекс столбца
+            int columnIndex = 0; //  индекс столбца
             List<string> items = new List<string>();
 
             // Перебираем все строки и добавляем значение столбца в список
@@ -401,7 +379,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void radioButtonTwo_SVV_CheckedChanged(object sender, EventArgs e)
         {
             
-            int columnIndex = 1; // Ваш индекс столбца
+            int columnIndex = 1; //  индекс столбца
             List<string> items = new List<string>();
 
             // Перебираем все строки и добавляем значение столбца в список
@@ -429,7 +407,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void radioButtonThree_SVV_CheckedChanged(object sender, EventArgs e)
         {
 
-            int columnIndex = 2; // Ваш индекс столбца
+            int columnIndex = 2; // индекс столбца
             List<string> items = new List<string>();
 
             // Перебираем все строки и добавляем значение столбца в список
@@ -506,50 +484,12 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         }
 
         
-
-        private void buttonGrafic_SVV_Click(object sender, EventArgs e)
-        {
-            //FormChart formchart = new FormChart();
-            //formchart.ShowDialog();
-
-            // Создаем новую форму для отображения графика
-            Form chartForm = new Form();
-            chartForm.Text = "Анализ данных";
-
-            // Создаем элемент управления Chart и добавляем его на форму
-            Chart chart = new Chart();
-            chart.Dock = DockStyle.Fill;
-            chartForm.Controls.Add(chart);
-
-            // Создаем серию для графика
-            Series series = new Series();
-            series.ChartType = SeriesChartType.Column;
-
-            // Получаем данные из DataGridView и добавляем их в серию графика
-            foreach (DataGridViewRow row in dataGridViewDoctors_SVV.Rows)
-            {
-                if (!row.IsNewRow)
-                {
-                    string xValue = row.Cells["ФИО"].Value.ToString(); // Замените "ColumnX" на актуальное имя столбца X
-                    string yValue = row.Cells["Должность"].Value.ToString();
-                    //int yValue = Convert.ToInt32(row.Cells[""].Value); // Замените "ColumnY" на актуальное имя столбца Y
-                    series.Points.AddXY(xValue, yValue);
-                }
-            }
-
-            // Добавляем серию в график
-            chart.Series.Add(series);
-
-            // Отображаем новую форму
-            chartForm.ShowDialog();
-        }
-
         DataService ds = new DataService();
         private void buttonStatic_SVV_Click(object sender, EventArgs e)
         {
 
             int count = ds.GetNonEmptyRowCount(dataGridViewDoctors_SVV);
-            // делаем что-то с полученным значением count
+           
             MessageBox.Show("Количество сотрудников: " + count, "Статистика");   
         }
 

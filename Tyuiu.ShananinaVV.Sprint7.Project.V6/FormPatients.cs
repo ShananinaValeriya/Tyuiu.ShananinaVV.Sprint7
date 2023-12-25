@@ -31,7 +31,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void buttonDonePat_SVV_Click(object sender, EventArgs e)
         {
          
-            // Сначала создаем колонки
+            //создаем колонки
             dataGridViewPatients_SVV.ColumnCount = 5;
             dataGridViewPatients_SVV.Columns[0].Name = "Номер";
             dataGridViewPatients_SVV.Columns[1].Name = "Фамилия";
@@ -39,7 +39,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             dataGridViewPatients_SVV.Columns[3].Name = "Отчество";
             dataGridViewPatients_SVV.Columns[4].Name = "Дата рождения";
 
-            // Затем загружаем данные из файла CSV
+            // загружаем данные из файла CSV
             using (var reader = new StreamReader("pat.csv"))
             {
                 while (!reader.EndOfStream)
@@ -228,7 +228,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             }
             textBoxSear_SVV.Clear();
 
-            //buttonCbros_SVV.Enabled = false;
+            
 
             comboBoxFilFam_SVV.Items.Clear();
             comboBoxFilNumber_SVV.Items.Clear();
@@ -236,7 +236,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             comboBoxFilFam_SVV.Text = "";
             comboBoxFilNumber_SVV.Text = "";
         
-            // Очистить значения в 
+            
             radioButtonFilFam_SVV.Checked = false;
             radioButtonFilNumber_SVV.Checked = false;
       
@@ -246,31 +246,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             comboBoxFilFam_SVV.Enabled = false;
             comboBoxFilNumber_SVV.Enabled = false;
             
-            //buttonCbros_SVV.Enabled = false;
-        }
-
-      
-
-
-        private void buttonDel_SVV_Click(object sender, EventArgs e)
-        {
-
             
-            int count = dataGridViewPatients_SVV.SelectedRows.Count;
-            DialogResult dialogResult = MessageBox.Show("Вы уверенны, что хотите удалить \nвыбранные элементы?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
-
-            if (dialogResult == DialogResult.Yes)
-            {
-                while (count > 0)
-                {
-                    foreach (DataGridViewRow row in dataGridViewPatients_SVV.SelectedRows)
-                    {
-                        dataGridViewPatients_SVV.Rows.Remove(row);
-                        count--;
-                    }
-                }
-            }
-            //operationStack.Push("Выполненная операция");
         }
 
         private void buttonNumber_SVV_Click(object sender, EventArgs e)
@@ -326,7 +302,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         {
             int count = ds.GetNonEmptyRowCount(dataGridViewPatients_SVV);
-            // делаем что-то с полученным значением count
+            
             
             MessageBox.Show("Количество пациентов: " + count, "Статистика");
 

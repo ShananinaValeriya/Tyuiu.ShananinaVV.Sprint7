@@ -49,18 +49,10 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         public void UpdateStatistics(int patientsUnder30, int patientsOver30)
         {
-            labelYounger.Text = "Количество пациентов \nмладше 30 лет: " + patientsUnder30.ToString();
-            labelOlder.Text = "Количество пациентов \n30 лет и старше: " + patientsOver30.ToString();
+            labelYounger_SVV.Text = "Количество пациентов \nмладше 30 лет: " + patientsUnder30.ToString();
+            labelOlder_SVV.Text = "Количество пациентов \n30 лет и старше: " + patientsOver30.ToString();
         }
 
-        private void labelYounger_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chartDoctors_SVV_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

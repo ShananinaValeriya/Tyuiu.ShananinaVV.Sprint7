@@ -82,6 +82,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             labelYes_SVV.Text = "Количество пациентов, \nсостоящих на диспансерном \nучете: " + yesCount.ToString();
             labelNo_SVV.Text = "Количество пациентов, НЕ \nсостоящих на диспансерном \nучете: " + noCount.ToString();
         }
-        
+
+      
     }
 }

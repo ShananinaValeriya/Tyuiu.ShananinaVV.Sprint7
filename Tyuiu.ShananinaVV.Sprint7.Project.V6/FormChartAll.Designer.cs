@@ -33,11 +33,11 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panelOne_SVV = new System.Windows.Forms.Panel();
-            this.panelTwo_SVV = new System.Windows.Forms.Panel();
-            this.labelYes_SVV = new System.Windows.Forms.Label();
             this.labelNo_SVV = new System.Windows.Forms.Label();
-            this.chartAllAmbDisp_SVV = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.labelYes_SVV = new System.Windows.Forms.Label();
+            this.panelTwo_SVV = new System.Windows.Forms.Panel();
             this.splitterOne_SVV = new System.Windows.Forms.Splitter();
+            this.chartAllAmbDisp_SVV = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panelOne_SVV.SuspendLayout();
             this.panelTwo_SVV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartAllAmbDisp_SVV)).BeginInit();
@@ -53,15 +53,14 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.panelOne_SVV.Size = new System.Drawing.Size(252, 450);
             this.panelOne_SVV.TabIndex = 0;
             // 
-            // panelTwo_SVV
+            // labelNo_SVV
             // 
-            this.panelTwo_SVV.Controls.Add(this.splitterOne_SVV);
-            this.panelTwo_SVV.Controls.Add(this.chartAllAmbDisp_SVV);
-            this.panelTwo_SVV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTwo_SVV.Location = new System.Drawing.Point(252, 0);
-            this.panelTwo_SVV.Name = "panelTwo_SVV";
-            this.panelTwo_SVV.Size = new System.Drawing.Size(548, 450);
-            this.panelTwo_SVV.TabIndex = 0;
+            this.labelNo_SVV.AutoSize = true;
+            this.labelNo_SVV.Location = new System.Drawing.Point(12, 129);
+            this.labelNo_SVV.Name = "labelNo_SVV";
+            this.labelNo_SVV.Size = new System.Drawing.Size(24, 17);
+            this.labelNo_SVV.TabIndex = 1;
+            this.labelNo_SVV.Text = "no";
             // 
             // labelYes_SVV
             // 
@@ -72,14 +71,23 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.labelYes_SVV.TabIndex = 0;
             this.labelYes_SVV.Text = "yes";
             // 
-            // labelNo_SVV
+            // panelTwo_SVV
             // 
-            this.labelNo_SVV.AutoSize = true;
-            this.labelNo_SVV.Location = new System.Drawing.Point(12, 129);
-            this.labelNo_SVV.Name = "labelNo_SVV";
-            this.labelNo_SVV.Size = new System.Drawing.Size(24, 17);
-            this.labelNo_SVV.TabIndex = 1;
-            this.labelNo_SVV.Text = "no";
+            this.panelTwo_SVV.Controls.Add(this.splitterOne_SVV);
+            this.panelTwo_SVV.Controls.Add(this.chartAllAmbDisp_SVV);
+            this.panelTwo_SVV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTwo_SVV.Location = new System.Drawing.Point(252, 0);
+            this.panelTwo_SVV.Name = "panelTwo_SVV";
+            this.panelTwo_SVV.Size = new System.Drawing.Size(548, 450);
+            this.panelTwo_SVV.TabIndex = 0;
+            // 
+            // splitterOne_SVV
+            // 
+            this.splitterOne_SVV.Location = new System.Drawing.Point(0, 0);
+            this.splitterOne_SVV.Name = "splitterOne_SVV";
+            this.splitterOne_SVV.Size = new System.Drawing.Size(3, 450);
+            this.splitterOne_SVV.TabIndex = 1;
+            this.splitterOne_SVV.TabStop = false;
             // 
             // chartAllAmbDisp_SVV
             // 
@@ -97,14 +105,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.chartAllAmbDisp_SVV.Series.Add(series1);
             this.chartAllAmbDisp_SVV.Size = new System.Drawing.Size(548, 450);
             this.chartAllAmbDisp_SVV.TabIndex = 0;
-            // 
-            // splitterOne_SVV
-            // 
-            this.splitterOne_SVV.Location = new System.Drawing.Point(0, 0);
-            this.splitterOne_SVV.Name = "splitterOne_SVV";
-            this.splitterOne_SVV.Size = new System.Drawing.Size(3, 450);
-            this.splitterOne_SVV.TabIndex = 1;
-            this.splitterOne_SVV.TabStop = false;
             // 
             // FormChartAll
             // 

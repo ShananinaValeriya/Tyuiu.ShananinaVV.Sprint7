@@ -33,8 +33,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panelUsl_SVV = new System.Windows.Forms.Panel();
-            this.labelOlder = new System.Windows.Forms.Label();
-            this.labelYounger = new System.Windows.Forms.Label();
+            this.labelOlder_SVV = new System.Windows.Forms.Label();
+            this.labelYounger_SVV = new System.Windows.Forms.Label();
             this.splitterOne_SVV = new System.Windows.Forms.Splitter();
             this.panelChart_SVV = new System.Windows.Forms.Panel();
             this.chartDoctors_SVV = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -45,32 +45,32 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             // 
             // panelUsl_SVV
             // 
-            this.panelUsl_SVV.Controls.Add(this.labelOlder);
-            this.panelUsl_SVV.Controls.Add(this.labelYounger);
+            this.panelUsl_SVV.Controls.Add(this.labelOlder_SVV);
+            this.panelUsl_SVV.Controls.Add(this.labelYounger_SVV);
             this.panelUsl_SVV.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelUsl_SVV.Location = new System.Drawing.Point(0, 0);
             this.panelUsl_SVV.Name = "panelUsl_SVV";
             this.panelUsl_SVV.Size = new System.Drawing.Size(272, 450);
             this.panelUsl_SVV.TabIndex = 0;
             // 
-            // labelOlder
+            // labelOlder_SVV
             // 
-            this.labelOlder.AutoSize = true;
-            this.labelOlder.Location = new System.Drawing.Point(12, 104);
-            this.labelOlder.Name = "labelOlder";
-            this.labelOlder.Size = new System.Drawing.Size(40, 17);
-            this.labelOlder.TabIndex = 2;
-            this.labelOlder.Text = "older";
+            this.labelOlder_SVV.AutoSize = true;
+            this.labelOlder_SVV.Location = new System.Drawing.Point(12, 104);
+            this.labelOlder_SVV.Name = "labelOlder_SVV";
+            this.labelOlder_SVV.Size = new System.Drawing.Size(40, 17);
+            this.labelOlder_SVV.TabIndex = 2;
+            this.labelOlder_SVV.Text = "older";
             // 
-            // labelYounger
+            // labelYounger_SVV
             // 
-            this.labelYounger.AutoSize = true;
-            this.labelYounger.Location = new System.Drawing.Point(12, 45);
-            this.labelYounger.Name = "labelYounger";
-            this.labelYounger.Size = new System.Drawing.Size(47, 17);
-            this.labelYounger.TabIndex = 1;
-            this.labelYounger.Text = "young";
-            this.labelYounger.Click += new System.EventHandler(this.labelYounger_Click);
+            this.labelYounger_SVV.AutoSize = true;
+            this.labelYounger_SVV.Location = new System.Drawing.Point(12, 45);
+            this.labelYounger_SVV.Name = "labelYounger_SVV";
+            this.labelYounger_SVV.Size = new System.Drawing.Size(47, 17);
+            this.labelYounger_SVV.TabIndex = 1;
+            this.labelYounger_SVV.Text = "young";
+
             // 
             // splitterOne_SVV
             // 
@@ -106,7 +106,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.chartDoctors_SVV.Series.Add(series1);
             this.chartDoctors_SVV.Size = new System.Drawing.Size(525, 450);
             this.chartDoctors_SVV.TabIndex = 0;
-            this.chartDoctors_SVV.Click += new System.EventHandler(this.chartDoctors_SVV_Click);
+
             // 
             // FormChart
             // 
@@ -135,7 +135,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private System.Windows.Forms.Splitter splitterOne_SVV;
         private System.Windows.Forms.Panel panelChart_SVV;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDoctors_SVV;
-        private System.Windows.Forms.Label labelOlder;
-        private System.Windows.Forms.Label labelYounger;
+        private System.Windows.Forms.Label labelOlder_SVV;
+        private System.Windows.Forms.Label labelYounger_SVV;
     }
 }

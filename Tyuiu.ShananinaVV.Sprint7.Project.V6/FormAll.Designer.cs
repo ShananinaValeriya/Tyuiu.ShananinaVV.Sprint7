@@ -504,7 +504,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.comboBoxAmbLech_SVV.Size = new System.Drawing.Size(160, 24);
             this.comboBoxAmbLech_SVV.TabIndex = 15;
             this.toolTipAll_SVV.SetToolTip(this.comboBoxAmbLech_SVV, "Выберите \"Да\" или \"Нет\"");
-            this.comboBoxAmbLech_SVV.SelectedIndexChanged += new System.EventHandler(this.comboBoxAmbLech_SVV_SelectedIndexChanged);
             this.comboBoxAmbLech_SVV.MouseEnter += new System.EventHandler(this.comboBoxAmbLech_SVV_MouseEnter);
             // 
             // comboBoxDispUch_SVV

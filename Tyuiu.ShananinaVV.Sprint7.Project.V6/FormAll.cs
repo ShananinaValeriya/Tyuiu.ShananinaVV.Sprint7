@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Tyuiu.ShananinaVV.Sprint7.Project.V6.Lib;
-using System.Windows.Forms.DataVisualization.Charting;
+
 
 
 namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
@@ -59,7 +59,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                 }
             }
 
-            // Далее загружаем данные из второго файла CSV
+            // загружаем данные из второго файла CSV
             int index = 0; // Указываем, с какой колонки начинать добавление данных из второго файла
             using (var reader = new StreamReader("all.csv"))
             {
@@ -129,11 +129,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             buttonCbrSear_SVV.Enabled = true;
         }
 
-
-        
-        
-
-        
         private void buttonSave_SVV_Click(object sender, EventArgs e)
         {
 
@@ -158,8 +153,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
 
         }
-
-        
 
         private void buttonAdd_SVV_Click(object sender, EventArgs e)
         {
@@ -371,7 +364,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void radioButtonFilNumber_SVV_CheckedChanged(object sender, EventArgs e)
         {
-            int columnIndex = 0; // Ваш индекс столбца
+            int columnIndex = 0; //  индекс столбца
             List<string> items = new List<string>();
 
             // Перебираем все строки и добавляем значение столбца в список
@@ -399,24 +392,24 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             comboBoxFilFIODoc_SVV.Text = "";
             comboBoxFilDiagnoz_SVV.Text = "";
 
-            //buttonCbrSear_SVV.Enabled = true;
+            
         }
 
         private void textBoxFilterSearch_SVV_TextChanged(object sender, EventArgs e)
         {
-            string searchText = textBoxFilterSearch_SVV.Text.ToString().ToLower(); // Получите текст из TextBox
+            string searchText = textBoxFilterSearch_SVV.Text.ToString().ToLower(); //  текст из TextBox
 
             if (!string.IsNullOrEmpty(searchText))
             {
-                int columnIndex = 1; // Установите индекс столбца по умолчанию
+                int columnIndex = 1; //  индекс столбца по умолчанию
 
                 if (radioButtonFilNumber_SVV.Checked)
                 {
-                    columnIndex = 0; // Установите индекс столбца для поиска в первом столбце
+                    columnIndex = 0; //  индекс столбца для поиска в первом столбце
                 }
                 else if (radioButtonFilFam_SVV.Checked)
                 {
-                    columnIndex = 1; // Установите индекс столбца для поиска во втором столбце
+                    columnIndex = 1; //  индекс столбца для поиска во втором столбце
                 }
                 else if (radioButtonFilFIODoc_SVV.Checked)
                 {
@@ -505,7 +498,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void radioButtonFilFam_SVV_CheckedChanged(object sender, EventArgs e)
         {
-            int columnIndex = 1; // Ваш индекс столбца
+            int columnIndex = 1; //  индекс столбца
             List<string> items = new List<string>();
 
             // Перебираем все строки и добавляем значение столбца в список
@@ -538,7 +531,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         private void radioButtonFilFIODoc_SVV_CheckedChanged(object sender, EventArgs e)
         {
-            int columnIndex = 5; // Ваш индекс столбца
+            int columnIndex = 5; // индекс столбца
             List<string> items = new List<string>();
 
             // Перебираем все строки и добавляем значение столбца в список
@@ -574,7 +567,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void radioButtonFilDiagnoz_SVV_CheckedChanged(object sender, EventArgs e)
         {
             
-            int columnIndex = 6; // Ваш индекс столбца
+            int columnIndex = 6; // индекс столбца
             List<string> items = new List<string>();
 
             // Перебираем все строки и добавляем значение столбца в список
@@ -664,7 +657,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void buttonCbrSear_SVV_Click(object sender, EventArgs e)
         {
             textBoxFilterSearch_SVV.Clear();
-            //buttonCbrSear_SVV.Enabled = false;
+            
 
             string searchText = textBoxFilterSearch_SVV.Text.ToLower();
             foreach (DataGridViewRow row in dataGridViewAll_SVV.Rows)
@@ -686,7 +679,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             }
             textBoxFilterSearch_SVV.Clear();
 
-           //buttonCbrSear_SVV.Enabled = false;
+           
 
             comboBoxFilNumber_SVV.Items.Clear();
             comboBoxFilFam_SVV.Items.Clear();
@@ -733,8 +726,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             int yesCount = ds.CountYesValues(dataGridViewAll_SVV, columnIndex);
             int noCount = ds.CountNoValues(dataGridViewAll_SVV, columnIndex);
 
-            chartForm.UpdateChart(yesCount, noCount); // Передайте данные для отображения на графике
-            chartForm.UpdateStatistics(yesCount, noCount); // Передайте данные для отображения статистики
+            chartForm.UpdateChart(yesCount, noCount); // Передача данных для отображения на графике
+            chartForm.UpdateStatistics(yesCount, noCount); // Передача данных для отображения статистики
             chartForm.Show();
 
         }
@@ -911,8 +904,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             int yesCount = ds.CountYesValues(dataGridViewAll_SVV, columnIndex);
             int noCount = ds.CountNoValues(dataGridViewAll_SVV, columnIndex);
 
-            chartForm.UpdateChartTwo(yesCount, noCount); // Передайте данные для отображения на графике
-            chartForm.UpdateStatisticsTwo(yesCount, noCount); // Передайте данные для отображения статистики
+            chartForm.UpdateChartTwo(yesCount, noCount); // Передача данных для отображения на графике
+            chartForm.UpdateStatisticsTwo(yesCount, noCount); // Передача данных для отображения статистики
             chartForm.Show();
         }
 
@@ -936,10 +929,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             toolTipAll_SVV.ToolTipTitle = "Стоит ли на диспансерном учете?";
         }
 
-        private void comboBoxAmbLech_SVV_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void comboBoxAmbLech_SVV_MouseEnter(object sender, EventArgs e)
         {
