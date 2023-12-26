@@ -41,13 +41,14 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6.Lib
         {
             int yesCount = 0;
 
+            //проверяет значение ячейки с указанным индексом столбца 
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
-                if (row.Cells[columnIndex].Value != null)
+                if (row.Cells[columnIndex].Value != null) //если не равно null, то преобразуем в строку
                 {
                     string cellValue = row.Cells[columnIndex].Value.ToString();
 
-                    if (cellValue.Equals("Да", StringComparison.OrdinalIgnoreCase))
+                    if (cellValue.Equals("Да", StringComparison.OrdinalIgnoreCase)) //вне зависимости от регистра
                     {
                         yesCount++;
                     }

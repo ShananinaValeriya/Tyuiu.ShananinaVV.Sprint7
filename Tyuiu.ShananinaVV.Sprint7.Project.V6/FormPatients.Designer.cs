@@ -549,7 +549,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.Name = "FormPatients";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "База пациентов";
-            this.Load += new System.EventHandler(this.FormPatients_Load);
             this.panelOne_SVV.ResumeLayout(false);
             this.groupBoxSort_SVV.ResumeLayout(false);
             this.groupBoxMeny_SVV.ResumeLayout(false);

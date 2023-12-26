@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-//using System.Globalization;
 
 namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 {
@@ -25,26 +24,26 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             chartDoctors_SVV.Series.Clear();
 
             // Создание серии для статистики "Пациенты младше 30 лет"
-            Series series1 = new Series("Пациенты младше 30 лет");
-            series1.ChartType = SeriesChartType.Column;
+            Series seriesone = new Series("Пациенты младше 30 лет");
+            seriesone.ChartType = SeriesChartType.Column; //столбчатая диаграмма
 
             // Создание серии для статистики "Пациенты старше 30 лет"
-            Series series2 = new Series("Пациенты 30 лет и старше");
-            series2.ChartType = SeriesChartType.Column;
+            Series seriestwo = new Series("Пациенты 30 лет и старше");
+            seriestwo.ChartType = SeriesChartType.Column;
 
             // Добавление серий на график
-            chartDoctors_SVV.Series.Add(series1);
-            chartDoctors_SVV.Series.Add(series2);
+            chartDoctors_SVV.Series.Add(seriesone);
+            chartDoctors_SVV.Series.Add(seriestwo);
 
             // Добавление данных на график
             chartDoctors_SVV.Series["Пациенты младше 30 лет"].Points.AddXY("", patientsUnder30);
             chartDoctors_SVV.Series["Пациенты 30 лет и старше"].Points.AddXY("", patientsOver30);
 
             // Настройка внешнего вида графика
-            chartDoctors_SVV.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
-            chartDoctors_SVV.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
-            chartDoctors_SVV.ChartAreas[0].AxisY.Title = "Количество пациентов";
-            chartDoctors_SVV.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+            chartDoctors_SVV.ChartAreas[0].AxisX.MajorGrid.Enabled = false; //отключаем основную сетку по Х
+            chartDoctors_SVV.ChartAreas[0].AxisX.LabelStyle.Enabled = false; //отключаем подписи по Х
+            chartDoctors_SVV.ChartAreas[0].AxisY.Title = "Количество пациентов"; //задаем заголовок
+            chartDoctors_SVV.ChartAreas[0].AxisY.MajorGrid.Enabled = false; //отлючаем основную сетку по У
         }
 
         public void UpdateStatistics(int patientsUnder30, int patientsOver30)

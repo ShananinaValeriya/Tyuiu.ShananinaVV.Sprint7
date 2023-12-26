@@ -419,8 +419,9 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
                 {
                     columnIndex = 6; 
                 }
-                
 
+                
+                //проверяет, содержит ли указанная ячейка указанный текст
                 foreach (DataGridViewRow row in dataGridViewAll_SVV.Rows)
                 {
                     if (row.Cells[columnIndex].Value != null)
@@ -657,8 +658,8 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         private void buttonCbrSear_SVV_Click(object sender, EventArgs e)
         {
             textBoxFilterSearch_SVV.Clear();
-            
 
+            //осуществляет поиск текста в (dataGridViewAll_SVV) и скрывает строки, которые не содержат введенный текст в любой из их ячеек.
             string searchText = textBoxFilterSearch_SVV.Text.ToLower();
             foreach (DataGridViewRow row in dataGridViewAll_SVV.Rows)
             {
@@ -679,14 +680,14 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             }
             textBoxFilterSearch_SVV.Clear();
 
-           
+            //очищает все элементы в выпадающем списке
 
             comboBoxFilNumber_SVV.Items.Clear();
             comboBoxFilFam_SVV.Items.Clear();
             comboBoxFilFIODoc_SVV.Items.Clear();
             comboBoxFilDiagnoz_SVV.Items.Clear();
-            
 
+            //устанавливает пустую строку
 
             comboBoxFilNumber_SVV.Text = "";
             comboBoxFilFam_SVV.Text = "";
@@ -702,7 +703,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
 
 
-           
+            //сбрасывает выделенный элемент в выпадающем списке
             comboBoxFilNumber_SVV.SelectedIndex = -1;
             comboBoxFilFam_SVV.SelectedIndex = -1;
             comboBoxFilFIODoc_SVV.SelectedIndex = -1;

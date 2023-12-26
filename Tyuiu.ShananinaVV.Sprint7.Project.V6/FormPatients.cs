@@ -19,8 +19,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
     {
         int index;
 
-        DataTable table = new DataTable("table");
-        
         public FormPatients()
         {
             this.ControlBox = false; //убираем кнопки сворачивания, разворачивания и закрытия окна..
@@ -106,10 +104,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.Hide(); //скрываем окно 
         }
 
-        private void FormPatients_Load(object sender, EventArgs e)
-        {
-            table.Columns.Add("", Type.GetType("System.Int32"));
-        }
+        
 
         private void buttonClose_SVV_Click(object sender, EventArgs e)
         {

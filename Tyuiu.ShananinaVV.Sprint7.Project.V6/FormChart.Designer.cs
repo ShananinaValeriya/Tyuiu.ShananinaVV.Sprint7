@@ -70,7 +70,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.labelYounger_SVV.Size = new System.Drawing.Size(47, 17);
             this.labelYounger_SVV.TabIndex = 1;
             this.labelYounger_SVV.Text = "young";
-
             // 
             // splitterOne_SVV
             // 
@@ -106,7 +105,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.chartDoctors_SVV.Series.Add(series1);
             this.chartDoctors_SVV.Size = new System.Drawing.Size(525, 450);
             this.chartDoctors_SVV.TabIndex = 0;
-
+            
             // 
             // FormChart
             // 

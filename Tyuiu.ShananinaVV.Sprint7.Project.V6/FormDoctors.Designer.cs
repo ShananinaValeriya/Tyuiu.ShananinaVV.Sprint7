@@ -495,7 +495,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.Name = "FormDoctors";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "База врачей";
-            this.Load += new System.EventHandler(this.FormDoctors_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoctors_SVV)).EndInit();
             this.panelOneDoc_SVV.ResumeLayout(false);
             this.groupBoxSort_SVV.ResumeLayout(false);

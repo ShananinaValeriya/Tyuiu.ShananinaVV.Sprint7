@@ -19,8 +19,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
     {
         int index;
 
-        DataTable table = new DataTable("table");
-
         public FormDoctors()
         {
             this.ControlBox = false; //убираем кнопки сворачивания, разворачивания и закрытия окна..
@@ -72,49 +70,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             buttonStatic_SVV.Enabled = true;
         }
 
-        private void SortByAlphabet(int columnIndex)
-        {
-
-            // Получаем столбец DataGridView, который нужно отсортировать
-            DataGridViewColumn column = dataGridViewDoctors_SVV.Columns[columnIndex];
-
-            // Проверка, была ли уже выполнена сортировка по этому столбцу
-            if (dataGridViewDoctors_SVV.SortOrder == SortOrder.Ascending)
-            {
-                // Если была выполнена сортировка по возрастанию, выполнить сортировку по убыванию
-                dataGridViewDoctors_SVV.Sort(column, ListSortDirection.Descending);
-            }
-            else
-            {
-                // Если не было выполнено сортировки или была выполнена сортировка по убыванию, выполнить сортировку по возрастанию
-                dataGridViewDoctors_SVV.Sort(column, ListSortDirection.Ascending);
-            }
-        }
-    
-
-        private void buttonSort_SVV_Click(object sender, EventArgs e)
-        {
-            int columnIndex = 0; // Указываем нужный индекс столбца
-            SortByAlphabet(columnIndex);
- 
-        }
-
-        private void buttonSortPosit_SVV_Click(object sender, EventArgs e)
-        {
-            int columnIndex = 1;
-            SortByAlphabet(columnIndex);
-        }
-
-        private void buttonSortSpec_SVV_Click(object sender, EventArgs e)
-        {
-            int columnIndex = 2;
-            SortByAlphabet(columnIndex);
-        }
-
-        private void buttonBackDoc_SVV_Click(object sender, EventArgs e)
-        {
-            this.Hide(); 
-        }
+        
 
         private void buttonAdd_SVV_Click(object sender, EventArgs e)
         {
@@ -146,23 +102,6 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             newdata.Cells[2].Value = textBoxSpec_SVV.Text;
         }
 
-
-        private void FormDoctors_Load(object sender, EventArgs e)
-        {
-            table.Columns.Add("", Type.GetType("System.Int32"));
-            
-
-            for (int i = 0; i < dataGridViewDoctors_SVV.Columns.Count; i++)
-            {
-                comboBoxFilter_SVV.Items.Add(dataGridViewDoctors_SVV.Columns[i].HeaderText);
-            }
-            
-            comboBoxFilter_SVV.DropDownStyle = ComboBoxStyle.DropDown;
-            comboBoxFilter_SVV.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            comboBoxFilter_SVV.AutoCompleteSource = AutoCompleteSource.ListItems;
-        }
-        
-   
         private void comboBoxFilter_SVV_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedValue = comboBoxFilter_SVV.SelectedItem.ToString();
@@ -481,7 +420,51 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
 
         }
 
-        
+        private void SortByAlphabet(int columnIndex)
+        {
+
+            // Получаем столбец DataGridView, который нужно отсортировать
+            DataGridViewColumn column = dataGridViewDoctors_SVV.Columns[columnIndex];
+
+            // Проверка, была ли уже выполнена сортировка по этому столбцу
+            if (dataGridViewDoctors_SVV.SortOrder == SortOrder.Ascending)
+            {
+                // Если была выполнена сортировка по возрастанию, выполнить сортировку по убыванию
+                dataGridViewDoctors_SVV.Sort(column, ListSortDirection.Descending);
+            }
+            else
+            {
+                // Если не было выполнено сортировки или была выполнена сортировка по убыванию, выполнить сортировку по возрастанию
+                dataGridViewDoctors_SVV.Sort(column, ListSortDirection.Ascending);
+            }
+        }
+
+
+        private void buttonSort_SVV_Click(object sender, EventArgs e)
+        {
+            int columnIndex = 0; // Указываем нужный индекс столбца
+            SortByAlphabet(columnIndex);
+
+        }
+
+        private void buttonSortPosit_SVV_Click(object sender, EventArgs e)
+        {
+            int columnIndex = 1;
+            SortByAlphabet(columnIndex);
+        }
+
+        private void buttonSortSpec_SVV_Click(object sender, EventArgs e)
+        {
+            int columnIndex = 2;
+            SortByAlphabet(columnIndex);
+        }
+
+        private void buttonBackDoc_SVV_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+
         DataService ds = new DataService();
         private void buttonStatic_SVV_Click(object sender, EventArgs e)
         {

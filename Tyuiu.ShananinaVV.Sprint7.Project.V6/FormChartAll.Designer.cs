@@ -105,6 +105,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.chartAllAmbDisp_SVV.Series.Add(series1);
             this.chartAllAmbDisp_SVV.Size = new System.Drawing.Size(548, 450);
             this.chartAllAmbDisp_SVV.TabIndex = 0;
+           
             // 
             // FormChartAll
             // 
