@@ -96,9 +96,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
         {
             int columnIndex = 0; // Указываем нужный индекс столбца
             SortByAlphabet(columnIndex);
-
-           
-            
+ 
         }
 
         private void buttonSortPosit_SVV_Click(object sender, EventArgs e)

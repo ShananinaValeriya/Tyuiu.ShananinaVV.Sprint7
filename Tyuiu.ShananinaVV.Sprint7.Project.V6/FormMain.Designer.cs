@@ -114,6 +114,7 @@ namespace Tyuiu.ShananinaVV.Sprint7.Project.V6
             this.Controls.Add(this.buttonPatients_SVV);
             this.Controls.Add(this.buttonHelp_SVV);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(800, 492);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(800, 492);
             this.Name = "FormMain";
